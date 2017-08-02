@@ -1,0 +1,100 @@
+<!-- 导航栏部分Begin -->
+<!--Responsive navigation button-->
+<div class="resBtn">
+	<a href="#"><span class="icon16 minia-icon-list-3"></span></a>
+</div>
+
+<!--Sidebar background-->
+<div id="sidebarbg"></div>
+<!--Sidebar content-->
+<div id="sidebar">
+
+	<div class="shortcuts">
+		<ul>
+			<li><a href="__APP__/Admin/Content/add" title="发布文档" class="tip"><span
+					class="icon24 icomoon-icon-pen"></span></a></li>
+
+			<li><a href="__APP__/Admin/Content/check" title="文档审核"
+				class="tip"><span class="icon24 icomoon-icon-search-5"></span></a></li>
+
+			<li><a href="__APP__/Admin/Complaint/index" title="投诉建议"
+				class="tip"><span class="icon24 icomoon-icon-comments-6"></span></a></li>
+
+			<li><a href="__APP__/Admin/Email/index" title="主任信箱"
+				class="tip"><span class="icon24 icomoon-icon-mail-2"></span></a></li>
+		</ul>
+	</div>
+	<!-- End search -->
+
+	<div class="sidenav">
+
+		<div class="sidebar-widget" style="margin: -1px 0 0 0;">
+			<h5 class="title" style="margin-bottom: 0">功能面板</h5>
+		</div>
+		<!-- End .sidenav-widget -->
+
+		<!-- <span class="notification red">32</span> -->
+		<div class="mainnav">
+			<ul>
+				<!-- 循环输出导航栏Begin -->
+				<volist name="menu" id="m">
+				<if condition="$m.menu_id eq 10">
+					<li><a href="#"><span class="icon16  {$m.icon}"></span>{$m.name}<span class="notification red">{$ordernum.nonfinish}</span></a>
+					<if condition="$m.child neq 'null'">
+					<ul class="sub">
+						<volist name="m['child']" id="c">
+						<li><a href="__APP__/Admin/{$c.url}"><span
+								class="icon16 {$c.icon}"></span>{$c.name}<span class="notification blue">{$ordernum[$key]}</span></a></li>
+						</volist>
+					</ul>
+					</if>
+					</li>
+				<else />
+					<li><a href="#"><span class="icon16  {$m.icon}"></span>{$m.name}</a>
+					<if condition="$m.child neq 'null'">
+					<ul class="sub">
+						<volist name="m['child']" id="c">
+						<li><a href="__APP__/Admin/{$c.url}"><span
+								class="icon16 {$c.icon}"></span>{$c.name}</a></li>
+						</volist>
+					</ul>
+					</if>
+					</li>
+				</if>
+				
+				</volist>
+				<!-- 循环输出导航栏End -->
+			</ul>
+		</div>
+	</div>
+	<!-- End sidenav -->
+	<div class="sidebar-widget">
+		<h5 class="title">后台操作出错率比</h5>
+		<div class="content">
+			<span class="icon16 icomoon-icon-loop left"></span>
+			<div class="progress progress-mini progress-danger left tip"
+				title="87%">
+				<div class="bar" style="width: 1%;"></div>
+			</div>
+			<span class="percent">1%</span>
+		</div>
+
+	</div>
+	<!-- End .sidenav-widget -->
+
+	<div class="sidebar-widget">
+		<h5 class="title">服务器内存空间使用率</h5>
+		<div class="content">
+			<span class="icon16 icomoon-icon-drive left"></span>
+			<div class="progress progress-mini progress-success left tip"
+				title="1%">
+				<div class="bar" style="width: 1%;"></div>
+			</div>
+			<span class="percent">1%</span>
+		</div>
+
+	</div>
+	<!-- End .sidenav-widget -->
+</div>
+<!-- End #sidebar -->
+<!-- 导航栏部分End -->

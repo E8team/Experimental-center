@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+<script>
+	//定义全局变量，匹配ThinkPHP路径
+	var APP = "__APP__";
+</script>
+
+</head>
+
+<body>
+	<!-- 包含header文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+		<!-- 包含导航栏文件 -->
+		<include file="./Apps/Admin/View/Public/nav.html" />
+		
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+				<div class="heading">
+				
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+					
+					<!-- 面包屑轨迹 -->
+					<include file="./Apps/Admin/View/Public/mbx.html" />
+					
+
+				</div>
+
+				<div class="row-fluid">
+					<div class="span12">
+						<form action="__APP__/Admin/AdminGroup/index" method="post">
+							<div class="row-fluid">
+								<div class="input-append">
+									<input class="span3" id="appendedInputButton" name="keyword"
+										size="16" type="text" />
+									<button class="btn" type="submit">Search!</button>
+								</div>
+							</div>
+						</form>
+						<div class="box">
+							<div class="title">
+								<h4>
+									<span class="icon16 icomoon-icon-users"></span> <span>管理员分组管理</span>
+									<span><a href="__APP__/Admin/AdminGroup/add" title="添加管理员分组"
+										class="tip e8-add">+添加分组</a></span>
+								</h4>
+								<a href="#" class="minimize">Minimize</a>
+							</div>
+							<div class="content noPad">
+								<table class="responsive table table-bordered" id="checkAll">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>分组名称</th>
+											<th>分组描述</th>
+											<th>分组成员数</th>
+											<th>成员</th>
+											<th>分组权限</th>
+											<th>可用</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									<volist name="adminGroupList" id="adminGroup" key="k">
+										<tr>
+											<td>{$k}</td>
+											<td class="e8-font-bold">{$adminGroup.name|searchReplaceKw=###,$keyword}</td>
+											<td><a title="{$adminGroup.description}" class="tip">{$adminGroup.description|searchReplaceKw=###,$keyword|substr=0,54}</a></td>
+											<td>{$adminGroup.admin_count} 人</td>
+											<td>{$adminGroup.admin_info|adminHtmlCreate=###,$admin}</td>
+											<td>{$adminGroup.perm_group|permGroupHtmlCreate=###}</td>
+											<td>
+											<if condition="$adminGroup.root eq 1">
+												<div class="left marginL10">
+                                                <input type="checkbox" id="inlineCheckbox{$adminGroup.admin_group_id}" checked="checked" disabled="disabled" class="ibutton" /> 
+                                                </div>
+											<else />
+												<div class="left marginL10">
+                                                <input type="checkbox" onchange="changeAdminGroupUseful({$adminGroup.admin_group_id});" id="inlineCheckbox{$adminGroup.admin_group_id}" <if condition="$adminGroup.useful eq 1">checked="checked"</if> class="ibutton" /> 
+                                                </div>
+											</if>
+                                            </td>
+											<td>
+												<div class="controls center">
+												<if condition="$adminGroup.root eq 0">
+													<a href="__APP__/Admin/AdminGroup/edit/admin_group_id/{$adminGroup.admin_group_id}/mw/{$adminGroup.mw}" title="修改" class="tip"><span class="icon14 icomoon-icon-pencil"></span></a> 
+													<a href="javascript:deleteConfirm('__APP__/Admin/AdminGroup/del/admin_group_id/{$adminGroup.admin_group_id}/mw/{$adminGroup.mw}','确定删除该分组信息吗？删除该分组后将导致原来属于该分组的管理员不可用!!!');" title="删除" class="tip"><span
+														class="icon14 icomoon-icon-remove"></span>
+													</a>
+												</if>
+												</div>
+											</td>
+										</tr>
+										</volist>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- End .box -->
+						<div class="pageBar">{$page}</div>
+					</div>
+					<!-- End .span6 -->
+				</div>
+				<!-- End .row-fluid -->
+			</div>
+			<!-- End contentwrapper -->
+		</div>
+		<!-- End #content -->
+	</div>
+	<!-- End #wrapper -->
+
+	<!-- 包含JavaScript文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+</body>
+</html>

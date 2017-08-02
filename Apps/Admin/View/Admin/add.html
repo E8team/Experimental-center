@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+<script>
+	//定义全局变量，匹配ThinkPHP路径
+	var APP = "__APP__";
+</script>
+
+</head>
+
+<body>
+
+	<!-- 包含头部文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+		<!-- 包含导航栏 -->
+		<include file="./Apps/Admin/View/Public/nav.html" />
+		<!--中部内容-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+				<div class="heading">
+
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+					<!-- 面包屑轨迹 -->
+					<include file="./Apps/Admin/View/Public/mbx.html" />
+					
+				</div>
+				<!-- End .heading-->
+
+				<!-- 管理员添加表单BEGIN -->
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="box">
+							<div class="title">
+								<h4>
+									<span>添加管理员</span>
+								</h4>
+							</div>
+
+							<div class="content">
+							
+								<form class="form-horizontal seperator"
+									action="__APP__/Admin/Admin/add" method="post"
+									enctype="multipart/form-data" onsubmit="return adminAddFormCheck();">
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="username">用户账号:</label>
+												<input class="span4" id="e8_account" name="account"
+													type="text" value="" placeholder="字符数字下划线,字母开头,6~16位" /> 
+											</div>
+										</div>
+									</div>
+									
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">头像:</label> <img
+													src="__PUBLIC__/upload/photo/gif-60.gif" alt=""
+													class="image marginR10" /> <input type="file" name="photo"
+													id="file" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">真实姓名:</label> <input
+													class="span4" id="name" name="name" type="text" value=""
+													placeholder="输入你的真实姓名" />
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">电子邮箱:</label> <input
+													class="span4" id="e8_email" name="email" type="text"
+													value="" placeholder="输入你的真实邮箱" />
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">QQ号码:</label> <input
+													class="span4" id="qq" name="qq" type="text" value=""
+													placeholder="输入你的QQ号码" />
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">密码:</label>
+												<div class="span4 controls">
+													<input class="span12" id="password" name="password"
+														type="password" placeholder="密码长度不少于6位" value="" /> <input
+														class="span12" id="passwordConfirm" name="repassword"
+														type="password" placeholder="再次输入密码" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">性别:</label>
+												<div class="left marginT5 marginR10">
+													<input type="radio" name="sex" id="optionsRadios1"
+														value="b" checked="checked" /> 男
+												</div>
+												<div class="left marginT5 marginR10">
+													<input type="radio" name="sex" id="optionsRadios2"
+														value="g" /> 女
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">所属用户组:</label>
+												<div class="span4 controls">
+													<select id="e8_admin_group" name="admin_group_id">
+														<option value="">请选择管理员所在分组</option>
+														<foreach name="adminGroupList" item="adminGroup">
+														<option value="{$adminGroup.admin_group_id}">{$adminGroup.name}</option>
+														</foreach>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">权限组分配:</label>
+												<div class="span4 controls">
+													<span id="e8_ajax_msg" class="e8-font-red"></span> <select
+														id="e8_perm_group" name="perm_group_id[]" class="nostyle"
+														multiple="multiple">
+
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">备注:</label>
+												<textarea class="span4 limit elastic" id="textarea2"
+													rows="3" cols="5" name="remarks"></textarea>
+											</div>
+										</div>
+									</div>
+
+									<div class="center marginT10">
+										<div class="span11 controls">
+											<button type="submit" id="e8-add-admin-submit" class="btn btn-info marginR10">添加</button>
+											<a href="__APP__/Admin/Admin/index" class="btn btn-danger">放弃</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- End .box -->
+					</div>
+					<!-- End .span12 -->
+					<!-- 管理员添加表单END -->
+
+				</div>
+				<!-- End contentwrapper -->
+			</div>
+			<!-- End #content -->
+
+		</div>
+		<!-- End #wrapper -->
+	</div>
+	<!-- 包含JavaScript 文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+</body>
+</html>
+

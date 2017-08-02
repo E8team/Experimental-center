@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+</head>
+
+<body>
+	<!-- 包含头部文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+		<!-- 包含导航栏 -->
+		<include file="./Apps/Admin/View/Public/nav.html" />
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+				<div class="heading">
+					<h3>后台首页</h3>
+					
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+
+					<ul class="breadcrumb">
+						<li>当前位置:</li>
+						<li><a href="__APP__/Admin/index" class="tip" title="回到后台首页"> <span
+								class="icon16 icomoon-icon-screen-2"></span>
+						</a> <span class="divider"> <span
+								class="icon16 icomoon-icon-arrow-right-2"></span>
+						</span></li>
+						<li> <span>内容管理</span>
+						</a> <span class="divider"> <span
+								class="icon16 icomoon-icon-arrow-right-2"></span>
+						</span></li>
+						<li class="active"><a href = "__APP__/Admin/Class/index">栏目管理</a></li>
+					</ul>
+
+				</div>
+				<!-- End .heading-->
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="box">
+							<div class="title">
+
+								<h4>
+									<span>添加栏目</span>
+								</h4>
+
+							</div>
+							<div class="content">
+
+								<form class="form-horizontal" action="__APP__/Admin/Class/add"
+									method="post" onsubmit="return checkClassForm();">
+									<input name="father_id" value="{$father_id}" type="hidden" />
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="normal">栏目名称</label> <input
+													class="span6" id="class-name" type="text" name="name" />
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="checkboxes">内容模型</label>
+												<div class="span6 controls">
+													<select name="channel_id" id="class-channel_id">
+														<foreach name="channelList" item="channel">
+														<option value="{$channel.channel_id}">{$channel.name}</option>
+														</foreach>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="checkboxes">栏目封面模板</label>
+												<div class="span6 controls">
+													<select name="index_template" id="class-indexTemplate">
+														<foreach name="indexTemplateList" item="indexTemplate">
+														<option value="{$indexTemplate.template_id}">{$indexTemplate.name}</option>
+														</foreach>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="checkboxes">栏目内容模板</label>
+												<div class="span6 controls">
+													<select name="content_template" id="class-contentTemplate">
+														<foreach name="contentTemplateList" item="contentTemplate">
+														<option value="{$contentTemplate.template_id}">{$contentTemplate.name}</option>
+														</foreach>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+
+												<label class="form-label span4" for="checkboxes">是否显示栏目</label>
+
+												<div class="span8 controls">
+
+													<input type="checkbox" id="inlineCheckbox9"
+														checked="checked" class="ibuttonCheck" name="is_show" />
+
+												</div>
+
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+
+												<label class="form-label span4" for="checkboxes">是否作为导航</label>
+
+												<div class="span8 controls">
+													<input type="checkbox" id="inlineCheckbox9"
+														checked="checked" class="ibuttonCheck" name="is_nav" />
+												</div>
+
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="checkboxes">栏目类型</label>
+												<div class="span8 controls">
+													<div class="left marginT5">
+														<input type="radio" name="type" id="optionsRadios1"
+															value="List" checked="checked" /> 列表栏目（多篇文档的列表栏目）
+													</div>
+													<div class="left marginT5">
+														<input type="radio" name="type" id="optionsRadios2"
+															value="Index" /> 频道封面（栏目本身不允许发布文档，也可充当”简介“等介绍类栏目）
+													</div>
+													<div class="left marginT5">
+														<input type="radio" name="type" id="optionsRadios2"
+															value="Url" /> 外部链接（在”外部链接地址“处填写网址）
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="normal">排序</label> <input
+													class="span2" id="class-sort" type="text"
+													name="sort_index" value="0" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="normal">外部链接地址</label>
+												<input class="span6" id="class-url" type="text" name="url" />
+											</div>
+										</div>
+									</div>
+
+									<div class="row-fluid form-row">
+										<div class="span12">
+											<div class="page-header">
+												<h4>栏目内容</h4>
+											</div>
+
+											<div class="form-row">
+												<textarea name="content"
+													style="width: 1060px; height: 300px; visibility: hidden;"></textarea>
+											</div>
+										</div>
+
+									</div>
+									<!-- End .row-fluid -->
+
+									<div class="form-actions" style="padding: 20px 460px;">
+										<button type="submit" class="btn btn-info">保存</button>
+										<a href="javascript:cancelConfirm('__APP__/Admin/Class/index','确定放弃当前编辑内容并返回到上一层页面吗????')" class="btn btn-danger">放弃</a>
+									</div>
+
+								</form>
+							</div>
+
+						</div>
+						<!-- End .box -->
+
+					</div>
+					<!-- End .span6 -->
+				</div>
+			</div>
+			<!-- End contentwrapper -->
+		</div>
+		<!-- End #content -->
+
+	</div>
+	<!-- End #wrapper -->
+
+
+	<!-- 包含JavaScript 文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+</body>
+</html>

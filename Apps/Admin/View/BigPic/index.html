@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+</head>
+      
+    <body>
+   <!-- 包含头部文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+
+    <div id="wrapper">
+
+      <!-- 包含导航栏 -->
+	<include file="./Apps/Admin/View/Public/nav.html" />
+
+        <!--Body content-->
+        <div id="content" class="clearfix">
+            <div class="contentwrapper"><!--Content wrapper-->
+
+                <div class="heading">
+                    
+                    <!-- 包含搜索框 -->
+                    <include file="./Apps/Admin/View/Public/search.html" />
+                    
+                    <!-- 面包屑轨迹 -->
+                    <include file="./Apps/Admin/View/Public/mbx.html" />
+
+                </div><!-- End .heading-->
+                		
+                <!-- Build page from here: Usual with <div class="row-fluid"></div> -->
+
+                 
+                    <div class="row-fluid">
+
+                        <div class="span12">
+                            
+                            <div class="box">
+
+                                <div class="title">
+
+                                    <h4>
+                                        <span class="icon16  icomoon-icon-link"></span>
+                                        <span>首页大图配置</span>
+                          				<span><a href="__APP__/Admin/BigPic/add" title="添加首页大图" class="tip e8-add" >+添加首页大图</a></span>
+                                    </h4>
+
+                                </div>
+                                <div class="content noPad">
+                                    <table class="responsive table table-bordered" id="checkAll">
+                                        <thead>
+                                          <tr>
+                                            <th>序号</th>
+                                            <th>标题</th>
+                                            <th>描述</th>
+                                            <th>图片</th>
+                                            <th>跳转url</th>
+                                            <th>操作</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        <foreach name="pics" item="pic">
+                                          <tr>
+                                            <td>{$key+1}</td>
+                                              <th>{$pic['title']}</th>
+                                              <th>{$pic['describtion']}</th>
+                                            <td>
+                                                <if condition="$pic.logo neq ''">
+                                                <a href="__PUBLIC__/upload/{$pic.logo}" rel="prettyPhoto" >
+                                                    <img src="__PUBLIC__/upload/{$pic.logo}" alt="Image name" width="100" height="100" />
+                                                </a>
+                                                <else />
+                                                <span>没有图片</span>
+                                                </if>
+                                            </td>
+                                              <th>{$pic['url']}</th>
+                                            <td>
+                                                <div class="controls center">
+                                                    <a href="__APP__/Admin/BigPic/edit/big_pic_id/{$pic.id}" title="修改" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a>
+                                                    <a href="javascript:deleteConfirm('__APP__/Admin/BigPic/del/big_pic_id/{$pic.id}','确定删除吗?删除后将不可用!!');" title="删除" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
+                                                </div>
+                                            </td>
+                                          </tr>
+                                       </foreach>
+                                        </tbody>
+                                    </table>
+                                </div>
+										<div class="pageBar">{$page}</div>
+                            </div><!-- End .box -->
+
+                        </div><!-- End .span6 -->
+
+                    </div><!-- End .row-fluid -->
+               
+               
+            </div><!-- End contentwrapper -->
+        </div><!-- End #content -->
+    
+    </div><!-- End #wrapper -->
+    
+	<!-- 包含JavaScript 文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+
+
+    </body>
+</html>

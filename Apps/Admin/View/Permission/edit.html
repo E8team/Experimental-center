@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+<script>
+	//定义全局变量，匹配ThinkPHP路径
+	var APP = "__APP__";
+</script>
+
+</head>
+
+<body>
+
+	<!-- 包含头部文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+		<!-- 包含导航栏 -->
+		<include file="./Apps/Admin/View/Public/nav.html" />
+
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+
+				<div class="heading">
+				
+				
+					
+					<ul class="breadcrumb">
+						<li>当前位置:</li>
+						<li><a href="__APP__/Admin/index" class="tip" title="回到后台首页"> <span
+								class="icon16 icomoon-icon-screen-2"></span>
+						</a> <span class="divider"> <span
+								class="icon16 icomoon-icon-arrow-right-2"></span>
+						</span></li>
+						<li> <span>系统管理</span>
+						</a> <span class="divider"> <span
+								class="icon16 icomoon-icon-arrow-right-2"></span>
+						</span></li>
+						<li class="active"><a href = "__APP__/Admin/Permission/index">权限管理</a></li>
+					</ul>
+
+				</div>
+				<!-- End .heading-->
+
+				<!-- 管理员添加表单BEGIN -->
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="box">
+							<div class="title">
+								<h4>
+									<span>修改权限</span>
+								</h4>
+							</div>
+
+							<div class="content">
+
+								<form class="form-horizontal seperator"
+									action="__APP__/Admin/Permission/edit" method="post" onsubmit="return checkPermissionForm();">
+									<input type="hidden" name="permission_id"
+										value="{$permission.permission_id}" /> <input type="hidden"
+										name="mw" value="{$mw}" />
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">权限名称:</label> <input
+													class="span4" id="perm-name" name="name" type="text"
+													value="{$permission.name}" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">Action:</label> <input
+													class="span4" id="perm-action" name="action" type="text"
+													value="{$permission.action}" />
+											</div>
+										</div>
+									</div>
+
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="textarea">备注:</label>
+												<textarea class="span4 limit elastic" id="textarea2"
+													rows="3" cols="5" name="description">{$permission.description}</textarea>
+											</div>
+										</div>
+									</div>
+
+									<div class="center marginT10">
+										<div class="span11 controls">
+											<button type="submit" class="btn btn-info">添加</button>
+											<a href="javascript:cancelConfirm('__APP__/Admin/Permission/index','确定放弃编辑并返回码?')" class="btn btn-danger">放弃</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- End .box -->
+					</div>
+					<!-- End .span12 -->
+					<!-- 管理员添加表单END -->
+
+				</div>
+				<!-- End contentwrapper -->
+			</div>
+			<!-- End #content -->
+
+		</div>
+		<!-- End #wrapper -->
+	</div>
+	<!-- 包含JavaScript 文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+</body>
+</html>
+

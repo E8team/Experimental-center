@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+</head>
+      
+    <body>
+   <!-- 包含头部文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+
+    <div id="wrapper">
+
+      <!-- 包含导航栏 -->
+	<include file="./Apps/Admin/View/Public/nav.html" />
+
+        <!--Body content-->
+        <div id="content" class="clearfix">
+            <div class="contentwrapper"><!--Content wrapper-->
+
+                <div class="heading">
+                    
+                    <!-- 包含搜索框 -->
+                    <include file="./Apps/Admin/View/Public/search.html" />
+                    
+                    <!-- 面包屑轨迹 -->
+                    <include file="./Apps/Admin/View/Public/mbx.html" />
+
+                </div><!-- End .heading-->
+                		
+                <!-- Build page from here: Usual with <div class="row-fluid"></div> -->
+
+                 
+                    <div class="row-fluid">
+
+                        <div class="span12">
+                            
+                            <div class="box">
+
+                                <div class="title">
+
+                                    <h4>
+                                        <span class="icon16  icomoon-icon-link"></span>
+                                        <span>友情链接管理</span>
+                          				<span><a href="__APP__/Admin/Flink/add/type_id/{$type_id}/mw/{$mw}" title="添加友情链接" class="tip e8-add" >+添加友情链接</a></span>
+                                       
+                                    </h4>
+
+                                </div>
+                                <div class="content noPad">
+                                    <table class="responsive table table-bordered" id="checkAll">
+                                        <thead>
+                                          <tr>
+                                            <th>序号</th>
+                                            <th>连接图片</th>
+                                            <th>链接名称</th>
+                                            <th>链接地址</th>
+                                            <th>操作</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        <foreach name="flinkList" item="flink">
+                                          <tr>
+                                            <td>{$key+1}</td>
+                                            <td>
+                                                <if condition="$flink.logo neq ''">
+                                                <a href="__PUBLIC__/upload/{$flink.logo}" rel="prettyPhoto" > 
+                                                    <img src="__PUBLIC__/upload/{$flink.logo}" alt="Image name" width="25" height="25" />
+                                                </a>
+                                                <else />
+                                                <span>没有图片</span>
+                                                </if>
+                                            </td>
+                                            <td>{$flink.webname}</td>
+                                            <td>{$flink.url}</td>
+                                            <td>
+                                                <div class="controls center">
+                                                    <a href="__APP__/Admin/Flink/edit/flink_id/{$flink.flink_id}/mw/{$flink.mw}" title="修改" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a>
+                                                    <a href="javascript:deleteConfirm('__APP__/Admin/Flink/del/flink_id/{$flink.flink_id}/mw/{$flink.mw}','确定删除该链接吗?删除后链接将不可用!!');" title="删除" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
+                                                </div>
+                                            </td>
+                                          </tr>
+                                       </foreach>
+                                        </tbody>
+                                    </table>
+                                </div>
+										<div class="pageBar">{$page}</div>
+                            </div><!-- End .box -->
+
+                        </div><!-- End .span6 -->
+
+                    </div><!-- End .row-fluid -->
+               
+               
+            </div><!-- End contentwrapper -->
+        </div><!-- End #content -->
+    
+    </div><!-- End #wrapper -->
+    
+	<!-- 包含JavaScript 文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+
+
+    </body>
+</html>

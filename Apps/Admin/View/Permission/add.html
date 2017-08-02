@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+<script>
+	//定义全局变量，匹配ThinkPHP路径
+	var APP = "__APP__";
+</script>
+
+</head>
+
+<body>
+	<!-- 包含头部文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+
+		<!-- 包含导航栏 -->
+		<include file="./Apps/Admin/View/Public/nav.html" />
+
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+
+				<div class="heading">
+				
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+					<!-- 面包屑轨迹 -->
+					<include file="./Apps/Admin/View/Public/mbx.html" />
+
+				</div>
+				<!-- End .heading-->
+
+				<!-- 管理员添加表单BEGIN -->
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="box">
+							<div class="title">
+								<h4>
+									<span>添加权限</span>
+								</h4>
+							</div>
+
+							<div class="content">
+
+								<form class="form-horizontal seperator" action="__APP__/Admin/Permission/add" method="post" onsubmit="return checkPermissionForm();">
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">权限名称:</label> <input
+													class="span4" id="perm-name" name="name" type="text" value="" />
+											</div>
+										</div>
+									</div>
+									
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">Action:</label> <input
+													class="span4" id="perm-action" name="action" type="text" value="" />
+											</div>
+										</div>
+									</div>
+
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="textarea">备注:</label>
+												<textarea class="span4 limit elastic" id="textarea2"
+													rows="3" cols="5" name="description"></textarea>
+											</div>
+										</div>
+									</div>
+
+									<div class="center marginT10">
+										<div class="span11 controls">
+											<button type="submit" class="btn btn-info">添加</button>
+											<a href="javascript:cancelConfirm('__APP__/Admin/Permission/index','确定放弃添加并返回码?')" class="btn btn-danger">放弃</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- End .box -->
+					</div>
+					<!-- End .span12 -->
+					<!-- 管理员添加表单END -->
+
+				</div>
+				<!-- End contentwrapper -->
+			</div>
+			<!-- End #content -->
+
+		</div>
+		<!-- End #wrapper -->
+
+		<!-- 包含JavaScript 文件 -->
+		<include file="./Apps/Admin/View/Public/script.html" />
+</body>
+</html>
+

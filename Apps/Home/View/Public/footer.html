@@ -1,0 +1,37 @@
+<div class="footer_nav">
+  <div class="container">
+    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 footer_nav_main">
+      <h2 class="title">院系设置</h2>
+      <ul>
+
+        <volist name="faculty" id="friend" offset="0" limit="8">
+          <li><a target="_blank" href="{$friend.url}">{$friend.webname}</a></li>
+        </volist>
+
+      </ul>
+    </div>
+    <div class="col-md-6 col-lg-6 col-sm-12 footer_nav_main">
+      <h2 class="title">热门链接</h2>
+      <ul>
+
+        <volist name="hotUrl" id="hot" offset="0" limit="8">
+          <li><a target="_blank" href="{$hot.url}">{$hot.webname}</a></li>
+        </volist>
+
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="container">
+    <div class="footer_main">
+      <span>地址：{$webInfo.ADDRESS}</span>
+      <span>邮编：{$webInfo.ZIPCODE}</span>
+      <span>电话：{$webInfo.PHONE}</span>
+      <span>电子邮件：{$webInfo.EMAIL}</span>
+      <p>{$webInfo.COPYRIGHT}</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

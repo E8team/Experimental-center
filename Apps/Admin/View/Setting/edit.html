@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+</head>
+
+<body>
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+		<include file="./Apps/Admin/View/Public/nav.html" />
+
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+
+				<div class="heading">
+				
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+
+					<ul class="breadcrumb">
+						<li>当前位置:</li>
+						<li><a href="__APP__/Admin/index" class="tip" title="回到后台首页"> <span
+								class="icon16 icomoon-icon-screen-2"></span>
+						</a> <span class="divider"> <span
+								class="icon16 icomoon-icon-arrow-right-2"></span>
+						</span></li>
+						<li><span>系统管理</span>
+						</a> <span class="divider"> <span
+								class="icon16 icomoon-icon-arrow-right-2"></span>
+						</span></li>
+						<li class="active"><a href ="__APP__/Admin/Setting/index/">网站设置</a></li>
+					</ul>
+
+				</div>
+				<!-- End .heading-->
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<div class="box">
+
+							<div class="title">
+
+								<h4>
+									<span>添加网站设置</span>
+								</h4>
+
+							</div>
+							<div class="content">
+
+								<form class="form-horizontal"
+									action="__APP__/Admin/Setting/edit" method="post">
+									<input type="hidden" value="{$setting.setting_id}"
+										name="setting_id" />
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="normal">设置项</label> <input
+													class="span6" id="normalInput" type="text" name="item"
+													value="{$setting.item}" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="normal">设置值</label> <input
+													class="span6" id="normalInput" type="text" name="value"
+													value="{$setting.value}" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="normal">设置项描述</label> <input
+													class="span6" id="normalInput" type="text"
+													name="description" value="{$setting.description}" />
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="checkboxes">类型</label>
+												<div class="span6 controls">
+													<select name="type">
+														<if condition="$setting.type == 'string'">
+														<option selected="selected">string</option>
+														<option>number</option>
+														<option>bool</option>
+														<elseif condition="$setting.type == 'number'" />
+														<option>string</option>
+														<option selected="selected">number</option>
+														<option>bool</option>
+														<else />
+														<option>string</option>
+														<option>number</option>
+														<option selected="selected">bool</option>
+														</if>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-actions">
+										<span class="span3"></span>
+										<button type="submit" class="btn btn-info">保存</button>
+										<a href="javascript:cancelConfirm('__APP__/Admin/Setting/index','确定放弃当前编辑内容并返回到上一层页面吗????')" class="btn btn-danger">放弃</a>
+									</div>
+								</form>
+							</div>
+
+						</div>
+						<!-- End .box -->
+
+					</div>
+					<!-- End .span6 -->
+				</div>
+			</div>
+			<!-- End contentwrapper -->
+		</div>
+		<!-- End #content -->
+
+	</div>
+	<!-- End #wrapper -->
+
+	<!-- 包含JS样式和字体 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+
+</body>
+</html>

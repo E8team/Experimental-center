@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+</head>
+
+<body>
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+		<include file="./Apps/Admin/View/Public/nav.html" />
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+
+				<div class="heading">
+				
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+
+					<!-- 面包屑轨迹 -->
+					<include file="./Apps/Admin/View/Public/mbx.html" />
+
+
+
+				</div>
+				<!-- End .heading-->
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<div class="box">
+
+							<div class="title">
+
+								<h4>
+									<span>添加网站设置</span>
+								</h4>
+
+							</div>
+							<div class="content">
+
+								<form class="form-horizontal" action="__APP__/Admin/Setting/add"
+									method="post">
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="normal">设置项</label> <input
+													class="span6" id="normalInput" type="text" name="item" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="normal">设置值</label> <input
+													class="span6" id="normalInput" type="text" name="value" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="normal">设置项描述</label> <input
+													class="span6" id="normalInput" type="text"
+													name="description" />
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="checkboxes">类型</label>
+												<div class="span6 controls">
+													<select name="type">
+														<option>string</option>
+														<option>number</option>
+														<option>bool</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-actions">
+										<span class="span3"></span>
+										<button type="submit" class="btn btn-info">保存</button>
+										<a href="__APP__/Admin/Setting/index"
+													class="btn btn-info marginR10">返回</a>
+								</form>
+							</div>
+
+						</div>
+						<!-- End .box -->
+
+					</div>
+					<!-- End .span6 -->
+				</div>
+			</div>
+			<!-- End contentwrapper -->
+		</div>
+		<!-- End #content -->
+
+	</div>
+	<!-- End #wrapper -->
+
+	<!-- 包含js样式和字体 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+</body>
+</html>

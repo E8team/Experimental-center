@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="__PUBLIC__/law_home/style/tui.css">
+    <link rel="stylesheet" href="__PUBLIC__/law_home/style/comm.css">
+    <script src="__PUBLIC__/law_home/lib/jquery.min.js" ></script>
+    <!--[if IE 8]>
+	    <script src="__PUBLIC__/law_home/lib/respond.js"></script>
+    <![endif]-->
+    <title>{$title} - {$webInfo['WEBNAME']}</title>
+    <script>
+        $(function () {
+            $('#nav>li').hover(function () {
+                var $list = $(this).find('.sub_nav_list')
+                $list.css('display', 'block');
+                $list.stop().animate({
+                    'opacity': 1,
+                    'top': '60px'
+                }, 200)
+            }, function () {
+                var $list = $(this).find('.sub_nav_list')
+                $list.stop().animate({
+                    'opacity': 0,
+                    'top': '70px'
+                }, 200, function () {
+                    if($list.css('top') == '70px'){
+                        $list.css('display', 'none');
+                    }
+                })
+            })
+            // 搜索
+            var $searchForm = $('#search_form');
+            $('#search_input').keydown(function (event) {
+                if (event.keyCode === 13) {
+                    $searchForm.submit()
+                }
+            });
+			$searchForm.find('.search_icon').click(function(){
+				$searchForm.submit()
+			});
+        });
+    </script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="head">
+        <div class="container">
+            <div class="left">
+                <!-- logo -->
+                <a class="logo" href="#" title="淮南师范学院-法学院">
+                    <img src="__PUBLIC__/law_home/img/logo.png" alt="淮南师范学院-法学院" title="淮南师范学院-法学院">
+                    <h2>淮南师范学院</h2>
+                    <h3>法学院</h3>
+                </a>
+            </div>
+            <div class="right hidden-xs" class="right">
+                <!-- search -->
+                <div class="search">
+                    <form id="search_form" action="index.php" method="GET">
+                        <input type="hidden" name="s" value="Home/Search/search">
+                        <input id="search_input" placeholder="请输入关键字搜索.." type="text" name="keyword">
+                        <i class="search_icon"></i>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- nav -->
+    <div class="nav">
+        <div class="container">
+            <!-- nav content -->
+            <ul id="nav">
+                <li <?php if(is_null($currentClassId)){echo 'class="active"';}?>><a class="nav_one_a" href="{:U('Home/Index/index')}">网站首页</a></li>
+                    <foreach name="navList" item="vo" >
+                            <li <?php if(!is_null($currentClassId) && $vo['active']) echo 'class="active"';?>><a class="nav_one_a" href="{:U($vo['index_template']['url'], ['id'=>$vo['class_id']])}">{$vo.class_name}</a>
+                            <?php if(!empty($vo['child'])):?>
+                                <div class="sub_nav_list">
+                                <?php foreach($vo['child'] as $child):?>
+                                    <a href="{:U($child['index_template']['url'], ['id'=>$child['class_id']])}">{$child['class_name']}</a>
+                                <?php endforeach;?>
+                                </div>
+                            <?php endif;?>
+
+                        </li>
+                    </foreach>
+            </ul>
+			<div style="clear:both"></div>
+        </div>
+    </div>
+</div>

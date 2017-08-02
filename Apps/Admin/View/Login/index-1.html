@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+
+</head>
+
+<body class="loginPage">
+
+	<div class="container-fluid">
+
+		<div id="header">
+			<div class="row-fluid">
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="container">
+							<a class="brand" href="http://www.e8net.cn">E8.<span
+								class="slogan">宅佰份综合后台管理系统</span></a>
+						</div>
+					</div>
+					<!-- /navbar-inner -->
+				</div>
+				<!-- /navbar -->
+			</div>
+			<!-- End .row-fluid -->
+		</div>
+		<!-- End #header -->
+	</div>
+	<!-- End .container-fluid -->
+
+	<div class="container-fluid">
+		<div class="loginContainer">
+			<form class="form-horizontal" action="__APP__/Admin/Login/login"
+				method="post" id="loginForm">
+				<div class="form-row row-fluid">
+					<div class="span12">
+						<div class="row-fluid">
+							<label class="form-label span12" for="username">用户名: <span
+								class="icon16 icomoon-icon-user-3 right gray marginR10"></span>
+							</label> <input class="span12" id="username" type="text" name="account"
+								value="" placeholder="请输入用户名/邮箱 ..." />
+						</div>
+					</div>
+				</div>
+
+				<div class="form-row row-fluid">
+					<div class="span12">
+						<div class="row-fluid">
+							<label class="form-label span12" for="password">密码: <span
+								class="icon16 icomoon-icon-locked right gray marginR10"></span>
+								<span class="forgot"><a href="__APP__/Admin/Findpassword/index">忘记密码?</a></span>
+							</label> <input class="span12" id="password" type="password"
+								name="password" value="" placeholder="请输入密码 ..." />
+						</div>
+					</div>
+				</div>
+
+				<div class="form-row row-fluid">
+					<div class="span12">
+						<div class="row-fluid">
+							<label class="form-label span12"> 验证码: <span
+								class="icon16 icomoon-icon-eye right gray marginR10"></span> <span
+								class="forgot"> <img
+									src="__APP__/Admin/Login/createVerify"
+									onclick="this.src='__APP__/Admin/Login/createVerify'" />
+							</span>
+							</label> <input class="span12" id="password" type="text" name="verify"
+								placeholder="请输入验证码，不区分大小写 ..." />
+						</div>
+					</div>
+				</div>
+
+				<div class="form-row row-fluid">
+					<div class="span12">
+						<div class="row-fluid">
+							<div class="form-actions">
+								<div class="span12 controls">
+									<button type="submit" class="btn btn-info right" id="loginBtn">
+										<span class="icon16 icomoon-icon-enter white"></span> 登陆
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- End .container-fluid -->
+
+</body>
+</html>

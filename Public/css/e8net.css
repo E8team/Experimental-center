@@ -1,0 +1,47 @@
+/* E8net.css version 1.1
+================================================== */
+a.e8-add {font-size:12px; font-weight:normal;}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#ccc;text-align:center;padding:10px;0px;
+}
+.e8-content-add{position: absolute;}
+.e8-font-red {color:red;}
+.e8-font-prompt {color:#006699; }
+.e8-font-bold {color:#006600; font-weight:bold;}
+.e8-number {color: #ed7a53; font-size: 18px; font-weight: 700;}
+
+/*******  分页样式文件  *******/
+.pageBar {width:100%;margin-top:10px;}
+.pageBar div{
+	height:30px;
+	line-height:30px;
+	font-size:12px;
+	text-align:right;
+	padding-right:40px;
+}
+.pageBar div .current {
+	padding:2px 6px;
+	border:1px solid #0597ad;
+	color:#0597ad;
+	margin-right:5px;
+}
+.pageBar div .num{
+	color:#929599;
+	padding:2px 6px;
+	border:1px solid #929599;
+	margin-right:5px;
+}
+.pageBar div .next {
+	padding:2px 4px 2px 3px;
+	margin-left:5px;
+}
+.pageBar div .next:hover{
+	color:#0597ad;
+}
+.pageBar div .prev {
+	padding:2px 4px 2px 3px;
+	margin-right:5px;
+}
+.pageBar div .prev:hover{
+	color:#0597ad;
+}
+

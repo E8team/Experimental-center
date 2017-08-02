@@ -1,0 +1,459 @@
+
+    <include file="./Apps/Home/View/Public/head.html" />
+    <link rel="stylesheet" href="__PUBLIC__/law_home/style/index.css">
+    <!-- 轮播大图 -->
+    <div class="carousel_figure" id="carousel_figure">
+      <!--上一图-->
+      <span id="carousel_figure_next"><</span>
+      <!--下一图-->
+      <span id="carousel_figure_prev">></span>
+      <!--切换圆点-->
+      <div id="slide_switch" class="mod_slide_switch"></div>
+      <ul>
+        <?php foreach($bigPics as $bigPic):?>
+        <li class="active">
+          <a href="<?php if(empty($bigPic['url'])){echo 'javascript:;';}else{echo $bigPic['url'];}?>" <?php if(empty($bigPic['title'])){echo "title={$bigPic['title']}";}?>>
+            <img src="__PUBLIC__/upload/{$bigPic['logo']}">
+          </a>
+          <?php if(!(empty($bigPic['title']) && empty($bigPic['describtion']))):?>
+
+          <div class="focus_text">
+            <div class="mask"></div>
+            <?php if(!empty($bigPic['title'])):?>
+            <h4>{$bigPic['title']}</h4>
+            <?php endif;?>
+            <?php if(!empty($bigPic['describtion'])):?>
+            <p>{$bigPic['describtion']}</p>
+            <?php endif;?>
+          </div>
+          <?php endif;?>
+        </li>
+        <?php endforeach;?>
+      </ul>
+    </div>
+
+    <!-- 正文 -->
+    <div class="container text_content">
+      <!-- 政法要闻 -->
+      <div class="container content_news col-md-8 col-lg-8 col-sm-6 col-xs-12">
+        <div class="content_news_box">
+          <h2 class="title">
+            {$newsClass['name']}
+            <a href="{:U($newsClass['index_template']['url'], ['id'=>$newsClass['class_id']])}">更多</a>
+          </h2>
+          <div class="content_news_main">
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 content_news_left">
+              <a href="{:U($newsClass['content_template']['url'], ['id'=>$imgNews['content_id']])}">
+              <img src="__PUBLIC__/upload/{$imgNews['picurl']}">
+                <h2>{$imgNews['title']}</h2>
+                <p class="desc">{$imgNews['description']}</p>
+              </a>
+            </div>
+            <div class="col-md-6 col-lg-6 hidden-sm hidden-xs">
+              <ul class="content_list_bg">
+
+                <volist name="newsList" id="news" offset="0" limit="4" empty="没有数据">
+                  <li>
+                    <a href="{:U($newsClass['content_template']['url'], ['id'=>$news['content_id']])}" title="{$news.title}">{$news.title}</a>
+                    <p><i class="time_icon"></i><span>{$news.addtime}</span></p>
+                  </li>
+                </volist>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 通知公告 -->
+      <div class="col-md-4 col-lg-4 col-sm-6  hidden-xs content_list_box_bg">
+        <div class="content_box_bg">
+          <h2 class="title">
+            {$noticeClass['name']}
+            <a href="{:U($noticeClass['index_template']['url'], ['id'=>$noticeClass['class_id']])}">更多</a>
+          </h2>
+          <div class="notice_container">
+            <ul class="content_list_bg" id="notice">
+              <volist name="noticeList" id="notic" empty="没有数据">
+                <li>
+                  <a title="{$notic['title']}" href="{:U($noticeClass['content_template']['url'], ['id'=>$notic['content_id']])}">{$notic['title']}</a>
+                  <p><i class="time_icon"></i><span>{$notic.addtime}</span></p>
+                </li>
+              </volist>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 教学管理 -->
+    <div class="container text_content">
+      <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 content_list_box">
+      <div class="content_box">
+        <div class="title">
+          <h2>{$teachingClass['name']}</h2>
+          <a href="{:U($teachingClass['index_template']['url'], ['id'=>$teachingClass['class_id']])}">更多</a>
+        </div>
+        <ul class="content_list">
+          <volist name="teaching" id="teach" offset="0" empty="没有数据">
+            <li>
+              <a href="{:U($teachingClass['content_template']['url'], ['id'=>$teach['content_id']])}" title="{$teach.title}">{$teach.title}</a>
+              <span>{$teach.addtime}</span>
+            </li>
+          </volist>
+
+        </ul>
+      </div>
+    </div>
+      <!-- 科学研究 -->
+      <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12 content_list_box">
+        <div class="content_box">
+          <div class="title">
+            <h2>{$scienceClass['name']}</h2>
+            <a href="{:U($scienceClass['index_template']['url'], ['id'=>$scienceClass['class_id']])}">更多</a>
+          </div>
+          <ul class="content_list">
+
+            <volist name="scientific" id="scient" offset="0" empty="没有数据">
+              <li>
+                <a href="{:U($scienceClass['content_template']['url'], ['id'=>$scient['content_id']])}" title="{$scient.title}">{$scient.title}</a>
+                <span>{$scient.addtime}</span>
+              </li>
+            </volist>
+
+          </ul>
+        </div>
+      </div>
+      <!-- 党团建设 -->
+      <div class="col-md-4 col-lg-4 hidden-sm col-xs-12 content_list_box">
+        <div class="content_box">
+          <div class="title">
+            <h2>{$dtjsClass['name']}</h2>
+            <a href="{:U($dtjsClass['index_template']['url'], ['id'=>$dtjsClass['class_id']])}">更多</a>
+          </div>
+          <ul class="content_list">
+            <volist name="dtjsList" id="dtjs" offset="0" empty="没有数据">
+              <li>
+                <a href="{:U($dtjsClass['content_template']['url'], ['id'=>$dtjs['content_id']])}" title="{$dtjs.title}">{$dtjs.title}</a>
+                <span>{$dtjs.addtime}</span>
+              </li>
+            </volist>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 背景 -->
+    <div class="bg_pic">
+      <div class="mask"></div>
+      <div class="warp">
+        <h2>{$webInfo.MOTTO}</h2>
+        <p>{$webInfo.WEBNAME}</p>
+      </div>
+    </div>
+
+    <!-- pic -->
+    <div class="some_pic">
+      <div class="container">
+        <ul class="some_pic_box">
+
+          <volist name="hasImgUrl" id="imgUrl" limit="4">
+            <li class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
+              <a href="{$imgUrl.url}">
+                <div class="img_wrapper">
+                  <img src="__PUBLIC__/upload/{$imgUrl.logo}" alt="">
+                  <div class="img_describe_box">
+                    <div class="mask"></div>
+                    <h3>
+                      <span>{$imgUrl.webname}</span>
+                    </h3>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </volist>
+
+        </ul>
+      </div>
+    </div>
+	<?php if(!empty($xfc)):?>
+    <DIV id="ad1"  style="Z-INDEX: 10000">
+      <!--漂浮开始-->
+      <a href="{$xfc['url']}" title="{$xfc['webname']}"
+         target=_blank><IMG src="__PUBLIC__/upload/{$xfc['logo']}" alt="{$xfc['webname']}"></a>
+      <!--漂浮结束-->
+    </DIV>
+	<?php endif;?>
+    <!-- footer -->
+    <include file="./Apps/Home/View/Public/footer.html" />
+
+
+    <script type="text/javascript">
+      // 通知公告滚动
+      $(function () {
+          var $notice = $('#notice');
+          setInterval(function () {
+              $notice.animate({
+                  top: '-70px'
+              }, 300,function () {
+                  $notice.append($notice.children().first());
+                  $notice.css('top', 0);
+              })
+          }, 3000)
+      })
+      // 轮播图
+      $(function() {
+        // 目标索引
+        var tagetIndex=0;
+        var timerCarousel = null;
+        var $carouselFigureWapper = $('#carousel_figure>ul');
+        var $carouselFigureItem = $carouselFigureWapper.find('li');
+        var itemWidth = $carouselFigureItem.width();
+		if(itemWidth == 0){
+			itemWidth = $(window).width();
+		}
+        $carouselFigureWapper.css('width', itemWidth * $carouselFigureItem.length)
+		$firstImg = $carouselFigureWapper.find('li.active img');
+		var $prevNext = $('#carousel_figure>span');
+		setTimeout(function(){
+			var activeHeight = $carouselFigureWapper.find('li.active img').height();
+			$carouselFigureWapper.css('height', activeHeight);
+			$prevNext.css('top', activeHeight / 2 - 44);
+
+		}, 0)
+		$firstImg.load(function(){
+			var activeHeight = $carouselFigureWapper.find('li.active img').height();
+			$carouselFigureWapper.css('height', activeHeight);
+			$prevNext.css('top', activeHeight / 2 - 44);
+		})
+        var $imgs = $('#carousel_figure img')
+        $imgs.css('width', $(window).width())
+        var $slideSwitch = $('#slide_switch');
+        $slideSwitch.append('<a href="javascript:;" class="active slide_switch_item" data-p="0"><i></i></a>');
+        for(var i=1; i<$carouselFigureItem.length;i++){
+            $slideSwitch.append('<a href="javascript:;" class="slide_switch_item" data-p="'+ i +'"><i></i></a>');
+        }
+        $slideSwitch.find('a').click(function () {
+            var $this = $(this);
+            toggle(-($this.index() - tagetIndex));
+        })
+        $carouselFigureWapper.hover(function () {
+            if(timerCarousel){
+              window.clearInterval(timerCarousel);
+              timerCarousel = null;
+            }
+        }, function () {
+            timerCarousel = setInterval(function () {
+                toggle(-1);
+            }, 5000)
+        });
+        $(window).resize(function() {
+          $imgs.css('width', $(window).width());
+          $('#carousel_figure img').css('width', $(window).width());
+          itemWidth = $carouselFigureItem.width();
+		  var activeHeight = $carouselFigureWapper.find('li.active img').height();
+		  $carouselFigureWapper.css('height', activeHeight);
+		  $prevNext.css('top', activeHeight / 2 - 44);
+          $carouselFigureWapper.css('width', itemWidth * $carouselFigureItem.length);
+          $carouselFigureWapper.css('left', -$carouselFigureWapper.find('li.active').index() * itemWidth)
+          $carouselFigureWapper.find('li.active>.focus_text').css({
+              left: itemWidth / 2 - $activeFoucsText.width() / 2
+          });
+        });
+        var $activeFoucsText = $carouselFigureWapper.find('li.active>.focus_text');
+        $activeFoucsText.animate({
+          opacity: 1,
+          left: itemWidth / 2 - $activeFoucsText.width() / 2
+        }, 300)
+        function toggle(offset){
+          if(window.toggleing){
+            return;
+          }
+          window.toggleing = true
+          var $active = $carouselFigureWapper.find('li.active');
+          $active.find('.focus_text').animate({
+              opacity: 0,
+              left: 0
+            }, 300)
+          var index = $active.index();
+
+          if(index == 0){
+            index = $carouselFigureItem.length
+          }
+          tagetIndex = (index - offset) % $carouselFigureItem.length;
+
+          $slideSwitch.find('a.active').removeClass('active');
+          $slideSwitch.find('a').eq(tagetIndex).addClass('active');
+          $carouselFigureWapper.animate({
+            left: -tagetIndex * itemWidth
+          }, 500, function(){
+            $active.removeClass('active');
+            var $current = $($carouselFigureItem.get(tagetIndex))
+            $current.addClass('active')
+            $activeFoucsText = $current.find('.focus_text');
+			if($activeFoucsText.length && $activeFoucsText.length > 0){
+				$activeFoucsText.animate({
+				  opacity: 1,
+				  left: itemWidth / 2 - $activeFoucsText.width() / 2
+				}, 300, function(){
+				  window.toggleing = false
+				})
+			}else{
+				window.toggleing = false
+			}
+			var activeHeight = $carouselFigureWapper.find('li.active img').height();
+            $carouselFigureWapper.css('height', activeHeight);
+            $prevNext.css('top', activeHeight / 2 - 44);
+          });
+        }
+        $('#carousel_figure_next').click(function(){
+          toggle(1);
+        })
+
+        $('#carousel_figure_prev').click(function(){
+          toggle(-1);
+        })
+        timerCarousel = setInterval(function () {
+            toggle(-1);
+        }, 5000)
+      })
+    </script>
+    <SCRIPT type=text/javascript>
+        function addEvent(obj,evtType,func,cap){
+            cap=cap||false;
+            if(obj.addEventListener){
+                obj.addEventListener(evtType,func,cap);
+                return true;
+            }else if(obj.attachEvent){
+                if(cap){
+                    obj.setCapture();
+                    return true;
+                }else{
+                    return obj.attachEvent("on" + evtType,func);
+                }
+            }else{
+                return false;
+            }
+        }
+        function getPageScroll(){
+            var xScroll,yScroll;
+            if (self.pageXOffset) {
+                xScroll = self.pageXOffset;
+            } else if (document.documentElement && document.documentElement.scrollLeft){
+                xScroll = document.documentElement.scrollLeft;
+            } else if (document.body) {
+                xScroll = document.body.scrollLeft;
+            }
+            if (self.pageYOffset) {
+                yScroll = self.pageYOffset;
+            } else if (document.documentElement && document.documentElement.scrollTop){
+                yScroll = document.documentElement.scrollTop;
+            } else if (document.body) {
+                yScroll = document.body.scrollTop;
+            }
+            arrayPageScroll = new Array(xScroll,yScroll);
+            return arrayPageScroll;
+        }
+        function GetPageSize(){
+            var xScroll, yScroll;
+            if (window.innerHeight && window.scrollMaxY) {
+                xScroll = document.body.scrollWidth;
+                yScroll = window.innerHeight + window.scrollMaxY;
+            } else if (document.body.scrollHeight > document.body.offsetHeight){
+                xScroll = document.body.scrollWidth;
+                yScroll = document.body.scrollHeight;
+            } else {
+                xScroll = document.body.offsetWidth;
+                yScroll = document.body.offsetHeight;
+            }
+            var windowWidth, windowHeight;
+            if (self.innerHeight) {
+                windowWidth = self.innerWidth;
+                windowHeight = self.innerHeight;
+            } else if (document.documentElement && document.documentElement.clientHeight) {
+                windowWidth = document.documentElement.clientWidth;
+                windowHeight = document.documentElement.clientHeight;
+            } else if (document.body) {
+                windowWidth = document.body.clientWidth;
+                windowHeight = document.body.clientHeight;
+            }
+            if(yScroll < windowHeight){
+                pageHeight = windowHeight;
+            } else {
+                pageHeight = yScroll;
+            }
+            if(xScroll < windowWidth){
+                pageWidth = windowWidth;
+            } else {
+                pageWidth = xScroll;
+            }
+            arrayPageSize = new Array(pageWidth,pageHeight,windowWidth,windowHeight)
+            return arrayPageSize;
+        }
+
+        var AdMoveConfig=new Object();
+        AdMoveConfig.IsInitialized=false;
+        AdMoveConfig.ScrollX=0;
+        AdMoveConfig.ScrollY=0;
+        AdMoveConfig.MoveWidth=0;
+        AdMoveConfig.MoveHeight=0;
+        AdMoveConfig.Resize=function(){
+            var winsize=GetPageSize();
+            AdMoveConfig.MoveWidth=winsize[2];
+            AdMoveConfig.MoveHeight=winsize[3];
+            AdMoveConfig.Scroll();
+        }
+        AdMoveConfig.Scroll=function(){
+            var winscroll=getPageScroll();
+            AdMoveConfig.ScrollX=winscroll[0];
+            AdMoveConfig.ScrollY=winscroll[1];
+        }
+        addEvent(window,"resize",AdMoveConfig.Resize);
+        addEvent(window,"scroll",AdMoveConfig.Scroll);
+        function AdMove(id){
+            if(!AdMoveConfig.IsInitialized){
+                AdMoveConfig.Resize();
+                AdMoveConfig.IsInitialized=true;
+            }
+            var obj=document.getElementById(id);
+            obj.style.position="absolute";
+            var W=AdMoveConfig.MoveWidth-obj.offsetWidth;
+            var H=AdMoveConfig.MoveHeight-obj.offsetHeight;
+            var x = W*Math.random(),y = H*Math.random();
+            var rad=(Math.random()+1)*Math.PI/6;
+            var kx=Math.sin(rad),ky=Math.cos(rad);
+            var dirx = (Math.random()<0.5?1:-1), diry = (Math.random()<0.5?1:-1);
+            var step = 1;
+            var interval;
+            this.SetLocation=function(vx,vy){x=vx;y=vy;}
+            this.SetDirection=function(vx,vy){dirx=vx;diry=vy;}
+            obj.CustomMethod=function(){
+                obj.style.left = (x + AdMoveConfig.ScrollX) + "px";
+                obj.style.top = (y + AdMoveConfig.ScrollY) + "px";
+                rad=(Math.random()+1)*Math.PI/6;
+                W=AdMoveConfig.MoveWidth-obj.offsetWidth;
+                H=AdMoveConfig.MoveHeight-obj.offsetHeight;
+                x = x + step*kx*dirx;
+                if (x < 0){dirx = 1;x = 0;kx=Math.sin(rad);ky=Math.cos(rad);}
+                if (x > W){dirx = -1;x = W;kx=Math.sin(rad);ky=Math.cos(rad);}
+                y = y + step*ky*diry;
+                if (y < 0){diry = 1;y = 0;kx=Math.sin(rad);ky=Math.cos(rad);}
+                if (y > H){diry = -1;y = H;kx=Math.sin(rad);ky=Math.cos(rad);}
+            }
+            this.Run=function(){
+                var delay = 10;
+                interval=setInterval(obj.CustomMethod,delay);
+                obj.onmouseover=function(){clearInterval(interval);}
+                obj.onmouseout=function(){interval=setInterval(obj.CustomMethod, delay);}
+            }
+        }
+        var ad1=new AdMove("ad1");
+        ad1.Run();
+        $("#ad1").click(function () {
+            $(this).remove();
+        })
+		$(function () {
+			if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion .split(";")[1].replace(/[ ]/g,"") == "MSIE8.0"){
+				$('.bg_pic').addClass('ie8');
+			}
+		})
+    </SCRIPT>

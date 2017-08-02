@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含link 文件 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<include file="./Apps/Admin/View/Public/loading.html" />
+</head>
+
+<body>
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+		<include file="./Apps/Admin/View/Public/nav.html" />
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+				<div class="heading">
+				
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+					<!-- 面包屑轨迹 -->
+					<include file="./Apps/Admin/View/Public/mbx.html" />
+				</div>
+				<!-- End .heading-->
+
+				<!-- 流量统计表 -->
+				<div class="row-fluid">
+
+					<div class="span12">
+						<form name="search" action="" method="get">
+							<input type='hidden' name='class_id' value='{$class_id}' /> <input
+								type='hidden' name='admin_id' value='{$admin_id}' /> <input
+								type='hidden' name='channel_id' value='{$channel_id}' /> <input
+								type='hidden' name='state' value='{$state}' />
+							<div class="row-fluid">
+								<div class="span2 controls">
+									<select name="class_id">
+										<option value="0" selected="selected">选择栏目：</option>
+										<foreach name='classList' item='class'>
+										<option value="{$class.class_id}"{$class.select} >{$class.prefix}{$class.name}</option>
+										</foreach>
+									</select>
+								</div> 
+								<div class="span2 controls">
+									<select name="sort_field">
+										<option value="" selected="selected">排序：</option>
+										<option value="uptime">更新时间</option>
+										<option value="views">点击量</option>
+										<option value="admin_id">发布者</option>
+									</select>
+								</div>
+								<div class="input-append">
+									<input type="text" name="keywords" class="span3"  id="appendedInputButton" placeholder="关键字" size="16" /> 
+									<button type="submit" class="btn">搜索</button>
+								</div>
+							</div>
+						</form>
+						<div class="box">
+							<div class="title">
+								<h4>
+									<span class="icon16 icomoon-icon-equalizer-2"></span> <span>文章管理</span>
+
+
+								</h4>
+								<a href="#" class="minimize">Minimize</a>
+							</div>
+							<div class="content noPad">
+								<table class="responsive table table-bordered" id="checkAll">
+									<thead>
+										<tr>
+											<th id="masterCh" class="ch"><input type="checkbox" name="checkbox" value="all" class="styled" /></th>
+											<th>序号</th>
+											<th>文档ID</th>
+											<th>标题</th>
+											<th>更新时间</th>
+											<th>所属栏目</th>
+											<th>点击量</th>
+											<th>发布者</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<foreach name="contentList" item="content">
+										<tr>
+											<td class="chChildren"><input type="checkbox" name="content_id" value="{$content.content_id}-{$content.mw}" class="styled" /></td>
+											<td>{$key+1}</td>
+											<td>{$content.content_id}</td>
+											<td>{$content.title|searchReplaceKw=###,$keywords}</td>
+											<td>{$content.uptime}</td>
+											<td>{$content.class_name}</td>
+											<td>{$content.views}</td>
+											<td>{$content.admin}</td>
+											<td>
+												<div class="controls center">
+													<a
+														href="__APP__/Admin/Content/restore/content_id/{$content.content_id}-{$content.mw}"
+														title="还原" class="tip"><span
+														class="  icomoon-icon-undo "></span></a> <a
+														href="__APP__/Admin/Content/edit/content_id/{$content.content_id}/mw/{$content.mw}"
+														title="修改" class="tip" target="_blank"><span
+														class="icon-pencil"></span></a> 
+														<a href="javascript:deleteConfirm('__APP__/Admin/Content/delete/content_id/{$content.content_id}-{$content.mw}','确定删除该文章信息吗？？？');" title="删除" class="tip"><span
+														class="icon14 icomoon-icon-remove"></span>
+														</a>
+														
+												</div>
+											</td>
+										</tr>
+										</foreach>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+						<!-- End .box -->
+						<div class="pageBar">{$page}</div>
+					</div>
+					<!-- End .span6 -->
+					<a href='javascript:treatCon("__APP__/Admin/Content/restore")'
+						class='btn'>还原</a> <a
+						href='javascript:treatCon("__APP__/Admin/Content/delete","确定永久删除这些文章吗?")'
+						class='btn'>永久删除</a>
+				</div>
+				<!-- End .span4 -->
+
+			</div>
+			<!-- End .row-fluid -->
+
+
+
+		</div>
+		<!-- End contentwrapper -->
+	</div>
+	<!-- End #content -->
+
+
+
+	<!-- 包含JavaScript 文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+</body>
+</html>

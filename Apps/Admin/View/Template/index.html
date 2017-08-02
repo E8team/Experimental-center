@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+
+</head>
+
+<body>
+	<!-- 包含头部文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+
+		<!-- 包含导航栏 -->
+		<include file="./Apps/Admin/View/Public/nav.html" />
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+
+				<div class="heading">
+				
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+
+					<!-- 面包屑轨迹 -->
+					<include file="./Apps/Admin/View/Public/mbx.html" />
+				</div>
+				<!-- End .heading-->
+
+				<!-- Build page from here: Usual with <div class="row-fluid"></div> -->
+
+
+				<div class="row-fluid">
+
+					<div class="span12">
+						<form action="__APP__/Admin/Template/index" method="post">
+							<div class="row-fluid">
+								<div class="span2 controls">
+									<select name="type">
+										<option value="all" selected="selected">所有模板</option>
+										<option value="index">栏目封面模板</option>
+										<option value="content">栏目内容模板</option>
+									</select>
+								</div>
+								<div class="input-append">
+									<input class="span3" id="appendedInputButton" name="keyword"
+										size="16" type="text" />
+									<button class="btn" type="submit">Search!</button>
+								</div>
+							</div>
+						</form>
+
+						<div class="box">
+
+							<div class="title">
+
+								<h4>
+									<span class="icon16 icomoon-icon-equalizer-2"></span> <span>模板管理</span>
+									<span><a href="__APP__/Admin/Template/add" title="添加模板"
+										class="tip e8-add">+添加模板</a></span>
+
+								</h4>
+								<a href="#" class="minimize">Minimize</a>
+							</div>
+							<div class="content noPad">
+								<table class="responsive table table-bordered" id="checkAll">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th>类型</th>
+											<th>名称</th>
+											<th>URL</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<foreach name="templateList" item="template">
+										<tr>
+											<td>{$key+1}</td>
+											<td>{$template.type}</td>
+											<td>{$template.name|searchReplaceKw=###,$keyword}</td>
+											<td>{$template.url}</td>
+											<td>
+												<div class="controls center">
+													<a
+														href="__APP__/Admin/Template/edit/template_id/{$template.template_id}/mw/{$template.mw}"
+														title="修改" class="tip"><span
+														class="icon12 icomoon-icon-pencil"></span></a>
+														<a href="javascript:deleteConfirm('__APP__/Admin/Template/del/template_id/{$template.template_id}/mw/{$template.mw}','确定删除该模板信息吗？？？');" title="删除" class="tip"><span
+														class="icon14 icomoon-icon-remove"></span>
+														</a>
+													</div>
+											</td>
+										</tr>
+										</foreach>
+
+									</tbody>
+								</table>
+							</div>
+							
+						</div>
+						<!-- End .box -->
+								<div class="pageBar">{$page}</div>
+					</div>
+					<!-- End .span6 -->
+
+				</div>
+				<!-- End .row-fluid -->
+
+			</div>
+			<!-- End contentwrapper -->
+		</div>
+		<!-- End #content -->
+
+	</div>
+	<!-- End #wrapper -->
+
+
+	<!-- 包含JavaScript 文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+
+
+</body>
+</html>

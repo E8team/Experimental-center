@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+<script>
+	//定义全局变量，匹配ThinkPHP路径
+	var APP = "__APP__";
+</script>
+
+</head>
+
+<body>
+
+	<!-- 包含头部文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+		<!-- 包含导航栏 -->
+		<include file="./Apps/Admin/View/Public/nav.html" />
+
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+				<div class="heading">
+				
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+					
+					
+				</div>
+				<!-- End .heading-->
+
+				<!-- 管理员修改表单BEGIN -->
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="box">
+							<div class="title">
+								<h4>
+									<span>修改管理员</span>
+								</h4>
+							</div>
+
+							<div class="content">
+
+								<form class="form-horizontal seperator" action="__APP__/Admin/Admin/edit" method="post"
+									enctype="multipart/form-data" onsubmit="return adminAddFormCheck();">
+									<input type="hidden" name="admin_id" value="{$adminUser.admin_id}" />
+									<input type="hidden" name="mw" value="{$mw}" />
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="username">用户账号:</label>
+												<input class="span4" name="account" type="text"
+													value="{$adminUser.account}" readonly="true" />
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="username">头像:</label> 
+												<img src="__PUBLIC__/upload/{$adminUser.photo}" alt="用户头像"
+													class="image marginR10" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="name">真实姓名:</label> <input
+													class="span4" id="name" name="name" type="text"
+													value="{$adminUser.name}" placeholder="输入你的真实姓名" />
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">电子邮箱:</label> <input
+													class="span4" id="e8_email" name="email" type="text" readonly
+													value="{$adminUser.email}" />
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="qq">QQ号码:</label> <input
+													class="span4" id="qq" name="qq" type="text"
+													value="{$adminUser.qq}" placeholder="输入你的QQ号码" />
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="normal">密码:</label>
+												<div class="span4 controls">
+													<input class="span12" id="password" name="password"
+														type="password" placeholder="密码长度不为6~22位"
+														value="default" /> <input class="span12"
+														id="passwordConfirm" name="repassword"
+														value="default" type="password"
+														placeholder="再次输入密码" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="">性别:</label>
+												<div class="left marginT5 marginR10">
+													<input type="radio" name="sex" id="optionsRadios1"
+														value="b"<if condition="$adminUser.sex eq 'b'">checked="checked"</if>
+														/> 男 
+												</div>
+												<div class="left marginT5 marginR10">
+													<input type="radio" name="sex" id="optionsRadios2"
+														value="g"<if condition="$adminUser.sex eq 'g'">checked="checked"</if>
+														/> 女 
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="textarea">所属用户组:</label>
+												<div class="span4 controls">
+													<select id="e8_admin_group" name="admin_group_id">
+														<option value="">请选择管理员所在分组</option>
+														<foreach name="adminGroupList" item="adminGroup">
+														<if
+															condition="$adminUser.admin_group_id eq $adminGroup['admin_group_id']">
+														<option value="{$adminGroup.admin_group_id}"
+															selected="selected">{$adminGroup.name}</option>
+														<else />
+														<option value="{$adminGroup.admin_group_id}">{$adminGroup.name}</option>
+														</if> </foreach>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="textarea">权限组分配:</label>
+												<div class="span4 controls">
+													<span id="e8_ajax_msg" class="e8-font-red"></span> 
+													<select
+														id="e8_perm_group" name="perm_group_id[]" class="nostyle"
+														multiple="multiple">
+														<volist name="adminGroupPermList" id="permGroup"> 
+														<in name="permGroup['perm_group_id']" value="$adminPermIdList">
+															<option selected="selected" value="{$permGroup.perm_group_id}">{$permGroup.name}</option>
+														<else />
+															<option value="{$permGroup.perm_group_id}">{$permGroup.name}</option>
+														</in> 
+														</volist>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4">备注:</label>
+												<textarea class="span4 limit elastic" id="textarea2"
+													rows="3" cols="5" name="remarks">{$adminUser.remarks}</textarea>
+											</div>
+										</div>
+									</div>
+
+									<div class="center marginT10">
+										<div class="span11 controls">
+											<button type="submit" class="btn btn-info marginR10">修改</button>
+											<a href="__APP__/Admin/Admin/index" class="btn btn-danger">放弃</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- End .box -->
+					</div>
+					<!-- End .span12 -->
+					<!-- 管理员修改表单END -->
+
+				</div>
+				<!-- End contentwrapper -->
+			</div>
+			<!-- End #content -->
+
+		</div>
+		<!-- End #wrapper -->
+
+		<!-- 包含JavaScript 文件 -->
+		<include file="./Apps/Admin/View/Public/script.html" />
+</body>
+</html>
+

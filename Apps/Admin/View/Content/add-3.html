@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+
+
+</head>
+<body>
+	<form class="form-horizontal" action="__APP__/Admin/Content/add"
+		method="post" enctype="multipart/form-data" onsubmit="return checkContentForm();">
+		<input type='hidden' name='channel_id'
+			value="{$channel['channel_id']}" />
+		<!-- loading animation -->
+		<div class="row-fluid">
+			<div class="span8">
+
+				<div class="box">
+
+					<div class="title">
+
+						<h4>
+							<span>文章属性</span>
+						</h4>
+
+					</div>
+					<div class="form-row row-fluid">
+						<div class="span12">
+							<div class="row-fluid">
+								<label class="form-label span2" for="normal">文章标题</label> <input
+									class="span10" id="content-title" type="text" name="title" />
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row row-fluid">
+						<div class="span12">
+							<div class="row-fluid">
+								<label class="form-label span2" for="password">来源</label> <input
+									class="span10" id="content-source" type="text" name="source" />
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row row-fluid" style="height: 25px;">
+						<div class="span12">
+							<div class="row-fluid">
+								<label class="form-label span2" for="textarea">选择栏目</label>
+								<div class="span10 controls">
+									<select class="nostyle required" name="class_id" id="content-class_id">
+										<option value="" selected="selected">选择栏目</option>
+										<foreach name='classList' item='class'>
+										<option value="{$class.class_id}"{$class.select} >{$class.prefix}{$class.name}</option>
+										</foreach>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row row-fluid">
+						<div class="span12">
+							<div class="row-fluid">
+								<label class="form-label span2" for="tooltip">作者</label> <input
+									class="span10" id="content-author" type="text" name="author" />
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-row row-fluid">
+						<div class="span12">
+							<div class="row-fluid">
+								<label class="form-label span2" for="tags">关键字</label>
+								<div class="span10 controls">
+									<input id="tags" type="text" style="width: 100%;"
+										name="keywords" />
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row row-fluid">
+						<div class="span12">
+							<div class="row-fluid">
+								<label class="form-label span2" for="textarea">描述</label>
+								<textarea class="span10" id="textarea" rows="3"
+									name="description"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="form-row row-fluid">
+						<div class="span12">
+							<div class="row-fluid">
+								<label class="form-label span2" for="tooltip">外部链接</label> <input
+									class="span10" id="content-url" type="text" name="url" />
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-row row-fluid">
+						<div class="span12">
+							<div class="row-fluid">
+								<label class="form-label span2" for="checkboxes">标题颜色</label>
+								<div class="span3" style="position: relative;">
+									<input type="text" id="color" name="title_color"
+										value="#123456" />
+									<div class="picker"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+				<!-- End .box -->
+
+			</div>
+			<!-- End .span6 -->
+
+			<div class="span4">
+
+				<div class="box">
+
+					<div class="title">
+
+						<h4>
+							<span>缩略图</span>
+						</h4>
+
+					</div>
+					<div class="content">
+
+
+						<div class="form-row row-fluid">
+							<div class="span12">
+								<div class="row-fluid">
+									<div class="row-fluid">
+										<img src="http://placehold.it/310x265" alt=""
+											class="image marginR10" /><br />
+										<br /> <input id="file" type="file" name="picurl" size="20"
+											style="opacity: 0;" />
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="form-row row-fluid">
+							<div class="span12">
+								<div class="row-fluid">
+									<label class="form-label span4" for="checkboxes">添加时间</label>
+									<div class="span6" style="margin-left: 0px;">
+										<input type="text" id="datepicker" name="addtime" value="{$date}"/>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-row row-fluid">
+							<div class="span12">
+								<div class="row-fluid">
+									<label class="form-label span4" for="tooltip">排序</label> <input
+										class="span6" id="content-sort" type="text" value="0"
+										name="sort_index" />
+								</div>
+							</div>
+						</div>
+
+						<div class="form-row row-fluid">
+							<div class="span12">
+								<div class="row-fluid">
+									<label class="form-label span4" for="checkboxes">置顶开关</label>
+									<div class="left marginR10">
+										<input type="checkbox" id="inlineCheckbox4" checked="checked"
+											class="ibutton" name="is_stick" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-row row-fluid">
+							<div class="span12">
+								<div class="row-fluid">
+									<label class="form-label span4" for="combobox">置顶到期时间</label>
+									<div class="span4 controls sel">
+										<select class="nostyle required" id="combobox"
+											name="sticky_time">
+											<option value="1">一天</option>
+											<option value="7">一个星期</option>
+											<option value="30">一个月</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- End .box -->
+
+			</div>
+			<!-- End .span6 -->
+
+			<div class="span12">
+				<div class="page-header span12">
+					<h4>文章内容</h4>
+				</div>
+
+				<div class="form-row">
+					<textarea name="content"
+						style="width: 95%; height: 400px; visibility:hidden;"></textarea>
+				</div>
+
+			</div>
+
+		</div>
+		
+		<!-- End .row-fluid -->
+		<div style="width: 100%; height: 40px;"></div>
+		<div class="bottom">
+			<button type="submit" class="btn marginR10">保存</button>
+			<a href="javascript:cancelConfirm('__APP__/Admin/Content/index','确定放弃当前编辑内容并返回到上一层页面吗????')" class="btn btn-danger">放弃</a>
+											</div>
+
+	</form>
+
+	<!-- 包含JavaScript 文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+</body>
+</html>

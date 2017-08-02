@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+<script>
+	//定义全局变量，匹配ThinkPHP路径
+	var APP = "__APP__";
+</script>
+
+</head>
+
+<body>
+
+	<!-- 包含头部文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+		<!-- 包含导航栏 -->
+		<include file="./Apps/Admin/View/Public/nav.html" />
+
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+
+				<div class="heading">
+				
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+
+					<ul class="breadcrumb">
+						<li>当前位置:</li>
+						<li><a href="__APP__/Admin/index" class="tip" title="回到后台首页"> <span
+								class="icon16 icomoon-icon-screen-2"></span>
+						</a> <span class="divider"> <span
+								class="icon16 icomoon-icon-arrow-right-2"></span>
+						</span></li>
+						<li> <span>系统管理</span>
+						</a> <span class="divider"> <span
+								class="icon16 icomoon-icon-arrow-right-2"></span>
+						</span></li>
+						<li class="active"><a href = "__APP__/Admin/PermGroup/index">权限分组管理</a></li>
+					</ul>
+
+				</div>
+				<!-- End .heading-->
+
+				<!-- 管理员添加表单BEGIN -->
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="box">
+							<div class="title">
+								<h4>
+									<span>添加管理员分组</span>
+								</h4>
+							</div>
+
+							<div class="content">
+
+								<form class="form-horizontal seperator" action="__APP__/Admin/PermGroup/edit" method="post">
+									<input type="hidden" name="perm_group_id" value="{$permGroup.perm_group_id}" />
+									<input type="hidden" name="mw" value="{$mw}" />
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="name">分组名称:</label> <input
+													class="span4" type="text" name="name" value="{$permGroup.name}" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+
+										<label class="form-label span4" for="name">权限选择:</label>
+										<div class="span5">
+											<div class="leftBox">
+												<!-- 循环输出权限列表 begin -->
+												<select id="box1View" multiple="multiple"
+													class="multiple nostyle" style="height: 300px; margin-left:-30px;">
+													<foreach name="nArr" item="i1">
+														<option value="{$i1.permission_id}">{$i1.name}</option>
+													</foreach>
+												</select>
+												<!-- 循环输出权限列表 end --> 
+												<br /> <span id="box1Counter" class="count"></span>
+
+												<div class="dn">
+													<select id="box1Storage" name="box1Storage" class="nostyle"></select>
+												</div>
+											</div>
+											<div class="leftBox">
+												<select id="box2View" multiple="multiple" name="permission_id[]"
+													class="multiple nostyle" style="height: 300px;">
+													<foreach name="hArr" item="i2">
+														<option value="{$i2.permission_id}">{$i2.name}</option>
+													</foreach>
+												</select>
+												<br />
+												<span id="box2Counter" class="count"></span>
+
+												<div class="dn">
+													<select id="box2Storage" class="nostyle"></select>
+												</div>
+											</div>
+											
+											<button id="to2" type="button" class="btn">
+												<span class="">添加</span>
+											</button>
+											<button id="to1" type="button" class="btn marginT5">
+												<span class="">删除</span>
+											</button>
+											<br />
+										</div>
+									</div>
+
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="textarea">备注:</label>
+												<textarea class="span4 limit elastic" id="textarea2"
+													rows="3" cols="5" name="description">{$permGroup.description}</textarea>
+											</div>
+										</div>
+									</div>
+
+									<div class="center marginT10">
+										<div class="span11 controls">
+											<button type="submit" class="btn btn-info">修改</button>
+											<a href="javascript:cancelConfirm('__APP__/Admin/PermGroup/index','确认放弃修改并返回码?');" class="btn btn-danger">放弃</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- End .box -->
+					</div>
+					<!-- End .span12 -->
+					<!-- 管理员添加表单END -->
+
+				</div>
+				<!-- End contentwrapper -->
+			</div>
+			<!-- End #content -->
+
+		</div>
+		<!-- End #wrapper -->
+
+		<!-- 包含JavaScript 文件 -->
+		<include file="./Apps/Admin/View/Public/script.html" />
+</body>
+</html>
+

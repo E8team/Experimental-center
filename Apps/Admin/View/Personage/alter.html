@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+
+</head>
+
+<body>
+
+	<!-- 包含头部文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+		<!-- 包含导航栏 -->
+		<include file="./Apps/Admin/View/Public/nav.html" />
+
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+				<div class="heading">
+				
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+					
+					<!-- 面包屑轨迹 -->
+					<ul class="breadcrumb">
+						<li>当前位置:</li>
+						<li><a href="#" class="tip" title="回到后台首页"> <span
+								class="icon16 icomoon-icon-screen-2"></span>
+						</a> <span class="divider"> <span
+								class="icon16 icomoon-icon-arrow-right-2"></span>
+						</span></li>
+						<li><a href="#" class="tip" title="回到后台首页"> <span>后台首页</span>
+						</a> <span class="divider"> <span
+								class="icon16 icomoon-icon-arrow-right-2"></span>
+						</span></li>
+						<li class="active">后台首页</li>
+					</ul>
+
+				</div>
+				<!-- End .heading-->
+
+				<!-- 管理员修改表单BEGIN -->
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="box">
+							<div class="title">
+								<h4>
+									<span>修改当前管理员</span>
+								</h4>
+							</div>
+
+							<div class="content">
+
+								<form class="form-horizontal seperator" action="__APP__/Admin/Personage/alter" method="post"
+									enctype="multipart/form-data">
+									<input type="hidden" name="admin_id" value="{$admin.admin_id}" />
+									<input type="hidden" name="mw" value="{$mw}" />
+									
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="username">头像:</label> <img
+													src="__PUBLIC__/upload/{$admin.photo}" alt="用户头像"
+													class="image marginR10" width = "100" height = "100" /> <input type="file" name="photo"
+													id="file" />
+											</div>
+										</div>
+									</div>
+									
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="email">电子邮箱:</label> <input
+													class="span4" name="email" type="text" 
+													value="{$admin.email}" />
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="qq">QQ号码:</label> <input
+													class="span4" id="qq" name="qq" type="text"
+													value="{$admin.qq}"  />
+											</div>
+										</div>
+									</div>
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span4" for="normal">密码:</label>
+												<div class="span4 controls">
+													<input class="span12" id="password" name="password"
+														type="password" placeholder="密码长度不为6~22位"
+														value="default" /> <input class="span12"
+														id="passwordConfirm" name="repassword"
+														value="default" type="password"
+														placeholder="再次输入密码" />
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									
+									<div class="center marginT10">
+										<div class="span12 controls">
+											<button type="submit" class="btn btn-info marginR10">修改</button>
+											<a href="javascript:void(0);" onclick="return cancelConfirm('__APP__/Admin/Index/index','确定放弃吗？');" class="btn btn-danger">放弃</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- End .box -->
+					</div>
+					<!-- End .span12 -->
+
+				</div>
+				<!-- End contentwrapper -->
+			</div>
+			<!-- End #content -->
+
+		</div>
+		<!-- End #wrapper -->
+
+		<!-- 包含JavaScript 文件 -->
+		<include file="./Apps/Admin/View/Public/script.html" />
+</body>
+</html>
+

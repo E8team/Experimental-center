@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+</head>
+      
+    <body>
+    <!-- 包含头部文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+    
+    <div id="wrapper">
+
+       <!-- 包含导航栏 -->
+	   <include file="./Apps/Admin/View/Public/nav.html" />
+
+        <!--Body content-->
+        <div id="content" class="clearfix">
+            <div class="contentwrapper"><!--Content wrapper-->
+
+                <div class="heading">
+
+                    <!-- 包含搜索框 -->
+                    <include file="./Apps/Admin/View/Public/search.html" />
+                    
+                    <!-- 面包屑轨迹 -->
+                    <include file="./Apps/Admin/View/Public/mbx.html" />                  
+
+                </div><!-- End .heading-->
+                		
+                <!-- Build page from here: Usual with <div class="row-fluid"></div> -->
+
+                    
+                    <div class="row-fluid">
+
+                        <div class="span12">
+                            
+                            <div class="box">
+
+                                <div class="title">
+
+                                    <h4>
+                                        <span class="icon16  icomoon-icon-link"></span>
+                                        <span>友情链接分组管理</span>
+                          				<span><a href="__APP__/Admin/FlinkType/add" title="添加友链分组" class="tip e8-add">+添加友链分组</a></span>
+                                       
+                                    </h4>
+								
+                                </div>
+                                <div class="content noPad">
+                                    <table class="responsive table table-bordered" id="checkAll">
+                                        <thead>
+                                          <tr>
+                                            <th>排序</th>
+                                            <th>名称</th>
+                                            <th>操作</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        <foreach name="flinktypeList" item="flinktype">
+                                          <tr>
+                                            <td>{$key+1}</td>
+                                            <td><a href="__APP__/Admin/Flink/index/type_id/{$flinktype.type_id}/mw/{$flinktype.mw}">{$flinktype.typename}(共{$flinktype.count}个链接)</a></td>
+                                            <td>
+                                                <div class="controls center">
+                                                	<a href="__APP__/Admin/Flink/index/type_id/{$flinktype.type_id}/mw/{$flinktype.mw}" class="tip icomoon-icon-book" title="查看" >
+                                                    <a href="__APP__/Admin/FlinkType/edit/type_id/{$flinktype.type_id}/mw/{$flinktype.mw}" title="修改" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a>
+                                                    <a href="javascript:deleteConfirm('__APP__/Admin/FlinkType/del/type_id/{$flinktype.type_id}/mw/{$flinktype.mw}','确定要删除该分组吗?删除后下面的友情链接也将被删除!');" title="删除" class="tip" ><span class="icon12 icomoon-icon-remove"></span></a>
+                                                </div>
+                                            </td>
+                                          </tr>
+                                        </foreach>
+                                        </tbody>
+                                    </table>
+                                </div>
+									<div class="pageBar">{$page}</div>
+                            </div><!-- End .box -->
+
+                        </div><!-- End .span6 -->
+
+                    </div><!-- End .row-fluid -->
+               
+            </div><!-- End contentwrapper -->
+        </div><!-- End #content -->
+    
+    </div><!-- End #wrapper -->
+        
+	<!-- 包含JavaScript 文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+
+
+    </body>
+</html>

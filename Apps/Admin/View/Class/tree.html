@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含JavaScript 文件 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+</head>
+
+<body>
+	<!-- 包含头部文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+
+		<!-- 包含导航栏 -->
+		<include file="./Apps/Admin/View/Public/nav.html" />
+
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+				<div class="heading">
+				
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+
+					<!-- 面包屑轨迹 -->
+					<include file="./Apps/Admin/View/Public/mbx.html" />
+				</div>
+				<!-- End .heading-->
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<div class="box">
+
+							<div class="title">
+
+								<h4>
+									<span>栏目结构图</span>
+								</h4>
+
+							</div>
+							<div class="content">
+								<foreach name='classList' item='class'>
+								<p>
+									<a href='{$class.manage_url}' title='单击进入'>{$class.prefix}{$class.name}</a>
+									[{$class.type_name}]
+								</p>
+								</foreach>
+							</div>
+
+						</div>
+						<!-- End .box -->
+
+					</div>
+					<!-- End .span6 -->
+				</div>
+			</div>
+			<!-- End contentwrapper -->
+		</div>
+		<!-- End #content -->
+
+	</div>
+	<!-- End #wrapper -->
+
+	<!-- 包含JavaScript 文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+</body>
+</html>

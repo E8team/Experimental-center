@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含loading文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+
+<script type="text/javascript">
+	var nowD = new Array();
+	var lastD = new Array();
+	<foreach name="visitCount.now" item="count" key="k">
+		var c = new Array();
+		c[0] = {$k};
+		c[1] = {$count};
+		nowD.push(c);
+	</foreach>
+
+	<foreach name="visitCount.last" item="count_" key="key">
+		var cc = new Array();
+		cc[0] = {$key};
+		cc[1] = {$count_};
+		lastD.push(cc);
+	</foreach>
+	//alert(nowD.length);
+</script>
+
+</head>
+
+<body>
+
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+		<include file="./Apps/Admin/View/Public/nav.html" />
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+				<div class="heading">
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+
+					<ul class="breadcrumb">
+						<li>当前位置:</li>
+						<li><a href="__APP__/Admin/Index/" class="tip" title="回到后台首页">
+								<span class="icon16 icomoon-icon-screen-2"></span>
+						</a> <span class="divider"> <span
+								class="icon16 icomoon-icon-arrow-right-2"></span>
+						</span></li>
+						<li>后台首页</li>
+					</ul>
+
+				</div>
+				<!-- End .heading-->
+
+
+				<div class="row-fluid">
+
+					<!-- 网站访问量统计表 begin -->
+					<div class="span8">
+						<div class="box chart">
+							<!-- 表头部分 -->
+							<div class="title">
+								<h4>
+									<span class="icon16 icomoon-icon-bars"></span> <span>网站流量统计表</span>
+								</h4>
+								<a href="#" class="minimize">Minimize</a>
+							</div>
+							<!-- END 表头部分 -->
+							<div class="content" style="padding-bottom: 0;">
+								<div class="visitors-chart"
+									style="height: 230px; width: 100%; margin-top: 15px; margin-bottom: 15px;"></div>
+								<!-- 表内容 -->
+
+								<ul class="chartShortcuts">
+									<foreach name="historyVisitCount" item="visitCount" key="k">
+										<li>
+											<a href="#">
+												<span class="head">{$visitCount.y}年{$visitCount.m}月份总访问量</span>
+												<span class="number">{$visitCount.count}</span>
+											</a>
+										</li>
+									</foreach>
+								</ul>
+							</div>
+						</div>
+						<!-- End .box -->
+					</div>
+					<!-- 网站访问量统计 end -->
+
+					<!-- 服务器配置信息begin -->
+					<div class="span4">
+						<div class="box chart">
+							<!-- 表头部分 -->
+							<div class="title">
+								<h4>
+									<span class="icon16 icomoon-icon-bars"></span> <span>服务器环境配置详细</span>
+								</h4>
+								<a href="#" class="minimize">Minimize</a>
+							</div>
+							<!-- END 表头部分 -->
+							<div class="content">
+								<ul class="unstyled">
+									<li>主机名: <span class="e8-font-red">{$serverinfo.pc}</span></li>
+									<li>服务器操作系统: <span class="e8-font-red">{$serverinfo.osname}</span></li>
+									<li>服务器语言: <span class="e8-font-red">{$serverinfo.language}</span></li>
+									<li>服务器MySQL版本: <span class="e8-font-red">{$serverinfo.mysql_version}</span>
+									</li>
+									<li>服务器PHP版本: <span class="e8-font-red">{$serverinfo.php_version}</span>
+									</li>
+									<li>php服务器: <span class="e8-font-red">{$serverinfo.os}</span>
+									</li>
+									<li>服务器时间: <span class="e8-font-red">{$serverinfo.time}</span>
+									</li>
+									<li>服务器端口 : <span class="e8-font-red">{$serverinfo.port}</span>
+									</li>
+									<li>MySQL已使用大小: <span class="e8-font-red">{$serverinfo.mysql_size}</span>
+									</li>
+									<li>服务器最大上传文件大小: <span class="e8-font-red">{$serverinfo.max_upload}</span></li>
+									<li>服务器最大脚本执行时间: <span class="e8-font-red">{$serverinfo.max_ex_time}</span></li>
+								</ul>
+							</div>
+						</div>
+						<!-- End .box -->
+					</div>
+					<!-- End .span4 -->
+					<!-- 服务器配置信息end -->
+
+				</div>
+				<!-- End .row-fluid -->
+
+			</div>
+			<!-- End contentwrapper -->
+		</div>
+		<!-- End #content -->
+	</div>
+	<!-- End #wrapper -->
+
+	<!-- 包含Javascript文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+<script>
+	//定义全局变量，匹配ThinkPHP路径
+	var APP = "__APP__";
+</script>
+
+</head>
+
+<body>
+	<!-- 包含header文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+		<!-- 包含导航栏文件 -->
+		<include file="./Apps/Admin/View/Public/nav.html" />
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+				<div class="heading">
+				
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+
+					<!-- 面包屑轨迹 -->
+					<include file="./Apps/Admin/View/Public/mbx.html" />
+
+				</div>
+				
+				<div class="row-fluid">
+					<div class="span12">
+						<form action="__APP__/Admin/PermGroup/index" method="post">
+							<div class="row-fluid">
+								<div class="input-append">
+									<input class="span3" id="appendedInputButton" name="keyword"
+										size="16" type="text" />
+									<button class="btn" type="submit">Search!</button>
+								</div>
+							</div>
+						</form>
+						<div class="box">
+							<div class="title">
+								<h4>
+									<span class="icon16 icomoon-icon-key-2"></span> <span>权限分组管理</span>
+									<span><a href="__APP__/Admin/PermGroup/add" title="添加权限分组"
+										class="tip e8-add">+添加分组</a></span>
+								</h4>
+								<a href="#" class="minimize">Minimize</a>
+							</div>
+							<div class="content noPad">
+								<table class="responsive table table-bordered" id="checkAll">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>分组名称</th>
+											<th>分组描述</th>
+											<th>权限描述</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									<volist name="permGroupList" id="permGroup" key="k">
+										<tr>
+											<td>{$k}</td>
+											<td class="e8-font-bold">{$permGroup.name|searchReplaceKw=###,$keyword}</td>
+											<td><a title="{$permGroup.description}" class="tip">{$permGroup.description|searchReplaceKw=###,$keyword|substr=0,21}</a></td>
+											<td style="">{$permGroup.permission_arr|permissionHtmlCreate=###}</td>
+											<td>
+											<if condition="$permGroup.root neq 1">
+												<div class="controls center">
+													<a href="__APP__/Admin/PermGroup/edit/perm_group_id/{$permGroup.perm_group_id}/mw/{$permGroup.mw}" title="修改" class="tip"><span class="icon14 icomoon-icon-pencil"></span></a> 
+													<a href="javascript:deleteConfirm('__APP__/Admin/PermGroup/del/perm_group_id/{$permGroup.perm_group_id}/mw/{$permGroup.mw}','确定删除该权限分组码?该权限分组删除后,对应的管理员分组中相关信息也会被删除,肯能导致某些管理员部分权限不能使用!')" title="删除" class="tip"><span
+														class="icon14 icomoon-icon-remove"></span>
+													</a>
+												</div>
+											</if>
+											</td>
+										</tr>
+									</volist>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- End .box -->
+						<div class="pageBar">{$page}</div>
+					</div>
+					<!-- End .span6 -->
+				</div>
+				<!-- End .row-fluid -->
+			</div>
+			<!-- End contentwrapper -->
+		</div>
+		<!-- End #content -->
+	</div>
+	<!-- End #wrapper -->
+
+	<!-- 包含JavaScript文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+</body>
+</html>

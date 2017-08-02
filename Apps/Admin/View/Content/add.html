@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+
+
+</head>
+<body>
+<form class="form-horizontal" action="__APP__/Admin/Content/add" method="post" enctype="multipart/form-data" onsubmit="return checkContentForm();">
+	<div id="wrapper">
+		<!--Body content-->
+		<div id="newscontent" class="clearfix">
+		
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+
+				<div class="row-fluid">
+
+					<div class="span8">
+
+						<div class="box">
+
+							<div class="title">
+
+								<h4>
+									<span>文章基本内容</span>
+								</h4>
+
+							</div>
+							<div class="content">
+
+								
+									<input type='hidden' name='channel_id' value="{$channel['channel_id']}" />
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span2" for="normal">文章标题 </label> <input
+													class="span8" id="content-title" type="text" name="title"
+													placeholder="填写文章标题" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span2" for="focusedInput">文章来源</label>
+												<input class="span8" id="content-source" type="text" name="source"
+													placeholder="填写文章来源" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span2" for="focusedInput">文章所属栏目</label>
+												<select class="span4 nostyle required" name="class_id"
+													id="content-class_id">
+													<option value="" selected="selected">选择栏目</option>
+													<foreach name='classList' item='class'>
+													<option value="{$class.class_id}"{$class.select} >{$class.prefix}{$class.name}</option>
+													</foreach>
+												</select>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span2" for="placeholder">文章作者</label>
+												<input class="span4" id="content-author" type="text" name="author"
+													placeholder="填写文章发布作者" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span2" for="tags">搜索关键字</label>
+												<div class="span8 controls">
+													<input id="tags" type="text" value="" name="keywords"
+														placeholder="填写文章搜索关键字,回车键确认" style="width: 100%;" />
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span2" for="focusedInput">文章描述</label>
+												<textarea class="span8" id="textarea" rows="3"
+													name="description"></textarea>
+											</div>
+										</div>
+									</div>
+
+									<!--
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span2" for="normal">外部连接地址
+												</label> <input class="span8" id="url" type="text" name="url"
+													placeholder="如果该文章是一篇外部连接性质的翁章,在此处添加外部连接地址..." />
+											</div>
+										</div>
+									</div> -->
+
+									<div class="form-row row-fluid">
+										<div class="span12">
+											<div class="row-fluid">
+												<label class="form-label span2" for="normal">文章详细内容</label><br />
+												<textarea name="content" class="span12" rows="20"></textarea>
+											</div>
+										</div>
+									</div>
+
+								
+
+							</div>
+
+						</div>
+						<!-- End .box -->
+
+					</div>
+					<!-- End .span6 -->
+
+					<div class="span4">
+
+						<div class="box">
+
+							<div class="title">
+
+								<h4>
+									<span>Textareas</span>
+								</h4>
+
+							</div>
+							<div class="content">
+
+
+
+								<div class="form-row row-fluid">
+									<div class="span12">
+										<div class="row-fluid">
+											<!-- item container -->
+											<ul id="itemContainer" class="galleryView center">
+												<li><a href="__PUBLIC__/images/gif-60.gif"
+													rel="prettyPhoto" title="Title for image"> <img
+														src="__PUBLIC__/images/gif-60.gif"
+														style="max-heigth: 150px; max-width: 200px;"
+														data-original="__PUBLIC__/images/gif-60.gif"
+														alt="Image name" /></a>
+													<div class="actionBtn">
+														<a href="#" class="edit"><span
+															class="icon16 icomoon-icon-pencil-2 white"></span></a> <a
+															href="#" class="delete"><span
+															class="icon16 icomoon-icon-cancel-4 white"></span></a>
+													</div></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="form-row row-fluid">
+									<div class="span12">
+										<div class="row-fluid">
+											<label class="form-label span4" for="textarea">修改缩略图</label>
+											<input type="file" name="picurl" id="file" />
+										</div>
+									</div>
+								</div>
+
+								<div class="form-row row-fluid">
+									<div class="span12">
+										<div class="row-fluid">
+											<label class="form-label span4" for="checkboxes">添加时间</label>
+
+											<input type="text" class="span3" id="datepicker" name="addtime"  value="{$date}"/>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="form-row row-fluid">
+									<div class="span12">
+										<div class="row-fluid">
+											<label class="form-label span4" for="checkboxes">文章排序</label>
+											<div class="span3">
+												<span id="ns_0" class="ui-stepper"> <input
+													id="sort" type="text" name="sort_index" size="0"
+													autocomplete="off" class="ui-stepper-textbox" />
+													<button name="ns_button_1_0" value="1"
+														class="ui-stepper-plus btn" type="button">+</button>
+													<button name="ns_button_2_0" value="-1"
+														class="ui-stepper-minus btn" type="button">-</button>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-row row-fluid">
+									<div class="span12">
+										<div class="row-fluid">
+											<label class="form-label span4" for="checkboxes">置顶开关</label>
+											<div class="left marginR10">
+												<input type="checkbox" id="inlineCheckbox4" class="ibutton" name="is_stick" />
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-row row-fluid">
+									<div class="span12">
+										<div class="row-fluid">
+											<label class="form-label span4" for="checkboxes">置顶到期时间</label>
+											<input type="text" class="span3" id="top-time" name="sticky_time" />
+										</div>
+									</div>
+								</div>
+
+								<div class="form-row row-fluid">
+									<div class="span12">
+										<div class="row-fluid">
+											<label class="form-label span4" for="checkboxes">文章标题颜色</label>
+											<div class="span6" style="position: relative;">
+												<input type="text" id="color" name="title_color" value="#333333" />
+												<div class="picker"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+						<!-- End .box -->
+
+					</div>
+					<!-- End .span6 -->
+
+				</div>
+				<!-- End .row-fluid -->
+
+			</div>
+			<!-- End contentwrapper -->
+		</div>
+		<!-- End #content -->
+	</div>
+	
+	<!-- End .row-fluid -->
+	<div style="width: 100%; height: 40px;"></div>
+	<div class="bottom">
+		<button type="submit" class="btn marginR10">保存</button>
+		<a
+			href="javascript:cancelConfirm('__APP__/Admin/Content/index','确定放弃当前编辑内容并返回到上一层页面吗????')"
+			class="btn btn-danger">放弃</a>
+	</div>
+	</form>
+
+	<!-- 包含JavaScript 文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+</body>
+</html>

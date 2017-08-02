@@ -1,0 +1,50 @@
+<include file="./Apps/Home/View/Public/head.html" />
+<link rel="stylesheet" href="__PUBLIC__/law_home/style/content.css">
+<!-- big Img -->
+<div class="big_img"></div>
+<!-- content -->
+<div class="content">
+  <div class="container">
+    <div class="hidden-xs col-lg-3 col-sm-3 col-md-3 left">
+      <h2 class="title"><?php if(is_null($fatherClass)){echo $class['name'];}else{echo $fatherClass['name'];}?></h2>
+      <ul>
+        <foreach name="allClass" item="vo" >
+          <li><a <?php if($class['class_id']==$vo['class_id']) echo 'class="active"';?> href="{:U($vo['index_template']['url'], ['id'=>$vo['class_id']])}">{$vo['name']}</a></li>
+        </foreach>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-lg-9 col-sm-9 col-md-9 right">
+      <div class="right_header">
+        <ul class="breadcrumb">
+          <li><a href="{:U('Home/Index/index')}">首页</a>/</li>
+          <?php if(is_null($fatherClass)):?>
+          <li class="active"><span>{$class['name']}</span></li>
+          <?php else:?>
+          <li><a href="{:U($fatherClass['index_template']['url'], ['id'=>$fatherClass['class_id']])}">{$fatherClass['name']}</a>/</li>
+          <li class="active"><span>{$class['name']}</span></li>
+          <?php endif;?>
+        </ul>
+      </div>
+      <div class="right_main">
+        <ul>
+
+          <?php if(is_null($list)):?>
+          <li>暂无数据</li>
+          <?php else:?>
+          <foreach name="list" item="vo" >
+            <li>
+              <a href="<?php echo U($class['content_template']['url'], ['id'=>$vo['content_id']]);?>" title="{$vo['title']}">{$vo['title']}</a>
+              <span>{$vo['addtime']}</span>
+            </li>
+          </foreach>
+          <?php endif;?>
+        </ul>
+        <!-- 分页 -->
+        <div class="page_body">
+          {$page}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<include file="./Apps/Home/View/Public/footer.html" />

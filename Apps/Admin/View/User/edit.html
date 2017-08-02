@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>安徽财贸职业学院考试报名系统</title>
+    
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/e8admin/default/lib/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/e8admin/default/lib/font-awesome/css/font-awesome.min.css">
+    
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- e8 style -->
+    <link rel="stylesheet" href="__PUBLIC__/e8admin/default/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/e8admin/default/css/main.css">
+    
+  </head>
+  
+  <body>
+  
+  	<div class="topbar">
+    	
+        <!-- 面包屑 -->
+        <include file="./Apps/Admin/View/Include/mbx.html" />
+
+        <div class="topbar-search">
+        	<form class="form-inline" role="form">
+            	<div class="form-group">
+            		<label class="sr-only" for="exampleInputEmail2">Email address</label>
+            		<input type="email" class="form-control input-sm" id="exampleInputEmail2" placeholder="Enter email">
+                    
+                    <i class="fa fa-search color-gray"></i>
+          		</div>
+            </form>
+        </div>
+    </div><!-- /.topbar -->
+    
+    <div class="page-content">
+    
+        <div class="page-header col-sm-12">
+        	<h1>管理员修改</h1>
+        </div>
+        
+        <div class="col-sm-12">
+			<div class="tabbable">
+				<ul class="nav nav-tabs">
+					<li>
+						<a  href="__APP__/User/index">管理员管理</a>
+					</li>
+
+					<li>
+						<a  href="__APP__/User/add">添加管理员</a>
+					</li>
+				</ul>
+				
+				<div class="tab-content">
+                
+					<div class="tab-pane in active">
+						<p class="title background-blue">基本属性</p>
+                        <form id="edit-user-form" >
+                            <input type="hidden" name="id" value="{$user.id}" />
+                            <input type="hidden" name="mw" value="{$mw}" />
+                            <table width="100%" class="table-form">
+                                <tbody>
+                                    <tr>
+                                        <th width="100">用户名</th>
+                                        <td>
+                                            <input type="text" class="form-control input-sm wid-3"  value="{$user.username}" readonly />
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <th>用户昵称</th>
+                                        <td>
+                                            <input type="text" name="nickname" class="form-control input-sm wid-3" value="{$user.nickname}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>密码</th>
+                                        <td>
+                                            <input type="password" name="password" class="form-control input-sm wid-3" value="default"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>确认密码</th>
+                                        <td>
+                                            <input type="password" name="truepassword" class="form-control input-sm wid-3" value="default"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>E-mail</th>
+                                        <td>
+                                            <input type="text" class="form-control input-sm wid-3" readonly value="{$user.email}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>所属角色分组</th>
+                                        <td>
+                                            <select class="form-control input-sm wid-3" name="role_id">
+                                                <volist name="roleArr" id="role">
+                                                    <if condition="$user.role_id eq $role['id']">
+                                                        <option value="{$role.id}" selected>{$role.prefix}{$role.name}</option>
+                                                    <else />
+                                                        <option value="{$role.id}">{$role.prefix}{$role.name}</option>
+                                                    </if>
+                                                </volist>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <th>状态</th>
+                                        <td>
+                                            <select name="status" class="form-control input-sm wid-1">
+                                                <if condition="$user.status eq 0">
+                                                    <option value="1">开启</option>
+                                                    <option value="0" selected>禁止</option>
+                                                <else />
+                                                    <option value="1" selected>开启</option>
+                                                    <option value="0">禁止</option>
+                                                </if>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <th>备注</th>
+                                        <td>
+                                            <textarea id="remark" class="form-control wid-4" style="height:90px;" name="remark">{$user.remark}</textarea>
+                                        </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                            <div style="width:100%;height:60px;"></div>
+                            <div class="admin-add">
+                                <button class="btn btn-primary btn-sm" type="button" id="submit">修改</button>
+                                <span class="e8-danger msg" id="danger-msg"></span>
+                                <span class="e8-prompt msg" id="prompt-msg"></span>
+                            </div>
+                        </form>
+					</div>
+				</div>
+			</div>
+		</div><!-- /span -->
+        
+    </div><!-- /.page-content -->
+    
+  
+    <!-- jQuery文件 -->
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="__PUBLIC__/e8admin/default/lib/bootstrap/bootstrap.min.js"></script>
+    <!--  -->
+	<script src="__PUBLIC__/e8admin/default/js/e8.js"></script>
+    
+    <script>
+    $(document).ready(function() { 
+        var APP = "__APP__";
+
+
+        //------- 异步提交表单 -------//
+        $("#submit").click(function(){
+            $.ajax({
+                 //async : true,
+                 type: "post", // 当前提交请求的方式为post
+                 url: APP + "/User/edit", // 提交到服务器相应控制器
+                 dataType: "json", // 返回数据格式为json
+                 data: $("#edit-user-form").serialize(), //序列化表单
+                 timeout : 20000,
+                 // 请求成功调用方法
+                 success:　function(data){
+                    $(".msg").html("");
+                    if (data.status == 0) {
+                        $("#danger-msg").html(data.msg);
+                    } else {
+                        $("#prompt-msg").html(data.msg);
+                        setTimeout(function () { 
+                            location.href = APP + "/User/index";
+                        }, 1500);
+                    }
+                  },
+                  // 请求失败调用方法
+                  error:function(request){
+                      alert("添加管理员失败,请联系维护人员!");
+                  }
+            });
+        });
+
+    });
+    </script>
+
+  </body>
+</html>

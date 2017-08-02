@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- 包含meta相关信息 -->
+<include file="./Apps/Admin/View/Public/meta.html" />
+<!-- 包含CSS样式和字体 -->
+<include file="./Apps/Admin/View/Public/link.html" />
+<!-- 包含加载页面文件 -->
+<include file="./Apps/Admin/View/Public/loading.html" />
+<script>
+	//定义全局变量，匹配ThinkPHP路径
+	var APP = "__APP__";
+</script>
+
+</head>
+
+<body>
+	<!-- 包含header文件 -->
+	<include file="./Apps/Admin/View/Public/header.html" />
+	<div id="wrapper">
+		<!-- 包含导航栏文件 -->
+		<include file="./Apps/Admin/View/Public/nav.html" />
+		<!--Body content-->
+		<div id="content" class="clearfix">
+			<div class="contentwrapper">
+				<!--Content wrapper-->
+				<div class="heading">
+				
+					<!-- 包含搜索框 -->
+					<include file="./Apps/Admin/View/Public/search.html" />
+
+					<!-- 面包屑轨迹 -->
+					<include file="./Apps/Admin/View/Public/mbx.html" />
+
+				</div>
+				<!-- End .heading-->
+				<!-- Build page from here: Usual with <div class="row-fluid"></div> -->
+
+				<div class="row-fluid">
+					<div class="span12">
+						<form action="__APP__/Admin/Permission/index" method="post">
+							<div class="row-fluid">
+								<div class="input-append">
+									<input class="span3" id="appendedInputButton" name="keyword"
+										size="16" type="text" />
+									<button class="btn" type="submit">Search!</button>
+								</div>
+							</div>
+						</form>
+						<div class="box">
+							<div class="title">
+								<h4>
+									<span class="icon16 icomoon-icon-locked"></span> <span>权限管理</span>
+									<span><a href="__APP__/Admin/Permission/add" title="添加权限"
+										class="tip e8-add">+添加权限</a></span>
+								</h4>
+								<a href="#" class="minimize">Minimize</a>
+							</div>
+							<div class="content noPad">
+								<table class="responsive table table-bordered" id="checkAll">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>权限名称</th>
+											<th>Action</th>
+											<th>描述</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									<volist name="permissionList" id="permission" key="k">
+										<tr>
+											<td>{$k}</td>
+											<td class="e8-font-bold">{$permission.name|searchReplaceKw=###,$keyword}</td>
+											<td><a href="__APP__/Admin/{$permission.action}" class="btn btn-small">{$permission.action|searchReplaceKw=###,$keyword}</a></td>
+											<td><a title="" class="tip">{$permission.description|searchReplaceKw=###,$keyword}</a></td>
+											<td>
+												<div class="controls center">
+												<if condition="$adminGroup.root eq 0">
+													<a href="__APP__/Admin/Permission/edit/perm_id/{$permission.permission_id}/mw/{$permission.mw}" title="修改" class="tip"><span class="icon14 icomoon-icon-pencil"></span></a> 
+													<a href="javascript:deleteConfirm('__APP__/Admin/Permission/del/perm_id/{$permission.permission_id}/mw/{$permission.mw}','确定删除该权限吗?该权限被删除后,对应的权限分组中该权限信息页将被删除!!')" title="删除" class="tip"><span
+														class="icon14 icomoon-icon-remove"></span>
+													</a>
+												</if>
+												</div>
+											</td>
+										</tr>
+										</volist>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="pageBar">{$page}</div>
+						<!-- End .box -->
+					</div>
+					<!-- End .span6 -->
+				</div>
+				<!-- End .row-fluid -->
+			</div>
+			<!-- End contentwrapper -->
+		</div>
+		<!-- End #content -->
+	</div>
+	<!-- End #wrapper -->
+
+	<!-- 包含JavaScript文件 -->
+	<include file="./Apps/Admin/View/Public/script.html" />
+
+</body>
+</html>
