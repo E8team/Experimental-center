@@ -4,18 +4,22 @@
 <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            <volist name="bigPics" id="vo" offset="1">
+                <li data-target="#carousel-example-generic" data-slide-to="{$i}"></li>
+            </volist>
         </ol>
 <!-- Wrapper for slides -->
         <div class="carousel-inner img_box" role="listbox">
-            <?php foreach($bigPics as $bigPic): ?>
-                <div class="item active">
-                    <img src="__PUBLIC__/upload/{$bigPic['logo']}" alt="...">
-                    <div class="carousel-caption">测试标题</div>
+            <div class="item active">
+                <img src="__PUBLIC__/upload/{$bigPics[0]['logo']}" alt="...">
+                <div class="carousel-caption">啊啊啊啊</div>
+            </div>
+            <volist name="bigPics" id="vo" offset="1">
+                <div class="item">
+                    <img src="__PUBLIC__/upload/{$vo['logo']}" alt="...">
+                    <div class="carousel-caption">萨达</div>
                 </div>
-            <?php endforeach; ?>
+            </volist>
         </div>
 <!-- 轮播图左右图标 -->
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -41,22 +45,24 @@
                 <div class="content_box" id="callboard">
                     <ul>
                         <?php foreach($noticeLists as $noticeList):?>
-                            <!--<li>
+                            <li>
                                 <div class="data">
                                     <i class="date"><?php echo substr($noticeList['addtime'] , 8) ;?></i>
                                     <e class="month"><?php echo substr($noticeList['addtime'] , 0 ,7) ;?></e>
+                                    <!--<i class="date">02</i>
+                                    <e class="month">2017-8</e>-->
                                 </div>
                                 <a href="#">{$noticeList['title']}</a>
-                            </li>-->
+                            </li>
                         <?php endforeach;?>
                         <!--<?php echo '没有数据'; ?>-->
-                        <li>
+                        <!--<li>
                             <div class="data">
                                 <i class="date">02</i>
                                 <e class="month">2017-8</e>
                             </div>
                             <a href="#">测试标题测试标题测试标题测试标题测试标题</a>
-                        </li>
+                        </li>-->
                     </ul>
                 </div>
             </div>
@@ -125,11 +131,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputContent">反馈内容</label>
-                                <textarea class="form-control" id="inputContent" placeholder="请输反馈内容..." rows="5"></textarea>
+                                <textarea style="resize:none;" class="form-control" id="inputContent" placeholder="请输反馈内容..." rows="5"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputFile">附件</label>
-                                <input type="file" id="exampleInputFile">
+                                <label for="inputTitle" class="label-text">邮箱地址</label>
+                                <input type="text" class="form-control"  placeholder="请输入标题">
                             </div>
                         </form>
                     </div>
@@ -185,6 +191,15 @@
                                     <div class="mask"></div>
                                     <p>实验室四</p>
                                 </div> 
+                            </a>
+                        </li>
+                        <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <a href="#">
+                                <img src="__PUBLIC__/com_home/images/3.jpg">
+                                <div class="pic_title">
+                                    <div class="mask"></div>
+                                    <p>实验室五</p>
+                                </div>
                             </a>
                         </li>
                     </ul>

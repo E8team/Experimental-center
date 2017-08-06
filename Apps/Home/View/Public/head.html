@@ -30,45 +30,20 @@
         <div class="container">
             <ul id="nav">
                 <li class="active">
-                    <a class="nav-link" href="javascript:;">网站首页</a>
+                    <a class="nav-link" href="{:U('Home/Index/index')}">网站首页</a>
                 </li>
-                <li>
-                    <a class="nav-link" href="javascript:;">中心概况</a>
-                    <div class="sub-nav">
-                        <a href="#">中心简介</a>
-                        <a href="#">实验室一览</a>
-                        <a href="#">规章制度</a>
-                        <a href="#">业务流程</a>
-                    </div>
-                </li>
-                <li>
-                    <a class="nav-link" href="javascript:;">实验队伍</a>
-                    <div class="sub-nav">
-                        <a href="#">主任职责</a>
-                        <a href="#">中心人员</a>
-                    </div>
-                </li>
-                <li>
-                    <a class="nav-link" href="javascript:;">实验教学</a>
-                    <div class="sub-nav">
-                        <a href="#">课表</a>
-                        <a href="#">实验项目</a>
-                    </div>
-                </li>
-                <li>
-                    <a class="nav-link" href="javascript:;">学科竞赛</a>
-                    <div class="sub-nav">
-                        <a href="#">15年成果</a>
-                        <a href="#">16年成果</a>
-                        <a href="#">17年成果</a>
-                    </div>
-                </li>
-                <li>
-                    <a class="nav-link" href="javascript:;">设备维修</a>
-                </li>
-                <li>
-                    <a class="nav-link" href="javascript:;">学习资源</a>
-                </li>
+                <foreach name="navList" item="vo" >
+                    <li <?php if(!is_null($currentClassId) && $vo['active']) echo 'class="active"';?>>
+                        <a class="nav-link" href="{:U($vo['index_template']['url'], ['id'=>$vo['class_id']])}">{$vo.class_name}</a>
+                        <?php if(!empty($vo['child'])):?>
+                        <div class="sub-nav">
+                            <?php foreach($vo['child'] as $child):?>
+                                <a href="{:U($child['index_template']['url'], ['id'=>$child['class_id']])}">{$child['class_name']}</a>
+                            <?php endforeach;?>
+                        </div>
+                        <?php endif;?>
+                    </li>
+                </foreach>
             </ul>
         </div>
     </div>

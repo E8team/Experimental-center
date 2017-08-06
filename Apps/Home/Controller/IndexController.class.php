@@ -30,10 +30,10 @@ class IndexController extends BaseController {
 
 		//通知公告
         //$noticeClass = $this->getClassByName('通知公告');
-        $noticeClass = $classes[36];
+        $noticeClass = $classes[55];
         $classify->templateId2Info($noticeClass);
 		$noticeLists = $Content->getContent($noticeClass, $this->prePage);
-		//dd($noticeLists );
+		//dd($noticeClass);
         $this->assign('noticeClass',$noticeClass);
 		$this->assign('noticeLists',$noticeLists);
 
@@ -84,7 +84,6 @@ class IndexController extends BaseController {
         $bigPic = M('big_pic');
         $bigPics = $bigPic->order('sort_index asc, addtime desc')->select();
         $this->assign('bigPics', $bigPics);
-		
 		$this->display();
     }
     

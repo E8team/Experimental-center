@@ -136,7 +136,7 @@ class ContentController extends BaseController{
 					$logMsg['id'] = $Content->content_id;
 
 					if ($Content->add()){
-						$content_id = mysql_insert_id();
+						$content_id = mysqli_insert_id();
 						//写入附加表的数据
 						if($Con_article->create()){
 							$Con_article->content_id = $content_id;
