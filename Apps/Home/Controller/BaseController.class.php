@@ -79,9 +79,9 @@ class BaseController extends Controller {
 		$faculty = $Flink->where($condition)->select();
 		unset($condition);
 
-		//获取热门链接
-		$condition['type_id'] = 2;
-		$hotUrl = $Flink->where($condition)->select();
+		//获取友情链接
+		$condition['type_id'] = 9;
+		$friendshipLinks = $Flink->where($condition)->select();
 		unset($condition);
 
         //获取带图片的友情链接
@@ -97,7 +97,7 @@ class BaseController extends Controller {
 
 		$this->assign('faculty',$faculty);
 		$this->assign('hasImgUrl',$hasImgUrl);
-		$this->assign('hotUrl',$hotUrl);
+		$this->assign('friendshipLinks',$friendshipLinks);
         $this->assign('xfc',$xfc);
 	}
 

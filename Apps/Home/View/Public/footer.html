@@ -1,37 +1,38 @@
-<div class="footer_nav">
-  <div class="container">
-    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 footer_nav_main">
-      <h2 class="title">院系设置</h2>
-      <ul>
 
-        <volist name="faculty" id="friend" offset="0" limit="8">
-          <li><a target="_blank" href="{$friend.url}">{$friend.webname}</a></li>
-        </volist>
-
-      </ul>
-    </div>
-    <div class="col-md-6 col-lg-6 col-sm-12 footer_nav_main">
-      <h2 class="title">热门链接</h2>
-      <ul>
-
-        <volist name="hotUrl" id="hot" offset="0" limit="8">
-          <li><a target="_blank" href="{$hot.url}">{$hot.webname}</a></li>
-        </volist>
-
-      </ul>
-    </div>
-  </div>
-</div>
+<!-- 底部开始 -->
 <div class="footer">
   <div class="container">
-    <div class="footer_main">
-      <span>地址：{$webInfo.ADDRESS}</span>
-      <span>邮编：{$webInfo.ZIPCODE}</span>
-      <span>电话：{$webInfo.PHONE}</span>
-      <span>电子邮件：{$webInfo.EMAIL}</span>
-      <p>{$webInfo.COPYRIGHT}</p>
+    <div class="footer_content">
+      <div class="footer_box footer_links col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <h3>友情链接</h3>
+        <ul class="links">
+          <?php foreach($friendshipLinks as $friendshipLink):?>
+            <li><a href="{$friendshipLink['url']}">{$friendshipLink['webname']}</a></li>
+          <?php endforeach;?>
+        </ul>
+      </div>
+      <div class="footer_box footer_logo col-lg-4 col-md-4 col-sm-4 hidden-xs">
+        <img src="__PUBLIC__/com_home/icon/1.png">
+      </div>
+      <div class="footer_box about col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <h3>联系我们</h3>
+        <ul>
+          <li>地址：{$webInfo['ADDRESS']}</li>
+          <li>联系人：{$webInfo['CONTACTS']}</li>
+          <li>联系方式：{$webInfo['PHONE']}</li>
+          <li>E-mail：{$webInfo['EMAIL']}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
+<div class="footer_copy">
+  <p>
+    版权所有:{$webInfo['COPYRIGHT']}
+    <a href="http://e8net.cn">E8net</a>
+    　　　浏览量：3123
+  </p>
+</div>
+
 </body>
 </html>

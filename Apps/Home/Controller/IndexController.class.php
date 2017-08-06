@@ -27,13 +27,15 @@ class IndexController extends BaseController {
         $classify = D('Class');
 		
         $classes = $classify->allClasses();
+
 		//通知公告
         //$noticeClass = $this->getClassByName('通知公告');
         $noticeClass = $classes[36];
         $classify->templateId2Info($noticeClass);
-		$noticeList = $Content->getContent($noticeClass, $this->prePage);
+		$noticeLists = $Content->getContent($noticeClass, $this->prePage);
+		//dd($noticeLists );
         $this->assign('noticeClass',$noticeClass);
-		$this->assign('noticeList',$noticeList);
+		$this->assign('noticeLists',$noticeLists);
 
 
 		//教学管理
@@ -78,30 +80,6 @@ class IndexController extends BaseController {
         //设置页面标题
         $this->setTitle('首页');
 
-        /*
-		//获取焦点图
-		$jdtList = $Content->getJdt(3,4);
-		$this->assign('jdtList',$jdtList);
-
-		//专题专栏
-		$zhuantiList = $Content->getContent(5,11);
-		$this->assign('zhuantiList',$zhuantiList);
-		//获取专题专栏下面的子栏目
-		$Class = D ('Class');
-		$zhuantiClass = $Class->getChildClassArr(5);
-
-		//获取专题专栏图片
-		$Flink = M('Flink');
-		$condition['type_id'] = 7;
-		$zhuantiImg = $Flink->where($condition)->select();
-
-		//循环加入专题专栏对应图片
-		foreach ($zhuantiClass as $k=>$v) {
-			$zhuantiClass[$k]['img'] = $zhuantiImg[$k]['logo'];
-		}
-		//p($zhuantiClass);
-		$this->assign('zhuantiClass',$zhuantiClass);
-        */
         //获取首页大图
         $bigPic = M('big_pic');
         $bigPics = $bigPic->order('sort_index asc, addtime desc')->select();

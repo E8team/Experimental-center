@@ -1,79 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>计算机公共基础实验中心</title>
-	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<script type="text/javascript" src="bootstrap-3.3.7-dist/js\jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="bootstrap-3.3.7-dist/js\bootstrap.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
-</head>
-<body>
-<!-- 头部开始 -->
-    <div class="header">
-        <div class="container">
-            <a href="#" class="logo">
-                <img src="icon/top-logo.png">
-                <div class="title">
-                    <h2>计算机公共基础实验中心</h2>
-                </div>
-            </a>
-            <form class="search">
-                <input type="hidden" name="s" value="Home/Search/search">
-                <input type="text" class="input-box" placeholder="请输入关键字...">
-                <i class="submit glyphicon glyphicon-search"></i>
-            </form>
-        </div>
-        <div class="nav">
-            <div class="container">
-                <ul id="nav">
-                    <li class="active">
-                        <a class="nav-link" href="javascript:;">网站首页</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="javascript:;">中心概况</a>
-                        <div class="sub-nav">
-                            <a href="#">中心简介</a>
-                            <a href="#">实验室一览</a>
-                            <a href="#">规章制度</a>
-                            <a href="#">业务流程</a>
-                        </div>
-                    </li>
-                     <li>
-                        <a class="nav-link" href="javascript:;">实验队伍</a>
-                        <div class="sub-nav">
-                            <a href="#">主任职责</a>
-                            <a href="#">中心人员</a>
-                        </div>
-                    </li>
-                     <li>
-                        <a class="nav-link" href="javascript:;">实验教学</a>
-                        <div class="sub-nav">
-                            <a href="#">课表</a>
-                            <a href="#">实验项目</a>
-                        </div>
-                    </li>
-                     <li>
-                        <a class="nav-link" href="javascript:;">学科竞赛</a>
-                        <div class="sub-nav">
-                            <a href="#">15年成果</a>
-                            <a href="#">16年成果</a>
-                            <a href="#">17年成果</a>
-                        </div>
-                    </li>
-                     <li>
-                        <a class="nav-link" href="javascript:;">设备维修</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="javascript:;">学习资源</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-<!-- 头部结束 -->
+<include file="./Apps/Home/View/Public/head.html" />
 <!-- 轮播图开始 -->
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 <!-- Indicators -->
@@ -85,22 +10,12 @@
         </ol>
 <!-- Wrapper for slides -->
         <div class="carousel-inner img_box" role="listbox">
-            <div class="item active">
-                <img src="images/139196.jpg" alt="...">
-                <div class="carousel-caption"></div>
-            </div>
-            <div class="item">
-                <img src="images/456151.jpg" alt="...">
-                <div class="carousel-caption"></div>
-            </div>
-            <div class="item">
-                <img src="images/scroll4.png" alt="...">
-                <div class="carousel-caption"></div>
-            </div>
-            <div class="item">
-                <img src="images/167895.jpg" alt="...">
-                <div class="carousel-caption"></div>
-            </div>
+            <?php foreach($bigPics as $bigPic): ?>
+                <div class="item active">
+                    <img src="__PUBLIC__/upload/{$bigPic['logo']}" alt="...">
+                    <div class="carousel-caption">测试标题</div>
+                </div>
+            <?php endforeach; ?>
         </div>
 <!-- 轮播图左右图标 -->
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -118,52 +33,29 @@
         <div class="container">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 box notice">
                 <div class="title">
-                    <h3>通知公告</h3>
-                    <a href="#" class="more">更多</a>
+                    <h3>
+                        {$noticeClass['name']}
+                    </h3>
+                    <a class="more" href="{:U($noticeClass['index_template']['url'], ['id'=>$noticeClass['class_id']])}">更多</a>
                 </div>
                 <div class="content_box" id="callboard">
                     <ul>
-                        <li>
-                            <div class="data">
-                                <i class="date">05</i>
-                                <e class="month">八月</e>
-                            </div>
-                            <a href="#">关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</a>
-                        </li>
-                        <li>
-                            <div class="data">
-                                <i class="date">04</i>
-                                <e class="month">八月</e>
-                            </div>
-                            <a href="#">关于推进实验实训场所文化氛围建设工作的通知</a>
-                        </li>
-                        <li>
-                            <div class="data">
-                                <i class="date">03</i>
-                                <e class="month">八月</e>
-                            </div>
-                            <a href="#">关于推进实验实训场所文化氛围建设工作的通知</a>
-                        </li>
+                        <?php foreach($noticeLists as $noticeList):?>
+                            <!--<li>
+                                <div class="data">
+                                    <i class="date"><?php echo substr($noticeList['addtime'] , 8) ;?></i>
+                                    <e class="month"><?php echo substr($noticeList['addtime'] , 0 ,7) ;?></e>
+                                </div>
+                                <a href="#">{$noticeList['title']}</a>
+                            </li>-->
+                        <?php endforeach;?>
+                        <!--<?php echo '没有数据'; ?>-->
                         <li>
                             <div class="data">
                                 <i class="date">02</i>
-                                <e class="month">八月</e>
+                                <e class="month">2017-8</e>
                             </div>
-                            <a href="#">关于推进实验实训场所文化氛围建设工作的通知</a>
-                        </li>
-                        <li>
-                            <div class="data">
-                                <i class="date">01</i>
-                                <e class="month">八月</e>
-                            </div>
-                            <a href="#">关于推进实验实训场所文化氛围建设工作的通知</a>
-                        </li>
-                        <li>
-                            <div class="data">
-                                <i class="date">31</i>
-                                <e class="month">七月</e>
-                            </div>
-                            <a href="#">关于推进实验实训场所文化氛围建设工作的通知</a>
+                            <a href="#">测试标题测试标题测试标题测试标题测试标题</a>
                         </li>
                     </ul>
                 </div>
@@ -175,7 +67,7 @@
                 </div>
                 <div class="content_box">
                     <a href="#">
-                        <img src="images/2.jpg">
+                        <img src="__PUBLIC__/com_home/images/2.jpg">
                         <h2>计算机公共基础实验中心</h2>
                         <p class="desc">计算机学院于2001年建设实验室，实验中心现有功能完善的软、硬件和网络、物联网实训平台。已建成的有计算机网络实验室、综合布线实训室、图形图像处理实验室、无线传感网络实验室、网络工程与测试实验室、软件工程实验室、硬件综合实验室、智能交通实验实训室、计算机组装与维护实训室、软件综合实验室（二）、软件综合实验室（一）。实验中心作为全校计算机专业实验教学平台，直接服务于计算机科学与技术、数字媒体技术、网络工程、物联网、软件工程专业，计算机科学与 技术专业2011年获批“校级特色专业”，2012年计算机软件与理论获批“校级重点建设学科”。每年约有几百至几千名计算机类学生在中心进行学科基础课、学科专业基础课、专业技能、专业综合、跨专业和创新研究等实验（实训）。同中心也为学生的毕业论文、教师与学生的科研提供了良好的条件。</p>
                     </a>
@@ -261,7 +153,7 @@
                     <ul>
                         <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <a href="#">
-                                <img src="images/3.jpg">
+                                <img src="__PUBLIC__/com_home/images/3.jpg">
                                 <div class="pic_title">
                                     <div class="mask"></div>
                                     <p>实验室一</p>
@@ -270,7 +162,7 @@
                         </li>
                         <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <a href="#">
-                                <img src="images/3.jpg">
+                                <img src="__PUBLIC__/com_home/images/3.jpg">
                                 <div class="pic_title">
                                     <div class="mask"></div>
                                     <p>实验室二</p>
@@ -279,7 +171,7 @@
                         </li>
                         <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <a href="#">
-                                <img src="images/3.jpg">
+                                <img src="__PUBLIC__/com_home/images/3.jpg">
                                 <div class="pic_title">
                                     <div class="mask"></div>
                                     <p>实验室三</p>
@@ -288,64 +180,20 @@
                         </li>
                         <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <a href="#">
-                                <img src="images/3.jpg">
+                                <img src="__PUBLIC__/com_home/images/3.jpg">
                                 <div class="pic_title">
                                     <div class="mask"></div>
                                     <p>实验室四</p>
                                 </div> 
                             </a>
                         </li>
-                        <!-- <li class="col-lg-3">
-                            <a href="#">
-                                <img src="images/3.jpg">
-                                <div class="pic_title">
-                                    <div class="mask"></div>
-                                    <p>实验室五</p>
-                                </div> 
-                            </a>
-                        </li> -->
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-<!-- 底部开始 -->
-    <div class="footer">
-        <div class="container">
-            <div class="footer_content">
-                <div class="footer_box footer_links col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <h3>友情链接</h3>
-                    <ul class="links">
-                        <li><a href="#">淮南师范学院</a></li>
-                        <li><a href="#">计算机学院</a></li>
-                        <li><a href="#">实验设备处</a></li>
-                        <li><a href="#">校网络中心</a></li>
-                        <li><a href="#">校教务处</a></li>
-                        <li><a href="#">校学生处</a></li>
-                    </ul>
-                </div>
-                <div class="footer_box footer_logo col-lg-4 col-md-4 col-sm-4 hidden-xs">
-                    <img src="icon/1.png">
-                </div>
-                <div class="footer_box about col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <h3>联系我们</h3>
-                    <ul>
-                        <li>地址：安徽省淮南市田家庵区洞山西路</li>
-                        <li>联系人：姚老师</li>
-                        <li>联系方式：15705547624</li>
-                        <li>E-mail：yeqi@163.com</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer_copy">
-        <p>
-            版权所有:Copyright © 2017
-            <a href="http://e8net.cn">E8net</a>
-            　　　浏览量：3123
-        </p>
-    </div>
+<!-- footer -->
+<include file="./Apps/Home/View/Public/footer.html" />
 <!-- 通知公告js -->
     <script type="text/javascript"> 
     (function (win){ 
@@ -375,6 +223,4 @@
     }); 
     }(window)); 
     setTimeout(window.autoAnimation, 3000); 
-</script> 
-</body>
-</html>
+</script>
