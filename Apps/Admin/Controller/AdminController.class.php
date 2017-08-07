@@ -14,6 +14,7 @@ use Think\Controller;
  *        
  */
 class AdminController extends BaseController {
+	
 	// 权限验证
 	public function __construct() {
 		parent::__construct ();
@@ -28,7 +29,6 @@ class AdminController extends BaseController {
 	 * 显示管理员列表页
 	 */
 	public function index() {
-
 		// 调用Assign控制器，传递页面所需要的基本参数
 		$Assign = A ( 'Assign' );
 		$Assign->index ();

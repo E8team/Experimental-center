@@ -12,12 +12,12 @@
         <div class="carousel-inner img_box" role="listbox">
             <div class="item active">
                 <img src="__PUBLIC__/upload/{$bigPics[0]['logo']}" alt="...">
-                <div class="carousel-caption">啊啊啊啊</div>
+                <div class="carousel-caption"></div>
             </div>
             <volist name="bigPics" id="vo" offset="1">
                 <div class="item">
                     <img src="__PUBLIC__/upload/{$vo['logo']}" alt="...">
-                    <div class="carousel-caption">萨达</div>
+                    <div class="carousel-caption"></div>
                 </div>
             </volist>
         </div>
@@ -44,25 +44,21 @@
                 </div>
                 <div class="content_box" id="callboard">
                     <ul>
-                        <?php foreach($noticeLists as $noticeList):?>
-                            <li>
-                                <div class="data">
-                                    <i class="date"><?php echo substr($noticeList['addtime'] , 8) ;?></i>
-                                    <e class="month"><?php echo substr($noticeList['addtime'] , 0 ,7) ;?></e>
-                                    <!--<i class="date">02</i>
-                                    <e class="month">2017-8</e>-->
-                                </div>
-                                <a href="#">{$noticeList['title']}</a>
-                            </li>
-                        <?php endforeach;?>
-                        <!--<?php echo '没有数据'; ?>-->
-                        <!--<li>
-                            <div class="data">
-                                <i class="date">02</i>
-                                <e class="month">2017-8</e>
-                            </div>
-                            <a href="#">测试标题测试标题测试标题测试标题测试标题</a>
-                        </li>-->
+                        <?php if(!empty($noticeLists)){ ?>
+                            <?php foreach($noticeLists as $noticeList):?>
+                                <li>
+                                    <div class="data">
+                                        <i class="date"><?php echo substr($noticeList['addtime'] , 8) ;?></i>
+                                        <e class="month"><?php echo substr($noticeList['addtime'] , 0 ,7) ;?></e>
+                                    </div>
+                                    <a href="#">{$noticeList['title']}</a>
+                                </li>
+                            <?php endforeach;?>
+                        <?php }else{
+                                echo '没有数据';
+                            }
+                        ?>
+
                     </ul>
                 </div>
             </div>
@@ -86,28 +82,52 @@
                 </div>
                 <div class="content_box">
                     <ul>
-                        <li>
-                            <span></span><a href="#">关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</a>
+                       <li>
+                            <span></span>
+                            <a href="#">
+                                <h4>关于推进实验实训场所文化氛围建设工作的通知</h4>
+                                <p>关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</p>
+                            </a>
                             <div class="time">2017-08-04</div>
                         </li>
-                        <li>
-                            <span></span><a href="#">关于推进实验实训场所文化氛围建设工作的通知</a>
+						<li>
+                            <span></span>
+                            <a href="#">
+                                <h4>关于推进实验实训场所文化氛围建设工作的通知</h4>
+                                <p>关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</p>
+                            </a>
                             <div class="time">2017-08-04</div>
                         </li>
-                        <li>
-                            <span></span><a href="#">关于推进实验实训场所文化氛围建设工作的通知</a>
+						<li>
+                            <span></span>
+                            <a href="#">
+                                <h4>关于推进实验实训场所文化氛围建设工作的通知</h4>
+                                <p>关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</p>
+                            </a>
                             <div class="time">2017-08-04</div>
                         </li>
-                        <li>
-                            <span></span><a href="#">关于推进实验实训场所文化氛围建设工作的通知</a>
+						<li>
+                            <span></span>
+                            <a href="#">
+                                <h4>关于推进实验实训场所文化氛围建设工作的通知</h4>
+                                <p>关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</p>
+                            </a>
                             <div class="time">2017-08-04</div>
                         </li>
-                        <li>
-                            <span></span><a href="#">关于推进实验实训场所文化氛围建设工作的通知</a>
+						<li>
+                            <span></span>
+                            <a href="#">
+                                <h4>关于推进实验实训场所文化氛围建设工作的通知</h4>
+                                <p>关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</p>
+                            </a>
                             <div class="time">2017-08-04</div>
                         </li>
-                        <li>
-                            <span></span><a href="#">关于推进实验实训场所文化氛围建设工作的通知</a>
+						<li>
+                            <span></span>
+                            <a href="#">
+                                <h4>关于推进实验实训场所文化氛围建设工作的通知</h4>
+                                <p>关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</p>
+                            </a>
                             <div class="time">2017-08-04</div>
                         </li>
                     </ul>
@@ -136,12 +156,14 @@
                             <div class="form-group">
                                 <label for="inputTitle" class="label-text">邮箱地址</label>
                                 <input type="text" class="form-control"  placeholder="请输入标题">
+                                <label for="inputEmail" class="label-text">你的邮箱</label>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="请输入邮箱">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary btn-sm" data-dismiss="modal">取消</button>
-                        <button class="btn btn-danger btn-sm"  data-dismiss="modal">提交</button>
+                        <button class="btn btn-success btn-sm"  data-dismiss="modal">提交</button>
                     </div>
                 </div>
             </div>
