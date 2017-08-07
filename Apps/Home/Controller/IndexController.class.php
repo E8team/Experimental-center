@@ -89,6 +89,7 @@ class IndexController extends BaseController {
         //获取首页大图
         $bigPic = M('big_pic');
         $bigPics = $bigPic->order('sort_index asc, addtime desc')->select();
+		dd($bigPics);
         $this->assign('bigPics', $bigPics);
 		$this->display();
     }
