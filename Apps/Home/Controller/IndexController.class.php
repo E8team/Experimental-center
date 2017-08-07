@@ -50,7 +50,6 @@ class IndexController extends BaseController {
         $teachingFeedback = $Content->getContent($teachingFeedbackClass, $this->prePage);
         $this->assign('teachingFeedbackClass',$teachingFeedbackClass);
         $this->assign('teachingFeedback', $teachingFeedback);
-        //dd($teachingFeedback);
 
         //实验室一览
         $laboratoryClass = $classes['47'];
@@ -58,30 +57,6 @@ class IndexController extends BaseController {
         $laboratory = $Content->getContent($laboratoryClass, $this->prePage);
         $this->assign('laboratoryClass' , $laboratoryClass);
         $this->assign('laboratory' , $laboratory);
-
-
-        //党团建设
-        //$dtjsClass = $this->getClassByName('党团建设');
-        $dtjsClass = $classes[5];
-        $classify->templateId2Info($dtjsClass);
-        $dtjsList = $Content->getContent($dtjsClass, $this->prePage);
-        $this->assign('dtjsClass',$dtjsClass);
-        $this->assign('dtjsList',$dtjsList);
-
-        //政法要闻
-        //$newsClass = $this->getClassByName('政法要闻');
-        $newsClass = $classes[37];
-        $classify->templateId2Info($newsClass);
-
-        $this->assign('newsClass', $newsClass);
-		
-        //政法要闻里面的有图新闻
-        $imgNews = $Content->getImgNews($newsClass['class_id'], 1);
-        //dd($imgNews);
-        $this->assign('imgNews', $imgNews['0']);
-
-        $newsList = $Content->getContent($newsClass, $this->prePage, $imgNews[0]['content_id']);
-        $this->assign('newsList', $newsList);
 
         //设置页面标题
         $this->setTitle('首页');

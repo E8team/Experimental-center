@@ -1,50 +1,63 @@
 <include file="./Apps/Home/View/Public/head.html" />
-<link rel="stylesheet" href="__PUBLIC__/law_home/style/content.css">
-<!-- big Img -->
-<div class="big_img"></div>
-<!-- content -->
-<div class="content">
-  <div class="container">
-    <div class="hidden-xs col-lg-3 col-sm-3 col-md-3 left">
-      <h2 class="title"><?php if(is_null($fatherClass)){echo $class['name'];}else{echo $fatherClass['name'];}?></h2>
-      <ul>
-        <foreach name="allClass" item="vo" >
-          <li><a <?php if($class['class_id']==$vo['class_id']) echo 'class="active"';?> href="{:U($vo['index_template']['url'], ['id'=>$vo['class_id']])}">{$vo['name']}</a></li>
-        </foreach>
-      </ul>
-    </div>
-    <div class="col-xs-12 col-lg-9 col-sm-9 col-md-9 right">
-      <div class="right_header">
-        <ul class="breadcrumb">
-          <li><a href="{:U('Home/Index/index')}">首页</a>/</li>
-          <?php if(is_null($fatherClass)):?>
-          <li class="active"><span>{$class['name']}</span></li>
-          <?php else:?>
-          <li><a href="{:U($fatherClass['index_template']['url'], ['id'=>$fatherClass['class_id']])}">{$fatherClass['name']}</a>/</li>
-          <li class="active"><span>{$class['name']}</span></li>
-          <?php endif;?>
-        </ul>
-      </div>
-      <div class="right_main">
-        <ul>
-
-          <?php if(is_null($list)):?>
-          <li>暂无数据</li>
-          <?php else:?>
-          <foreach name="list" item="vo" >
-            <li>
-              <a href="<?php echo U($class['content_template']['url'], ['id'=>$vo['content_id']]);?>" title="{$vo['title']}">{$vo['title']}</a>
-              <span>{$vo['addtime']}</span>
-            </li>
-          </foreach>
-          <?php endif;?>
-        </ul>
-        <!-- 分页 -->
-        <div class="page_body">
-          {$page}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/com_home/css/list.css">
+<div class="banner"></div>
+<div class="center">
+<!-- 左边导航开始 -->
+		<div class="c-left">
+			<div class="second-title">
+				<?php if($class['father_id']==0){?>
+					<h2><?php echo $class['name'];?></h2>
+				<?php }else{?>
+					<h2><?php echo $fatherClass['name'];?></h2>
+				<?php }?>
+			</div>
+			<ul>
+                <?php if(empty($allClass)) {?>
+                    <li><a href="javaScript:;"><?php echo $class['name'] ?><img src="__PUBLIC__/com_home/images/back.png"></a></li>
+			    <?php }else{ ?>
+                    <volist name="allClass" id="vo">
+						<li><a href="javaScript:;"><?php echo $vo['name'] ?><img src="__PUBLIC__/com_home/images/back.png"></a></li>
+					</volist>
+                <?php }?>
+            </ul>
+		</div>
+<!-- 左边导航结束 -->
+<!-- 右边列表开始 -->
+		<div class="c-right">
+			<div class="c-r-head">
+				<h2>{$class['name']}</h2>
+				<?php if(empty($fatherClass['name'])){?>
+					<span><a href="javaScript;">首页</a><img src="__PUBLIC__/com_home/images/back.png"><?php echo $class['name'] ?></span>
+				<?php }else{?>
+					<span><a href="javaScript;">首页</a><img src="__PUBLIC__/com_home/images/back.png"><a href="javaScript"><?php echo $fatherClass['name'] ?></a><img src="__PUBLIC__/com_home/images/back.png"><p><?php echo $class['name'] ?></p></span>
+				<?php }?>
+			</div>
+			<div class="c-r-list">
+				<ul>
+					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
+					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
+					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
+					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
+					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
+					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
+					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
+					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
+					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
+					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
+				</ul>
+			</div>
+			<div class="bottom">
+               <ul>
+                   <li><a href="javaScript:;"><<</a></li>
+                   <li><a href="javaScript:;">1</a></li>
+                   <li><a href="javaScript:;">2</a></li>
+                   <li><a href="javaScript:;">3</a></li>
+                   <li><a href="javaScript:;">4</a></li>
+                   <li><a href="javaScript:;">5</a></li>
+                   <li><a href="javaScript:;">>></a></li>
+               </ul>
+           </div>
+		</div>
+<!-- 右边列表结束 -->
+	</div>
 <include file="./Apps/Home/View/Public/footer.html" />

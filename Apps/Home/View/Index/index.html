@@ -11,13 +11,17 @@
 <!-- Wrapper for slides -->
         <div class="carousel-inner img_box" role="listbox">
             <div class="item active">
-                <img src="__PUBLIC__/upload/{$bigPics[0]['logo']}" alt="...">
+                <a href="<?php if(empty($bigPics[0]['url'])){ echo 'javascript:;';}else{ echo $bigPics[0]['url']; } ?>">
+                    <img src="__PUBLIC__/upload/{$bigPics[0]['logo']}" alt="...">
+                </a>
                 <div class="carousel-caption"></div>
             </div>
             <volist name="bigPics" id="vo" offset="1">
                 <div class="item">
-                    <img src="__PUBLIC__/upload/{$vo['logo']}" alt="...">
-                    <div class="carousel-caption"></div>
+                    <a href="<?php if(empty($bigPics['url'])){ echo 'javascript:;';}else{ echo $bigPics[0]['url']; } ?>">
+                        <img src="__PUBLIC__/upload/{$vo['logo']}" alt="...">
+                        <div class="carousel-caption"></div>
+                    </a>
                 </div>
             </volist>
         </div>
@@ -35,6 +39,7 @@
 <!-- 主体开始 -->
     <div class="body_content">
         <div class="container">
+            <!--通知公告-->
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 box notice">
                 <div class="title">
                     <h3>
@@ -62,10 +67,11 @@
                     </ul>
                 </div>
             </div>
+            <!--中心简介-->
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 box introduce">
                 <div class="title">
                     <h3>{$centerClass['name']}</h3>
-                    <a href="#" class="more">更多</a>
+                    <a href="{:U($centerClass['index_template']['url'], ['id'=>$centerClass['class_id']])}" class="more">更多</a>
                 </div>
                 <div class="content_box">
                     <a href="#">
@@ -135,7 +141,7 @@
             <div class="show_box">
                 <div class="title">
                     <h3>{$laboratoryClass['name']}</h3>
-                    <a href="#" class="more">更多</a>
+                    <a href="{:U($laboratoryClass['index_template']['url'], ['id'=>$laboratoryClass['class_id']])}" class="more">更多</a>
                 </div>
                 <div class="show_box_pic">
                     <ul>
