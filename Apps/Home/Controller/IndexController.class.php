@@ -35,14 +35,15 @@ class IndexController extends BaseController {
 		$noticeLists = $Content->getContent($noticeClass, $this->prePage);
         $this->assign('noticeClass',$noticeClass);
 		$this->assign('noticeLists',$noticeLists);
+		//dd($noticeLists);
 
 		//中心简介
-        $centerClass = $classes[46];
+        $centerClass = $classes[57];
         $classify->templateId2Info($centerClass);
         $centerProfile = $Content->getContent($centerClass, $this->prePage);
         $this->assign('centerClass',$centerClass);
-        $this->assign('centerProfile',$centerProfile[0]);
-
+        //$this->assign('centerProfile',$centerProfile[0]);
+        //dd($centerClass);
 
         //教学反馈
         $teachingFeedbackClass = $classes[56];

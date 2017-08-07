@@ -26,10 +26,11 @@
 		<div class="c-right">
 			<div class="c-r-head">
 				<h2>{$class['name']}</h2>
-				<?php if(empty($fatherClass['name'])){?>
-					<span><a href="javaScript;">首页</a><img src="__PUBLIC__/com_home/images/back.png"><?php echo $class['name'] ?></span>
+					<span><a href="{:U('Home/Index/index')}">首页</a><img src="__PUBLIC__/com_home/images/back.png">
+						<?php if(empty($fatherClass['name'])){?>
+						<?php echo $class['name'] ?>
 				<?php }else{?>
-					<span><a href="javaScript;">首页</a><img src="__PUBLIC__/com_home/images/back.png"><a href="javaScript"><?php echo $fatherClass['name'] ?></a><img src="__PUBLIC__/com_home/images/back.png"><p><?php echo $class['name'] ?></p></span>
+					<a href="javaScript"><?php echo $fatherClass['name'] ?></a><img src="__PUBLIC__/com_home/images/back.png"><p><?php echo $class['name'] ?></p></span>
 				<?php }?>
 			</div>
 			<div class="c-r-list">

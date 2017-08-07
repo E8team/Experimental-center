@@ -57,6 +57,7 @@
                                         <e class="month"><?php echo substr($noticeList['addtime'] , 0 ,7) ;?></e>
                                     </div>
                                     <a href="#">{$noticeList['title']}</a>
+                                    <!--<a href="#">{$noticeList['description']}</a>-->
                                 </li>
                             <?php endforeach;?>
                         <?php }else{
@@ -74,10 +75,10 @@
                     <a href="{:U($centerClass['index_template']['url'], ['id'=>$centerClass['class_id']])}" class="more">更多</a>
                 </div>
                 <div class="content_box">
-                    <a href="#">
-                        <img src="__PUBLIC__/upload/{$centerProfile['picurl']}">
+                    <a href="{:U($centerClass['index_template']['url'], ['id'=>$centerClass['class_id']])}">
+                        <img src="__PUBLIC__/com_home/images/1.jpg">
                         <h2>计算机公共基础实验中心</h2>
-                        <p class="desc">{$centerProfile['description']}</p>
+                        <p class="desc">{$centerClass['content']}</p>
                     </a>
                 </div>
             </div>
@@ -147,7 +148,7 @@
                     <ul>
                         <volist name="laboratory" id="vo" empty="没有数据">
                             <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <a href="#">
+                                <a href="{:U($laboratoryClass['index_template']['url'], ['id'=>$laboratoryClass['class_id']])}">
                                     <img src="__PUBLIC__/upload/{$vo.picurl}">
                                     <div class="pic_title">
                                         <div class="mask"></div>
@@ -164,8 +165,7 @@
 <!-- footer -->
 <include file="./Apps/Home/View/Public/footer.html" />
 <!-- 通知公告js -->
-    <script type="text/javascript"> 
-    <script type="text/javascript"> 
+    <script type="text/javascript">
     (function($){
     $.fn.extend({
         Scroll:function(opt,callback){

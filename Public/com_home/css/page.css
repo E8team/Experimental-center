@@ -1,0 +1,16 @@
+.c-r-head span img{
+	margin-top: 10%!important;
+}
+.c-r-container{
+	width: 95%;
+	margin: auto;
+}
+.c-r-container{
+	padding-top: 20px;
+}
+.c-r-container p{
+	text-indent: 2em;
+	color: #333;
+	font-size: 14px;
+	line-height: 22px;
+}

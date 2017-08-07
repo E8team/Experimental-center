@@ -15,24 +15,23 @@ body{
 }
 .center{
 	width: 1170px;
-	height: 655px;
 	margin: auto;
-	position: relative;
+	/*position: relative;*/
+	overflow: hidden;
+	margin-bottom: 30px;
 }
 /*列表左边部分*/
 .c-left{
 	width: 20%;
-	position: relative;
+	/*position: relative;*/
+	padding-top: 30px;
+	float: left;
 }
 .second-title{
 	width: 100%;
 	height: 60px;
 	/*background: rgba(21,150,245,.9);*/
-	background: rgba(51, 122, 183,.9);
-	position: absolute;
-	top: -60px;
-	left: 0;
-	bottom: 2px;
+	background: #337ab7;
 }
 .second-title h2{
 	color: #fff;
@@ -76,12 +75,11 @@ body{
 /*列表右边部分*/
 .c-right{
 	width: 77%;
-	max-height: 600px;
 	background:#fff;
-	position: absolute;
-	right: 0;
-	top:30px;
+	margin-top: 30px;
+	float: right;
 	padding-bottom: 20px;
+	overflow: hidden;
 }
 .c-r-head{
 	width: 100%;
@@ -96,6 +94,7 @@ body{
 	padding-bottom: 5px;
 	margin: 0;
 	padding: 0;
+	padding-bottom: 12px;
 	font-size: 24px;
 	font-weight: normal;
 	border-bottom: 2px solid #337ab7;

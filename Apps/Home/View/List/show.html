@@ -1,0 +1,25 @@
+<include file="./Apps/Home/View/Public/head.html" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/com_home/css/list.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/com_home/css/page.css">
+<div class="banner"></div>
+<div class="center">
+    <!-- 左边导航开始 -->
+    <div class="c-left">
+        <div class="second-title">
+            <h2>{$class['name']}</h2>
+        </div>
+    </div>
+    <!-- 左边导航结束 -->
+    <!-- 右边列表开始 -->
+    <div class="c-right">
+        <div class="c-r-head">
+            <h2>{$class['name']}</h2>
+            <span><a href="{:U('Home/Index/index')}">首页</a><?php if(empty($fatherClass)){?><img src="__PUBLIC__/com_home/images/back.png"><p><?php echo $class['name'];?></p><?php }else{?><img src="__PUBLIC__/com_home/images/back.png"><p><?php echo $fatherClass['name']?></p><img src="__PUBLIC__/com_home/images/back.png"> <?php echo $class['name']; }?></span>
+        </div>
+        <div class="c-r-container">
+            {$class['content']}
+        </div>
+    </div>
+    <!-- 右边列表结束 -->
+</div>
+<include file="./Apps/Home/View/Public/footer.html" />

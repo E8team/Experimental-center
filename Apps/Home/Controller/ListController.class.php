@@ -50,8 +50,6 @@ class ListController extends BaseController {
         $this->assign('allClass', $allChildClass);
 		$this->assign ('page', $show);
 		$this->assign('list', $list);
-		//dd($fatherClass['name']);
-		//dd($class['name']);
 		$this->display ();
 	}
 
@@ -83,6 +81,7 @@ class ListController extends BaseController {
         $this->assign('class', $class);
         $this->assign('fatherClass', $fatherClass);
         $this->assign('allClass', $allChildClass);
+        //dd($class);
         $this->display();
 
     }
