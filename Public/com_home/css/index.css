@@ -52,8 +52,12 @@
 	padding: 10px 0px;
 	height: 329px;
 }
+.notice .content_box, .feedback .content_box{
+	padding: 0;
+}
 .content_box ul{
 	margin-top: 10px;
+	position: relative;
 }
 .content_box ul li{
 	margin-bottom: 6px;
@@ -70,6 +74,7 @@
 	-webkit-line-clamp: 2;
 }
 /*通知公告*/
+
 .notice ul li .data {
     margin-right: 15px;
     float: left;
@@ -87,7 +92,7 @@
 }
 .notice ul li .data e {
     height: 30px;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 30px;
     color: #fff;
     background: #286090;
@@ -222,7 +227,13 @@
     position: relative;
     z-index: 1;
     text-align: center;
-    margin: 0;
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 .show_box ul li:hover .pic_title {
 	opacity: 1;
