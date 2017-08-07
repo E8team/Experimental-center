@@ -64,72 +64,34 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 box introduce">
                 <div class="title">
-                    <h3>中心简介</h3>
+                    <h3>{$centerClass['name']}</h3>
                     <a href="#" class="more">更多</a>
                 </div>
                 <div class="content_box">
                     <a href="#">
-                        <img src="__PUBLIC__/com_home/images/2.jpg">
+                        <img src="__PUBLIC__/upload/{$centerProfile['picurl']}">
                         <h2>计算机公共基础实验中心</h2>
-                        <p class="desc">计算机学院于2001年建设实验室，实验中心现有功能完善的软、硬件和网络、物联网实训平台。已建成的有计算机网络实验室、综合布线实训室、图形图像处理实验室、无线传感网络实验室、网络工程与测试实验室、软件工程实验室、硬件综合实验室、智能交通实验实训室、计算机组装与维护实训室、软件综合实验室（二）、软件综合实验室（一）。实验中心作为全校计算机专业实验教学平台，直接服务于计算机科学与技术、数字媒体技术、网络工程、物联网、软件工程专业，计算机科学与 技术专业2011年获批“校级特色专业”，2012年计算机软件与理论获批“校级重点建设学科”。每年约有几百至几千名计算机类学生在中心进行学科基础课、学科专业基础课、专业技能、专业综合、跨专业和创新研究等实验（实训）。同中心也为学生的毕业论文、教师与学生的科研提供了良好的条件。</p>
+                        <p class="desc">{$centerProfile['description']}</p>
                     </a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 box feedback">
                 <div class="title">
-                    <h3>教学反馈</h3>
+                    <h3>{$teachingFeedbackClass['name']}</h3>
                     <a href="#" class="more">更多</a>
                 </div>
                 <div class="content_box">
                     <ul>
-                       <li>
-                            <span></span>
-                            <a href="#">
-                                <h4>关于推进实验实训场所文化氛围建设工作的通知</h4>
-                                <p>关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</p>
-                            </a>
-                            <div class="time">2017-08-04</div>
-                        </li>
-						<li>
-                            <span></span>
-                            <a href="#">
-                                <h4>关于推进实验实训场所文化氛围建设工作的通知</h4>
-                                <p>关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</p>
-                            </a>
-                            <div class="time">2017-08-04</div>
-                        </li>
-						<li>
-                            <span></span>
-                            <a href="#">
-                                <h4>关于推进实验实训场所文化氛围建设工作的通知</h4>
-                                <p>关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</p>
-                            </a>
-                            <div class="time">2017-08-04</div>
-                        </li>
-						<li>
-                            <span></span>
-                            <a href="#">
-                                <h4>关于推进实验实训场所文化氛围建设工作的通知</h4>
-                                <p>关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</p>
-                            </a>
-                            <div class="time">2017-08-04</div>
-                        </li>
-						<li>
-                            <span></span>
-                            <a href="#">
-                                <h4>关于推进实验实训场所文化氛围建设工作的通知</h4>
-                                <p>关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</p>
-                            </a>
-                            <div class="time">2017-08-04</div>
-                        </li>
-						<li>
-                            <span></span>
-                            <a href="#">
-                                <h4>关于推进实验实训场所文化氛围建设工作的通知</h4>
-                                <p>关于推进实验实训场所文化氛围建设工作的通知关于推进实验实训场所文化氛围建设工作的通知</p>
-                            </a>
-                            <div class="time">2017-08-04</div>
-                        </li>
+                       <volist name="teachingFeedback" id="teaching" offset="0" limit="4" empty="没有数据">
+                           <li>
+                                <span></span>
+                                <a href="#">
+                                    <h4>{$teaching.title}</h4>
+                                    <p>{$teaching.description}</p>
+                                </a>
+                                <div class="time">{$teaching.addtime}</div>
+                            </li>
+                        </volist>
                     </ul>
                 </div>
                 <div class="item"><a href="#" data-toggle="modal" data-target="#myModal" >我要反馈</a></div>
@@ -174,56 +136,22 @@
         <div class="container">
             <div class="show_box">
                 <div class="title">
-                    <h3>实验室一览</h3>
+                    <h3>{$laboratoryClass['name']}</h3>
                     <a href="#" class="more">更多</a>
                 </div>
                 <div class="show_box_pic">
                     <ul>
-                        <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <a href="#">
-                                <img src="__PUBLIC__/com_home/images/3.jpg">
-                                <div class="pic_title">
-                                    <div class="mask"></div>
-                                    <p>实验室一</p>
-                                </div> 
-                            </a>
-                        </li>
-                        <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <a href="#">
-                                <img src="__PUBLIC__/com_home/images/3.jpg">
-                                <div class="pic_title">
-                                    <div class="mask"></div>
-                                    <p>实验室二</p>
-                                </div> 
-                            </a>
-                        </li>
-                        <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <a href="#">
-                                <img src="__PUBLIC__/com_home/images/3.jpg">
-                                <div class="pic_title">
-                                    <div class="mask"></div>
-                                    <p>实验室三</p>
-                                </div> 
-                            </a>
-                        </li>
-                        <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <a href="#">
-                                <img src="__PUBLIC__/com_home/images/3.jpg">
-                                <div class="pic_title">
-                                    <div class="mask"></div>
-                                    <p>实验室四</p>
-                                </div> 
-                            </a>
-                        </li>
-                        <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <a href="#">
-                                <img src="__PUBLIC__/com_home/images/3.jpg">
-                                <div class="pic_title">
-                                    <div class="mask"></div>
-                                    <p>实验室五</p>
-                                </div>
-                            </a>
-                        </li>
+                        <volist name="laboratory" id="vo" empty="没有数据">
+                            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <a href="#">
+                                    <img src="__PUBLIC__/upload/{$vo.picurl}">
+                                    <div class="pic_title">
+                                        <div class="mask"></div>
+                                        <p>{$vo.description}</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </volist>
                     </ul>
                 </div>
             </div>

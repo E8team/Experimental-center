@@ -33,26 +33,32 @@ class IndexController extends BaseController {
         $noticeClass = $classes[55];
         $classify->templateId2Info($noticeClass);
 		$noticeLists = $Content->getContent($noticeClass, $this->prePage);
-		//dd($noticeClass);
         $this->assign('noticeClass',$noticeClass);
 		$this->assign('noticeLists',$noticeLists);
 
+		//中心简介
+        $centerClass = $classes[46];
+        $classify->templateId2Info($centerClass);
+        $centerProfile = $Content->getContent($centerClass, $this->prePage);
+        $this->assign('centerClass',$centerClass);
+        $this->assign('centerProfile',$centerProfile[0]);
 
-		//教学管理
-        //$teachingClass = $this->getClassByName('教学管理');
-        $teachingClass = $classes[3];
-        $classify->templateId2Info($teachingClass);
-        $teaching = $Content->getContent($teachingClass, $this->prePage);
-        $this->assign('teachingClass',$teachingClass);
-        $this->assign('teaching', $teaching);
 
-        //科学研究
-        //$scienceClass = $this->getClassByName('科学研究');
-        $scienceClass = $classes[4];
-        $classify->templateId2Info($scienceClass);
-        $scientific = $Content->getContent($scienceClass, $this->prePage);
-        $this->assign('scienceClass',$scienceClass);
-        $this->assign('scientific',$scientific);
+        //教学反馈
+        $teachingFeedbackClass = $classes[56];
+        $classify->templateId2Info($teachingFeedbackClass);
+        $teachingFeedback = $Content->getContent($teachingFeedbackClass, $this->prePage);
+        $this->assign('teachingFeedbackClass',$teachingFeedbackClass);
+        $this->assign('teachingFeedback', $teachingFeedback);
+        //dd($teachingFeedback);
+
+        //实验室一览
+        $laboratoryClass = $classes['47'];
+        $classify->templateId2Info($laboratoryClass);
+        $laboratory = $Content->getContent($laboratoryClass, $this->prePage);
+        $this->assign('laboratoryClass' , $laboratoryClass);
+        $this->assign('laboratory' , $laboratory);
+
 
         //党团建设
         //$dtjsClass = $this->getClassByName('党团建设');
