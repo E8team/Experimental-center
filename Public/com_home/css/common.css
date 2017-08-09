@@ -107,7 +107,7 @@ ul{
 .header .nav .sub-nav{
 	background-color: #286090;
 	position: absolute;
-	top: 61px;
+	top: 60px;
 	width:100%;
 	z-index: 99;
 	display: none;
