@@ -56,7 +56,7 @@
                                         <i class="date"><?php echo substr($noticeList['addtime'] , 8) ;?></i>
                                         <e class="month"><?php echo substr($noticeList['addtime'] , 0 ,7) ;?></e>
                                     </div>
-                                    <a href="#">{$noticeList['title']}</a>
+                                    <a href="{:U($noticeClass['content_template']['url'], ['id'=>$noticeList['content_id']])}">{$noticeList['title']}</a>
                                     <!--<a href="#">{$noticeList['description']}</a>-->
                                 </li>
                             <?php endforeach;?>
@@ -85,14 +85,14 @@
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 box feedback">
                 <div class="title">
                     <h3>{$teachingFeedbackClass['name']}</h3>
-                    <a href="#" class="more">更多</a>
+                    <a href="{:U($teachingFeedbackClass['index_template']['url'], ['id'=>$teachingFeedbackClass['class_id']])}" class="more">更多</a>
                 </div>
                 <div class="content_box">
                     <ul>
                        <volist name="teachingFeedback" id="teaching" offset="0" limit="4" empty="没有数据">
                            <li>
                                 <span></span>
-                                <a href="#">
+                                <a href="{:U($teachingFeedbackClass['content_template']['url'], ['id'=>$teaching['content_id']])}">
                                     <h4>{$teaching.title}</h4>
                                     <p>{$teaching.description}</p>
                                 </a>
@@ -148,7 +148,7 @@
                     <ul>
                         <volist name="laboratory" id="vo" empty="没有数据">
                             <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <a href="{:U($laboratoryClass['index_template']['url'], ['id'=>$laboratoryClass['class_id']])}">
+                                <a href="{:U($laboratoryClass['content_template']['url'], ['id'=>$vo['content_id']])}">
                                     <img src="__PUBLIC__/upload/{$vo.picurl}">
                                     <div class="pic_title">
                                         <div class="mask"></div>

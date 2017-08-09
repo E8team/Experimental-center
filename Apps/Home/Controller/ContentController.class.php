@@ -38,6 +38,7 @@ class ContentController extends BaseController {
         $this->assign('content', $content);
         $this->assign('fatherClass', $fatherClass);
         $this->assign('class', $class);
+        //dd($fatherClass);
         $this->display();
     }
 }

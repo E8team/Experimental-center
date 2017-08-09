@@ -16,7 +16,7 @@
                     <li><a href="javaScript:;"><?php echo $class['name'] ?><img src="__PUBLIC__/com_home/images/back.png"></a></li>
 			    <?php }else{ ?>
                     <volist name="allClass" id="vo">
-						<li><a href="javaScript:;"><?php echo $vo['name'] ?><img src="__PUBLIC__/com_home/images/back.png"></a></li>
+						<li><a href="{:U($vo['index_template']['url'], ['id'=>$vo['class_id']])}"><?php echo $vo['name'] ?><img src="__PUBLIC__/com_home/images/back.png"></a></li>
 					</volist>
                 <?php }?>
             </ul>
@@ -26,29 +26,28 @@
 		<div class="c-right">
 			<div class="c-r-head">
 				<h2>{$class['name']}</h2>
-					<span><a href="{:U('Home/Index/index')}">首页</a><img src="__PUBLIC__/com_home/images/back.png">
+					<span><a href="{:U('Home/Index/index')}">首页></a>
 						<?php if(empty($fatherClass['name'])){?>
 						<?php echo $class['name'] ?>
 				<?php }else{?>
-					<a href="javaScript"><?php echo $fatherClass['name'] ?></a><img src="__PUBLIC__/com_home/images/back.png"><p><?php echo $class['name'] ?></p></span>
+					<a href="javaScript"><?php echo $fatherClass['name'] ?>></a><p><?php echo $class['name'] ?></p></span>
 				<?php }?>
 			</div>
 			<div class="c-r-list">
 				<ul>
-					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
-					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
-					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
-					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
-					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
-					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
-					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
-					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
-					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
-					<li><a href="javaScript:;">关于2017年度学科竞赛项目立项申报通知</a><span>2017-08-04</span></li>
+					<?php if(empty($list)):?>
+						<li>暂无数据</li>
+					<?php else:?>
+						<volist name="list" id="vo">
+							<li><a href="<?php echo U($class['content_template']['url'], ['id'=>$vo['content_id']]);?>" title="{$vo['title']}">{$vo['title']}</a>
+								<span>{$vo['addtime']}</span>
+							</li>
+						</volist>
+					<?php endif;?>
 				</ul>
 			</div>
-			<div class="bottom">
-               <ul>
+			<div class="page_body">
+               <!--<ul>
                    <li><a href="javaScript:;"><<</a></li>
                    <li><a href="javaScript:;">1</a></li>
                    <li><a href="javaScript:;">2</a></li>
@@ -56,7 +55,8 @@
                    <li><a href="javaScript:;">4</a></li>
                    <li><a href="javaScript:;">5</a></li>
                    <li><a href="javaScript:;">>></a></li>
-               </ul>
+               </ul>-->
+				{$page}
            </div>
 		</div>
 <!-- 右边列表结束 -->

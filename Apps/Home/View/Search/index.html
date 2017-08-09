@@ -1,42 +1,46 @@
 <include file="./Apps/Home/View/Public/head.html" />
-<link rel="stylesheet" href="__PUBLIC__/law_home/style/content.css">
-<!-- big Img -->
-<div class="big_img"></div>
-<!-- content -->
-<div class="content">
-  <div class="container">
-    <div class="hidden-xs col-lg-3 col-sm-3 col-md-3 left">
-      <h2 class="title">文章搜索</h2>
-      <ul>
-          <!--<li><a href=""></a></li>-->
-      </ul>
-    </div>
-    <div class="col-xs-12 col-lg-9 col-sm-9 col-md-9 right">
-      <div class="right_header">
-        <ul class="breadcrumb">
-          <li><a href="{:U('Home/Index/index')}">首页</a>/</li>
-          <li class="active"><span>搜索结果</span></li>
-        </ul>
-      </div>
-      <div class="right_main">
-        <ul>
-          <?php if(is_null($searchResult)):?>
-          <li>暂无数据</li>
-          <?php else:?>
-          <foreach name="searchResult" item="vo" >
-            <li>
-              <a href="<?php echo U('Home/Content/index', ['id'=>$vo['content_id']]);?>" title="{$vo['title']}">{$vo['title']}</a>
-              <span>{$vo['addtime']}</span>
-            </li>
-          </foreach>
-          <?php endif;?>
-        </ul>
-        <!-- 分页 -->
-        <div class="page_body">
-          {$page}
-        </div>
-      </div>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/com_home/css/list.css">
+<!-- 头部结束 -->
+<div class="banner"></div>
+<div class="center">
+  <!-- 左边导航开始 -->
+  <div class="c-left">
+    <div class="second-title">
+      <h2>搜索结果</h2>
     </div>
   </div>
+  <!-- 左边导航结束 -->
+  <!-- 右边列表开始 -->
+  <div class="c-right">
+    <div class="c-r-head">
+      <h2>搜素结果</h2>
+      <span><a href="{:U('Home/Index/index')}">首页></a><p>搜索结果</p></span>
+    </div>
+    <div class="c-r-list">
+      <ul>
+        <?php if(is_null($searchResult)):?>
+          <li>暂无数据</li>
+        <?php else:?>
+          <volist name="searchResult" id="vo">
+            <li><a href="<?php echo U('Home/Content/index', ['id'=>$vo['content_id']]);?>">{$vo.title}</a><span>{$vo.addtime}</span></li>
+          </volist>
+        <?php endif;?>
+      </ul>
+    </div>
+    <div class="bottom">
+      <!--<ul>
+        <li><a href="javaScript:;"><<</a></li>
+        <li><a href="javaScript:;">1</a></li>
+        <li><a href="javaScript:;">2</a></li>
+        <li><a href="javaScript:;">3</a></li>
+        <li><a href="javaScript:;">4</a></li>
+        <li><a href="javaScript:;">5</a></li>
+        <li><a href="javaScript:;">>></a></li>
+      </ul>-->
+      {$page}
+    </div>
+  </div>
+  <!-- 右边列表结束 -->
 </div>
+<!-- 底部开始 -->
 <include file="./Apps/Home/View/Public/footer.html" />

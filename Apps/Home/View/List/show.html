@@ -8,16 +8,29 @@
         <div class="second-title">
             <h2>{$class['name']}</h2>
         </div>
+        <ul>
+            <?php if(empty($allClass)) {?>
+            <li><a href="javaScript:;"><?php echo $class['name'] ?><img src="__PUBLIC__/com_home/images/back.png"></a></li>
+            <?php }else{ ?>
+            <volist name="allClass" id="vo">
+                <li><a href="{:U($vo['index_template']['url'], ['id'=>$vo['class_id']])}"><?php echo $vo['name'] ?><img src="__PUBLIC__/com_home/images/back.png"></a></li>
+            </volist>
+            <?php }?>
+        </ul>
     </div>
     <!-- 左边导航结束 -->
     <!-- 右边列表开始 -->
     <div class="c-right">
         <div class="c-r-head">
             <h2>{$class['name']}</h2>
-            <span><a href="{:U('Home/Index/index')}">首页</a><?php if(empty($fatherClass)){?><img src="__PUBLIC__/com_home/images/back.png"><p><?php echo $class['name'];?></p><?php }else{?><img src="__PUBLIC__/com_home/images/back.png"><p><?php echo $fatherClass['name']?></p><img src="__PUBLIC__/com_home/images/back.png"> <?php echo $class['name']; }?></span>
+            <span><a href="{:U('Home/Index/index')}">首页></a><?php if(empty($fatherClass)){?>><p><?php echo $class['name'];?></p><?php }else{?><p><?php echo $fatherClass['name']?></p>><?php echo $class['name']; }?></span>
         </div>
         <div class="c-r-container">
-            {$class['content']}
+            <?php if(empty($class['content'])){?>
+                <span>暂无数据</span>
+            <?php }else{
+                  echo $class['content'];
+            } ?>
         </div>
     </div>
     <!-- 右边列表结束 -->

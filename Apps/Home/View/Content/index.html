@@ -1,35 +1,29 @@
 <include file="./Apps/Home/View/Public/head.html" />
-<link rel="stylesheet" href="__PUBLIC__/law_home/style/content.css">
-<!-- content -->
-<div class="content">
-  <div class="container">
-      <div class="content_box">
-          <div class="right_header" style="padding-left: 0;">
-              <ul class="breadcrumb">
-                  <li><a href="{:U('Home/Index/index')}">首页</a>/</li>
-                  <?php if(is_null($fatherClass)):?>
-                  <li><a href="{:U($class['index_template']['url'], ['id'=>$class['class_id']])}">{$class['name']}</a>/</li>
-                  <?php else:?>
-                  <li><a href="{:U($fatherClass['index_template']['url'], ['id'=>$fatherClass['class_id']])}">{$fatherClass['name']}</a>/</li>
-                  <li><a href="{:U($class['index_template']['url'], ['id'=>$class['class_id']])}">{$class['name']}</a>/</li>
-                  <?php endif;?>
-                  <li class="active"><span>正文</span></li>
-              </ul>
-          </div>
-          <div class="content_main">
-              <div class="title">
-                  <h1 style="padding: 10px 0;<?php if(!empty($content['title_color'])){echo 'color:'.$content['title_color'].';';}?>">{$content['title']}</h1>
-                  <?php if(!empty($content['author'])):?>
-                    <span>作者：{$content['author']}</span>
-                  <?php endif;?>
-                  <span>{$content['addtime']}</span>
-                  <span>点击量：{$content['views']}次</span>
-              </div>
-              <div class="content_article">
-                  {$content['body']}
-              </div>
-          </div>
-      </div>
-  </div>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/com_home/css/article.css">
+<!-- 头部结束 -->
+<div class="banner"></div>
+<div class="center">
+    <div class="c-nav">
+        <span><a href="{:U('Home/Index/index')}">首页></a>
+              <?php if(empty($fatherClass)):?>
+                    <a href="{:U($class['index_template']['url'], ['id'=>$class['class_id']])}">{$class['name']}</a>>正文
+              <?php else:?>
+                    <a href="{:U($fatherClass['index_template']['url'], ['id'=>$fatherClass['class_id']])}">{$fatherClass['name']}></a>
+                    <a href="{:U($class['index_template']['url'], ['id'=>$class['class_id']])}">{$class['name']}</a>>正文
+              <?php endif;?>
+        </span>
+    </div>
+    <div class="c-title">
+        <h1>{$content['title']}</h1>
+        <div class="c-title-message">
+            <span>{$content['addtime']}</span>
+            <span>浏览量:{$content['views']}</span>
+            <?php if(!empty($content['author'])){ echo "<span>上传:".$content['author']."</span>"; }?>
+        </div>
+    </div>
+    <div class="c-article">
+        {$content['body']}
+    </div>
 </div>
+<!-- 底部开始 -->
 <include file="./Apps/Home/View/Public/footer.html" />

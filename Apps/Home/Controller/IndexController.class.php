@@ -29,21 +29,16 @@ class IndexController extends BaseController {
         $classes = $classify->allClasses();
 
 		//通知公告
-        //$noticeClass = $this->getClassByName('通知公告');
         $noticeClass = $classes[55];
         $classify->templateId2Info($noticeClass);
 		$noticeLists = $Content->getContent($noticeClass, $this->prePage);
         $this->assign('noticeClass',$noticeClass);
 		$this->assign('noticeLists',$noticeLists);
-		//dd($noticeLists);
 
 		//中心简介
         $centerClass = $classes[57];
         $classify->templateId2Info($centerClass);
-        $centerProfile = $Content->getContent($centerClass, $this->prePage);
         $this->assign('centerClass',$centerClass);
-        //$this->assign('centerProfile',$centerProfile[0]);
-        //dd($centerClass);
 
         //教学反馈
         $teachingFeedbackClass = $classes[56];
@@ -51,6 +46,7 @@ class IndexController extends BaseController {
         $teachingFeedback = $Content->getContent($teachingFeedbackClass, $this->prePage);
         $this->assign('teachingFeedbackClass',$teachingFeedbackClass);
         $this->assign('teachingFeedback', $teachingFeedback);
+        //dd($teachingFeedback);
 
         //实验室一览
         $laboratoryClass = $classes['47'];
