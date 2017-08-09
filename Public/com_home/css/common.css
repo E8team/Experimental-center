@@ -59,7 +59,7 @@ ul{
 	outline: none;
 	font-size: 14px;
 	border: 1px solid #999;
-	box-shadow: 0 2px 2px rgba(0,0,0,.25);
+	box-shadow: 0 1px 2px rgba(0,0,0,.25);
 }
 
 .header .container .search .submit{
@@ -107,14 +107,15 @@ ul{
 .header .nav .sub-nav{
 	background-color: #286090;
 	position: absolute;
-	top: 56px;
+	top: 61px;
+	width:100%;
 	z-index: 99;
 	display: none;
 }
 .header .nav .sub-nav a{
 	color: #fff!important;
 	line-height: 1.5;
-	width: 160px;
+	width: 100%;
 	padding: 10px 0;
 	padding-left: 45px;
 	margin: 0;

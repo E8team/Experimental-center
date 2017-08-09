@@ -3,10 +3,7 @@
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 <!-- 切换圆点 -->
         <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <volist name="bigPics" id="vo" offset="1">
-                <li data-target="#carousel-example-generic" data-slide-to="{$i}"></li>
-            </volist>
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li><volist name="bigPics" id="vo" offset="1"><li data-target="#carousel-example-generic" data-slide-to="{$i}"></li></volist>
         </ol>
 <!-- 轮播图内容 -->
         <div class="carousel-inner img_box" role="listbox">
