@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-08-07 09:29:43
+-- Generation Time: 2017-08-09 15:27:58
 -- 服务器版本： 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -51,7 +51,7 @@ CREATE TABLE `e8_admin` (
 
 INSERT INTO `e8_admin` (`admin_id`, `admin_group_id`, `perm_group_id`, `account`, `password`, `name`, `sex`, `photo`, `email`, `qq`, `remarks`, `login_time`, `login_ip`, `login_state`, `login_num`, `root`) VALUES
 (1, 1, '1', 'fxy', '0b57ef9c2509a9b78c253683746bf77d', '超级管理员', '男', 'photo/2014-08-16/53eecf7017186.jpg', 'admin@admin.com', '11111111', NULL, 1502033664, '0.0.0.0', 1, 400, 1),
-(13, 1, '1', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '', '', '', NULL, NULL, 1502085143, '0.0.0.0', 1, 3, 0);
+(13, 1, '1', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '', '', '', NULL, NULL, 1502260322, '0.0.0.0', 1, 6, 0);
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,7 @@ INSERT INTO `e8_big_pic` (`id`, `title`, `describtion`, `url`, `logo`, `sort_ind
 (15, '', '', '', 'image/20170806/5986b5d93d418.jpg', 0, 1502000601),
 (16, '测试标题', '测试描述', '', 'image/20170806/5986b5eebf320.jpg', 0, 1502000622),
 (17, '', '', '', 'image/20170806/5986db678848d.jpg', 0, 1502010215),
-(18, '', '', '', 'image/20170807/5988002d2d56b.jpg', 0, 1502085165);
+(18, '', '', 'http://localhost/Experimental-center/index.php', 'image/20170807/5988002d2d56b.jpg', 0, 1502094402);
 
 -- --------------------------------------------------------
 
@@ -165,9 +165,9 @@ INSERT INTO `e8_class` (`class_id`, `father_id`, `name`, `type`, `channel_id`, `
 (43, 0, '学科竞赛', 'List', 1, '', 0, 1, 1, '', 3, 2),
 (44, 0, '设备维修', 'List', 1, '', 0, 1, 1, '', 3, 4),
 (45, 0, '学习资源', 'List', 1, '', 0, 1, 1, '', 3, 4),
-(46, 40, '中心简介', 'List', 1, '', 0, 1, 1, '', 3, 4),
+(57, 40, '中心简介', 'Index', 1, '', 0, 1, 1, '<p>\r\n	<span style=\"background-color:#FFFFFF;\">        中心简介</span><span style=\"background-color:#FFFFFF;\">中心简介</span><span style=\"background-color:#FFFFFF;\">中心简介</span><span style=\"background-color:#FFFFFF;\">中心简介</span><span style=\"background-color:#FFFFFF;\">中心简介</span><span style=\"background-color:#FFFFFF;\">中心简介</span><span style=\"background-color:#FFFFFF;\">中心简介</span><span style=\"background-color:#FFFFFF;\">中心简介</span><span style=\"background-color:#FFFFFF;\">中心简介</span><span style=\"background-color:#FFFFFF;\">中心简介</span><span style=\"background-color:#FFFFFF;\">中心简介</span><span style=\"background-color:#FFFFFF;\">中心简介中心简介</span><span style=\"background-color:#FFFFFF;\">中心简介中心简介中心简介中心简介中心简介中心简介中心简介中心简介中心简介中心简介中心简介<span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span></span>\r\n</p>\r\n<p>\r\n	<span style=\"background-color:#FFFFFF;\">        <span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span></span>\r\n</p>\r\n<p>\r\n	<span style=\"background-color:#FFFFFF;\"><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span></span>\r\n</p>\r\n<p>\r\n	<span style=\"background-color:#FFFFFF;\">        <span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span></span>\r\n</p>\r\n<p>\r\n	<span style=\"background-color:#FFFFFF;\"><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span><span style=\"font-size:13.3333px;background-color:#FFFFFF;\">中心简介</span></span>\r\n</p>', 3, 4),
 (47, 40, '实验室一览', 'List', 1, '', 0, 1, 1, '', 3, 2),
-(48, 40, '规章制度', 'List', 1, '', 0, 1, 1, '', 3, 2),
+(48, 40, '规章制度', 'Index', 1, '', 0, 1, 1, '', 3, 4),
 (49, 40, '业务流程', 'List', 1, '', 0, 1, 1, '', 3, 4),
 (50, 41, '主人职责', 'List', 1, '', 0, 1, 1, '', 3, 4),
 (51, 41, '中心人员', 'List', 1, '', 0, 1, 1, '', 3, 4),
@@ -209,15 +209,23 @@ CREATE TABLE `e8_content` (
 --
 
 INSERT INTO `e8_content` (`content_id`, `admin_id`, `class_id`, `channel_id`, `title`, `author`, `description`, `keywords`, `addtime`, `uptime`, `state`, `picurl`, `views`, `sort_index`, `source`, `is_stick`, `title_color`, `sticky_time`) VALUES
-(1, 13, 46, 1, '简介测试', 'admin', '简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试', '', '2017-08-06', 1502085962, 'publish', 'image/20170807/5988034a6b835.jpg', 0, 0, '简介', 0, '#333333', '1970-01-01'),
 (2, 1, 55, 1, '通知公告测试', '', '通知公告测试通知公告测试通知公告测试通知公告测试', '', '2017-08-06', 1502033002, 'publish', NULL, 0, 0, '通知公告测试', 0, '#333333', '1970-01-01'),
 (3, 1, 55, 1, '通知公告测试', '', '通知公告测试通知公告测试通知公告测试', '', '2017-08-06', 1502033026, 'publish', NULL, 0, 0, '', 0, '#333333', '1970-01-01'),
 (4, 1, 55, 1, '通知公告测试通知公告测试', '', '通知公告测试', '', '2017-08-06', 1502033038, 'publish', NULL, 0, 0, '通知公告测试', 0, '#333333', '1970-01-01'),
-(5, 1, 55, 1, '通知公告测试通知公告测试通知公告测试通知公告测试通知公', '', '通知公告测试', '', '2017-08-06', 1502033053, 'publish', NULL, 0, 0, '', 0, '#333333', '1970-01-01'),
-(6, 13, 56, 1, '教学反馈测试', 'admin', '教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试', '', '2017-08-07', 1502085341, 'publish', NULL, 0, 0, '', 0, '#333333', '1970-01-01'),
-(7, 13, 56, 1, '教学反馈测试', '', '教学反馈测试教学反馈测试教学反馈测试教学反馈测试', '', '2017-08-07', 1502085490, 'publish', NULL, 0, 0, '', 0, '#333333', '1970-01-01'),
-(8, 13, 47, 1, '实验室一览测试实验室一览测试', '', '实验室一览测试实验室一览测试实验室一览测试实验室一览测试', '', '2017-08-07', 1502085887, 'publish', 'image/20170807/598802ffaa4ef.jpg', 0, 0, '', 0, '#333333', '1970-01-01'),
-(9, 13, 47, 1, '实验室一览测试', '', '实验室一', '', '2017-08-07', 1502085941, 'publish', 'image/20170807/59880335d0566.jpg', 0, 0, '', 0, '#333333', '1970-01-01');
+(5, 1, 55, 1, '通知公告测试通知公告测试通知公告测试通知公告测试通知公', '', '通知公告测试', '', '2017-08-06', 1502033053, 'publish', NULL, 1, 0, '', 0, '#333333', '1970-01-01'),
+(6, 13, 56, 1, '教学反馈测试', 'admin', '教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试', '', '2017-08-07', 1502085341, 'publish', NULL, 2, 0, '', 0, '#333333', '1970-01-01'),
+(7, 13, 56, 1, '教学反馈测试', '', '教学反馈测试教学反馈测试教学反馈测试教学反馈测试', '', '2017-08-07', 1502085490, 'publish', NULL, 1, 0, '', 0, '#333333', '1970-01-01'),
+(8, 13, 47, 1, '实验室一览测试实验室一览测试', '', '实验室一览测试实验室一览测试实验室一览测试实验室一览测试', '', '2017-08-07', 1502085887, 'publish', 'image/20170807/598802ffaa4ef.jpg', 31, 0, '', 0, '#333333', '1970-01-01'),
+(9, 13, 47, 1, '实验室一览测试', '', '实验室一', '', '2017-08-07', 1502085941, 'publish', 'image/20170807/59880335d0566.jpg', 24, 0, '', 0, '#333333', '1970-01-01'),
+(10, 13, 55, 1, '通知公共通知公共通知公共通知公共', '', '通知公共通知公共', '', '2017-08-07', 1502096096, 'publish', NULL, 0, 0, '', 0, '#333333', '1970-01-01'),
+(11, 13, 55, 1, '通知公共通知公共', '', '通知公共通知公共', '', '2017-08-07', 1502096109, 'publish', NULL, 1, 0, '', 0, '#333333', '1970-01-01'),
+(12, 13, 55, 1, '通知公共通知公共通知公共', '', '通知公共通知公共通知公共', '', '2017-08-07', 1502096120, 'publish', NULL, 4, 0, '', 0, '#333333', '1970-01-01'),
+(13, 13, 55, 1, '通知公共通知公共通知公共', '', '通知公共通知公共通知公共', '', '2017-08-07', 1502096136, 'publish', NULL, 0, 0, '', 0, '#333333', '1970-01-01'),
+(14, 13, 55, 1, '通知公共通知公共通知公共', '', '通知公共通知公共通知公共通知公共', '', '2017-08-07', 1502096148, 'publish', NULL, 0, 0, '', 0, '#333333', '1970-01-01'),
+(15, 13, 55, 1, '通知公共通知公共', '', '通知公共通知公共', '', '2017-08-07', 1502096165, 'publish', NULL, 1, 0, '', 0, '#333333', '1970-01-01'),
+(16, 13, 55, 1, '通知公共', 'admin', '通知公共通知公共', '', '2017-08-07', 1502096199, 'publish', NULL, 2, 0, '', 0, '#333333', '1970-01-01'),
+(18, 13, 55, 1, '撒旦撒', '', '大撒大撒', '', '2017-08-08', 1502162891, 'publish', NULL, 2, 0, '', 0, '#333333', '1970-01-01'),
+(19, 13, 55, 1, '大撒大撒', '', '上单', '', '2017-08-08', 1502162914, 'publish', NULL, 1, 0, '', 0, '#333333', '1970-01-01');
 
 -- --------------------------------------------------------
 
@@ -237,7 +245,6 @@ CREATE TABLE `e8_con_article` (
 --
 
 INSERT INTO `e8_con_article` (`content_id`, `class_id`, `url`, `body`) VALUES
-(1, 46, '', '简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试简介测试'),
 (2, 55, NULL, '通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试'),
 (3, 55, NULL, '通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试'),
 (4, 55, NULL, '通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试通知公告测试'),
@@ -245,7 +252,16 @@ INSERT INTO `e8_con_article` (`content_id`, `class_id`, `url`, `body`) VALUES
 (6, 56, NULL, '教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试'),
 (7, 56, NULL, '教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试教学反馈测试'),
 (8, 47, NULL, '实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试'),
-(9, 47, NULL, '实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试');
+(9, 47, NULL, '实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试实验室一览测试'),
+(10, 55, NULL, '通知公共通知公共通知公共通知公共'),
+(11, 55, NULL, '通知公共通知公共通知公共通知公共通知公共'),
+(12, 55, NULL, '通知公共通知公共通知公共通知公共通知公共'),
+(13, 55, NULL, '通知公共通知公共通知公共通知公共'),
+(14, 55, NULL, '通知公共通知公共通知公共通知公共通知公共'),
+(15, 55, NULL, '通知公共通知公共通知公共通知公共'),
+(16, 55, NULL, '通知公共通知公共通知公共通知公共'),
+(19, 55, NULL, '的撒'),
+(18, 55, NULL, '的撒啊啊啊啊啊啊啊啊啊');
 
 -- --------------------------------------------------------
 
@@ -362,7 +378,29 @@ INSERT INTO `e8_log` (`log_id`, `admin_id`, `content`, `time`, `type`) VALUES
 (2039, 13, 'admin(admin) 执行了添加文章操作,添加的文章ID为 ,添加的文章标题为 教学反馈测试', 1502085490, '1'),
 (2040, 13, 'admin(admin) 执行了添加文章操作,添加的文章ID为 ,添加的文章标题为 实验室一览测试实验室一览测试', 1502085887, '1'),
 (2041, 13, 'admin(admin) 执行了添加文章操作,添加的文章ID为 ,添加的文章标题为 实验室一览测试', 1502085941, '1'),
-(2042, 13, 'admin(admin) 执行了修改文章操作,修改的文章ID为 1,修改的文章标题为 简介测试', 1502085962, '1');
+(2042, 13, 'admin(admin) 执行了修改文章操作,修改的文章ID为 1,修改的文章标题为 简介测试', 1502085962, '1'),
+(2043, 13, 'admin(admin) 登入了后台', 1502094346, '1'),
+(2044, 13, 'admin(admin) 执行了添加文章操作,添加的文章ID为 ,添加的文章标题为 通知公共通知公共通知公共通知公共', 1502096096, '1'),
+(2045, 13, 'admin(admin) 执行了添加文章操作,添加的文章ID为 ,添加的文章标题为 通知公共通知公共', 1502096109, '1'),
+(2046, 13, 'admin(admin) 执行了添加文章操作,添加的文章ID为 ,添加的文章标题为 通知公共通知公共通知公共', 1502096120, '1'),
+(2047, 13, 'admin(admin) 执行了添加文章操作,添加的文章ID为 ,添加的文章标题为 通知公共通知公共通知公共', 1502096136, '1'),
+(2048, 13, 'admin(admin) 执行了添加文章操作,添加的文章ID为 ,添加的文章标题为 通知公共通知公共通知公共', 1502096148, '1'),
+(2049, 13, 'admin(admin) 执行了添加文章操作,添加的文章ID为 ,添加的文章标题为 通知公共通知公共', 1502096165, '1'),
+(2050, 13, 'admin(admin) 执行了添加文章操作,添加的文章ID为 ,添加的文章标题为 通知公共', 1502096199, '1'),
+(2051, 13, 'admin(admin) 执行了修改栏目操作,修改的栏目名称为 中心简介,栏目ID为46', 1502114318, '1'),
+(2052, 13, 'admin(admin) 执行了移动文章到回收站操作,共移动了篇文章', 1502116655, '1'),
+(2053, 13, 'admin(admin) 执行了添加文章操作,添加的文章ID为 ,添加的文章标题为 简介测试', 1502116779, '1'),
+(2054, 13, 'admin(admin) 执行了修改文章操作,修改的文章ID为 17,修改的文章标题为 简介测试', 1502117465, '1'),
+(2055, 13, 'admin(admin) 执行了删除栏目操作,删除的栏目ID为 46', 1502117874, '1'),
+(2056, 13, 'admin(admin) 执行了添加栏目操作,添加的栏目名称为 中心简介,栏目ID为', 1502117968, '1'),
+(2057, 13, 'admin(admin) 登入了后台', 1502161646, '1'),
+(2058, 13, 'admin(admin) 执行了修改栏目操作,修改的栏目名称为 规章制度,栏目ID为48', 1502161670, '1'),
+(2059, 13, 'admin(admin) 执行了修改栏目操作,修改的栏目名称为 规章制度,栏目ID为48', 1502161709, '1'),
+(2060, 13, 'admin(admin) 执行了添加文章操作,添加的文章ID为 ,添加的文章标题为 撒旦撒', 1502162891, '1'),
+(2061, 13, 'admin(admin) 执行了添加文章操作,添加的文章ID为 ,添加的文章标题为 大撒大撒', 1502162914, '1'),
+(2062, 13, 'admin(admin) 登入了后台', 1502260323, '1'),
+(2063, 13, 'admin(admin) 执行了修改网站设置操作,修改的网站设置名称为 ', 1502260341, '1'),
+(2064, 13, 'admin(admin) 执行了修改网站设置操作,修改的网站设置名称为 ', 1502260375, '1');
 
 -- --------------------------------------------------------
 
@@ -534,13 +572,13 @@ CREATE TABLE `e8_setting` (
 
 INSERT INTO `e8_setting` (`setting_id`, `item`, `value`, `description`, `type`) VALUES
 (1, 'WEBNAME', '计算机公共基础实验中心', '网站名称', 'string'),
-(130, 'EMAIL', 'zfx@hnnu.edu.cn', '邮箱', 'string'),
+(130, 'EMAIL', 'XXXXXXXXXX@XX.com', '邮箱', 'string'),
 (4, 'WEBAUTHOR', 'E8网络工作室', '网站作者', 'string'),
 (6, 'INDEXURL', 'http://www.hnjr.gov.cn', '网站首页', 'string'),
 (7, 'check_on', 'true', '是否开启审核文档', 'bool'),
 (117, 'ADDRESS', '安徽省淮南市田家庵区洞山西路', '地址', 'string'),
 (118, 'COPYRIGHT', 'copyright e8net 2017', '版权信息', 'string'),
-(132, 'CONTACTS', '姚老师', '联系人', 'string'),
+(132, 'CONTACTS', 'XXXX', '联系人', 'string'),
 (128, 'ZIPCODE', '232038', '邮编', 'string'),
 (129, 'PHONE', '(1234)12345678', '联系方式', 'string');
 
@@ -588,7 +626,9 @@ CREATE TABLE `e8_visit` (
 
 INSERT INTO `e8_visit` (`vid`, `ip`, `time`, `view`, `y`, `m`, `d`) VALUES
 (56328, '0.0.0.0', 1502011584, 1, 17, 8, 6),
-(56329, '0.0.0.0', 1502083508, 1, 17, 8, 7);
+(56329, '0.0.0.0', 1502083508, 2, 17, 8, 7),
+(56330, '0.0.0.0', 1502161197, 1, 17, 8, 8),
+(56331, '0.0.0.0', 1502256761, 1, 17, 8, 9);
 
 --
 -- Indexes for dumped tables
@@ -726,17 +766,17 @@ ALTER TABLE `e8_channel`
 -- 使用表AUTO_INCREMENT `e8_class`
 --
 ALTER TABLE `e8_class`
-  MODIFY `class_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '栏目ID', AUTO_INCREMENT=57;
+  MODIFY `class_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '栏目ID', AUTO_INCREMENT=58;
 --
 -- 使用表AUTO_INCREMENT `e8_content`
 --
 ALTER TABLE `e8_content`
-  MODIFY `content_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '文章ID', AUTO_INCREMENT=10;
+  MODIFY `content_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '文章ID', AUTO_INCREMENT=20;
 --
 -- 使用表AUTO_INCREMENT `e8_con_article`
 --
 ALTER TABLE `e8_con_article`
-  MODIFY `content_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '内容ID', AUTO_INCREMENT=10;
+  MODIFY `content_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '内容ID', AUTO_INCREMENT=20;
 --
 -- 使用表AUTO_INCREMENT `e8_flink`
 --
@@ -751,7 +791,7 @@ ALTER TABLE `e8_flink_type`
 -- 使用表AUTO_INCREMENT `e8_log`
 --
 ALTER TABLE `e8_log`
-  MODIFY `log_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '日志id', AUTO_INCREMENT=2043;
+  MODIFY `log_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '日志id', AUTO_INCREMENT=2065;
 --
 -- 使用表AUTO_INCREMENT `e8_menu`
 --
@@ -786,7 +826,7 @@ ALTER TABLE `e8_template`
 -- 使用表AUTO_INCREMENT `e8_visit`
 --
 ALTER TABLE `e8_visit`
-  MODIFY `vid` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56330;
+  MODIFY `vid` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56332;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
