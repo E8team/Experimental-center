@@ -1,4 +1,8 @@
 @charset "UTF-8";
+
+p {
+	margin: 0 0 10px;
+}
 /*轮播图*/
 .img_box{
 	max-height: 450px;
@@ -171,46 +175,47 @@
 	padding: 10px;
 }
 /*实验室一览*/
-.show_content ul {
-	min-height: 200px;
-	overflow: hidden;
+.show_content{
+	margin-bottom: 35px;
 }
-.show_content ul li {
-	float: left;
-	margin-bottom: 30px;
-}
-.show_content ul li img{
-	width: 100%;
-}
-
 .show_box{
-	margin-top: 30px;
+	margin: 30px 0;
 }
 .show_box_pic{
-	margin-top: 20px;
-	overflow: hidden;;;
+	margin: 20px 0;
+	overflow: hidden;
+	position: relative;
+	height: 165px;
 }
-.show_box ul{
+.show_box .show_box_pic ul {
+	height: 165px;
+	overflow: hidden;
 	position: relative;
 }
-.show_box ul li a{
+.show_box .show_box_pic ul li {
+	width: 285px;
+    padding: 0 10px;
+    float: left;
+    box-sizing: border-box;
+}
+.show_box .show_box_pic ul li a{
 	display: block;
 	position: relative;
 	overflow: hidden;
 }
-.show_box ul li img{
+.show_box .show_box_pic ul li img{
 	display: block;
 	width: 100%;
 	overflow: hidden;
 	height: 100%;
 }
-.show_box ul li .pic_title{
+.show_box .show_box_pic ul li .pic_title{
 	position: absolute;
 	width: 100%;
 	bottom: -30px;
     transition: all .3s;
 }
-.show_box ul li .pic_title .mask{
+.show_box .show_box_pic ul li .pic_title .mask{
 	position: absolute;
     top: 0px;
     height: 100%;
@@ -219,7 +224,7 @@
 	left: 0px;
 	width: 100%;
 }
-.show_box ul li .pic_title p{
+.show_box .show_box_pic ul li .pic_title p{
 	color: #fff;
     line-height: 30px;
     font-size: 14px;
@@ -235,11 +240,7 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
 }
-.show_box ul li:hover .pic_title {
+.show_box .show_box_pic ul li:hover .pic_title {
 	opacity: 1;
     bottom: 0;
-}
-
-p {
-	margin: 0 0 10px;
 }

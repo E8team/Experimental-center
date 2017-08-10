@@ -141,8 +141,8 @@
                     <h3>{$laboratoryClass['name']}</h3>
                     <a href="{:U($laboratoryClass['index_template']['url'], ['id'=>$laboratoryClass['class_id']])}" class="more">更多</a>
                 </div>
-                <div class="show_box_pic">
-                    <ul>
+                <div class="show_box_pic" id="move_pic">
+                    <ul style="left: 0px;">
                         <volist name="laboratory" id="vo" empty="没有数据">
                             <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <a href="{:U($laboratoryClass['content_template']['url'], ['id'=>$vo['content_id']])}">
@@ -200,3 +200,30 @@ $(document).ready(function(){
         $("#callboard").Scroll({line:1,speed:500,timer:3000});
 });
 </script>
+<!-- 实验室一览图片滚动 -->
+    <script type="text/javascript">
+    window.onload=function(){
+        var oDiv1=document.getElementById('move_pic');
+        var oUl=oDiv1.getElementsByTagName('ul')[0];
+        var oLi=oUl.getElementsByTagName('li');
+        var speed=1;
+        oUl.innerHTML=oUl.innerHTML+oUl.innerHTML;
+        oUl.style.width=oLi[0].offsetWidth*oLi.length+'px';//ul的宽度=li的总宽度
+        function move(){
+            // 向左滚动
+            if(oUl.offsetLeft < -oUl.offsetWidth/2){
+                oUl.style.left='0';
+            }
+            oUl.style.left=oUl.offsetLeft-speed+'px';
+        }
+        // 定时无缝滚动
+        var timer=setInterval(move,30);
+        // 鼠标移入移出事件
+        oUl.onmouseover=function(){
+            clearInterval(timer);
+        }
+        oUl.onmouseout=function(){
+            timer=setInterval(move,30);
+        }
+    }
+    </script>
