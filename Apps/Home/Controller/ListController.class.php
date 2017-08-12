@@ -3,7 +3,7 @@ namespace Home\Controller;
 
 class ListController extends BaseController {
 
-    protected $limitPage = 18;
+    protected $limitPage = 10;
 	//列表页
 	public function index() {
 
@@ -50,7 +50,7 @@ class ListController extends BaseController {
         $this->assign('allClass', $allChildClass);
 		$this->assign ('page', $show);
 		$this->assign('list', $list);
-		//dd($list);
+		//dd($show);
 		$this->display ();
 	}
 
@@ -82,8 +82,6 @@ class ListController extends BaseController {
         $this->assign('class', $class);
         $this->assign('fatherClass', $fatherClass);
         $this->assign('allClass', $allChildClass);
-        //dd($class);
         $this->display();
-
     }
 }

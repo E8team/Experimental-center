@@ -67,7 +67,8 @@
 									<span class="icon16 icomoon-icon-newspaper"></span> <span>文章管理</span>
 									<a href="__APP__/Admin/Content/add"><span
 										class="e8-add tip" title="添加文章">+添加文章</span></a>
-
+									<!--<a href="__APP__/Admin/Content/addLearn"><span
+											class="e8-add tip" title="添加文章">+添加学习资源</span></a>-->
 								</h4>
 								<a href="#" class="minimize">Minimize</a>
 							</div>
@@ -102,16 +103,12 @@
 											<td><a href="__APP__/Admin/Content/index/admin_id/{$content.admin_id}" class="btn btn-info btn-small">{$content.admin}</a></td>
 											<td>
 												<div class="controls center">
-													<a href="#" title="预览" class="tip"><span
-														class="icon12 icomoon-icon-search-5 "></span></a> <a
-														href="__APP__/Admin/Content/edit/content_id/{$content.content_id}/mw/{$content.mw}"
-														title="修改" class="tip"><span
+													<a href="#" title="预览" class="tip"><span class="icon12 icomoon-icon-search-5 "></span></a>
+													<a href="__APP__/Admin/Content/edit/content_id/{$content.content_id}/mw/{$content.mw}" title="修改" class="tip"><span
 														class="icon-pencil"></span></a>
-														
 														<a href="javascript:deleteConfirm('__APP__/Admin/Content/remove/content_id/{$content.content_id}-{$content.mw}','确定删除该文章信息吗？？？');" title="删除" class="tip"><span
 														class="icon14 icomoon-icon-remove"></span>
 														</a>
-														
 												</div>
 											</td>
 										</tr>

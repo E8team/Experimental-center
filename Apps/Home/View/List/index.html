@@ -28,9 +28,9 @@
 				<h2>{$class['name']}</h2>
 					<span><a href="{:U('Home/Index/index')}">首页></a>
 						<?php if(empty($fatherClass['name'])){?>
-						<?php echo $class['name'] ?>
+						<?php echo $class['name'];?>
 				<?php }else{?>
-					<a href="javaScript"><?php echo $fatherClass['name'] ?>></a><p><?php echo $class['name'] ?></p></span>
+					<a href="javaScript"><?php echo $fatherClass['name']; ?>></a><p><?php echo $class['name'] ?></p></span>
 				<?php }?>
 			</div>
 			<div class="c-r-list">
@@ -46,18 +46,12 @@
 					<?php endif;?>
 				</ul>
 			</div>
+            <!--分页-->
 			<div class="page_body">
-               <!--<ul>
-                   <li><a href="javaScript:;"><<</a></li>
-                   <li><a href="javaScript:;">1</a></li>
-                   <li><a href="javaScript:;">2</a></li>
-                   <li><a href="javaScript:;">3</a></li>
-                   <li><a href="javaScript:;">4</a></li>
-                   <li><a href="javaScript:;">5</a></li>
-                   <li><a href="javaScript:;">>></a></li>
-               </ul>-->
-				{$page}
-           </div>
+                <nav aria-label="Page navigation" class="page-center">
+                    {$page}
+                </nav>
+            </div>
 		</div>
 <!-- 右边列表结束 -->
 	</div>
