@@ -44,16 +44,35 @@ class ContentController extends BaseController {
 
     public function addFeedback()
     {
-        $this->display();die;
         //教学反馈  56
         //todo 等待页面测试
         //创建各个模型
         $Content = D('Content');
         $Con_article = D('Con_article');
         if(IS_POST){
+            //以下数据直接写死
             $Content->class_id = 56;
+            $Content->admin_id = 13;
+            $Content->channel_id = 1;
+
+            $Content->title = $_POST['title'];
+            $Content->author = $_POST['email'];
+            $addtime = time();
+            $addtime = date('Y-m-d', $addtime);
+            $Content->addtime = $addtime;
+            $Content->state = 'publish';
+
+            if($Content->add()){
+                $Con_article -> content_id =  $Content->add();
+                $Con_article -> class_id = 56;
+                $Con_article -> body = $_POST['body'];
+                $Con_article -> add();
+
+                $this->success('提交成功',__APP__.'/Home/Index/index');
+            }else{
+                $this->error('提交失败' , __APP__.'/Home/Content/addFeedback');
+            }
         }else{
-            //$this->error('非法操作!',__APP__.'/Home/Index/index');
             $this->display();
         }
     }

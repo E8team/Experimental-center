@@ -5,51 +5,36 @@
 <!-- 左边导航开始 -->
         <div class="c-left">
             <div class="second-title">
-                <?php if($class['father_id']==0){?>
-                    <h2><?php echo $class['name'];?></h2>
-                <?php }else{?>
-                    <h2><?php echo $fatherClass['name'];?></h2>
-                <?php }?>
+                <h2>教学反馈</h2>
             </div>
             <ul>
-                <?php if(empty($allClass)) {?>
-                    <li><a href="javaScript:;"><?php echo $class['name'] ?><img src="__PUBLIC__/com_home/images/back.png"></a></li>
-                <?php }else{ ?>
-                    <volist name="allClass" id="vo">
-                        <li><a href="{:U($vo['index_template']['url'], ['id'=>$vo['class_id']])}"><?php echo $vo['name'] ?><img src="__PUBLIC__/com_home/images/back.png"></a></li>
-                    </volist>
-                <?php }?>
+                <li>教学反馈</li>
             </ul>
         </div>
 <!-- 左边导航结束 -->
 <!-- 右边列表开始 -->
         <div class="c-right">
             <div class="c-r-head">
-                <h2>{$class['name']}</h2>
-                    <span><a href="{:U('Home/Index/index')}">首页></a>
-                        <?php if(empty($fatherClass['name'])){?>
-                        <?php echo $class['name'];?>
-                <?php }else{?>
-                    <a href="javaScript"><?php echo $fatherClass['name']; ?>></a><p><?php echo $class['name'] ?></p></span>
-                <?php }?>
+                <h2>教学反馈</h2>
+                    <span><a href="{:U('Home/Index/index')}">首页></a><p>教学反馈</p></span>
             </div>
             <div class="c-r-list">
                 <div class="container" style="width: 70%">
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="post" action="__APP__/Home/Content/addFeedback">
                     <div class="form-group">
                         <label for="inputTitle" class="label-text">反馈标题</label>
-                        <input type="text" class="form-control" id="inputTitle" placeholder="请输入反馈标题">
+                        <input type="text" name="title" class="form-control" id="inputTitle" placeholder="请输入反馈标题">
                     </div>
                     <div class="form-group">
                         <label for="inputContent">反馈内容</label>
-                        <textarea class="form-control" id="inputContent" placeholder="请输反馈内容..." rows="5"></textarea>
+                        <textarea name="body" class="form-control" style="resize:none;" id="inputContent" placeholder="请输反馈内容..." rows="5"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail" class="label-text">你的邮箱</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="请输入邮箱">
+                        <input type="email" name="email" class="form-control" id="inputEmail" placeholder="请输入邮箱">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary btn-green feedback-submit" data-loading-text="提交中...">提交反馈</button>
+                        <button type="submit" class="btn btn-primary btn-green feedback-submit" data-loading-text="提交中...">提交反馈</button>
                     </div>
                 </form>
                 </div>
