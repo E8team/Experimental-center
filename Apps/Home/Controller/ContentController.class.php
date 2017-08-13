@@ -41,4 +41,20 @@ class ContentController extends BaseController {
 
         $this->display();
     }
+
+    public function addFeedback()
+    {
+        $this->display();die;
+        //教学反馈  56
+        //todo 等待页面测试
+        //创建各个模型
+        $Content = D('Content');
+        $Con_article = D('Con_article');
+        if(IS_POST){
+            $Content->class_id = 56;
+        }else{
+            //$this->error('非法操作!',__APP__.'/Home/Index/index');
+            $this->display();
+        }
+    }
 }

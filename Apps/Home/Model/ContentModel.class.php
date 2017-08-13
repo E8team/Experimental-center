@@ -4,6 +4,26 @@ use Think\Model;
 
 class ContentModel extends Model {
 
+    protected $_validate = array(
+        array(
+            'title',
+            'require',
+            '请输入标题',
+            1,
+        ),
+        array(
+            'body',
+            'require',
+            '请输入反馈内容',
+            1,
+        ),
+        array(
+            'email',
+            'require',
+            '请输入邮箱',
+            1
+        ),
+    );
 
 	/**
 	 * 根据栏目ID，获取指定数量的新闻列表
