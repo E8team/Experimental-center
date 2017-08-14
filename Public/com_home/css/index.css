@@ -201,6 +201,7 @@ p {
 .show_box .show_box_pic ul li a{
 	display: block;
 	position: relative;
+	height:165px;
 	overflow: hidden;
 }
 .show_box .show_box_pic ul li img{

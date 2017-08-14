@@ -49,17 +49,18 @@ body{
 }
 .c-title h1{
 	text-align: center;
-	padding-top: 30px;
+	font-size: 30px;
+	font-weight: bold;
 }
 .c-title-message{
 	width: 100%;
 	text-align: center;
-	padding-bottom: 30px;
+	padding-bottom: 20px;
 	border-bottom: 1px dashed #ededed;
 }
 .c-title-message span{
 	display: inline-block;
-	margin: 30px 10px 0 0;
+	margin: 20px 10px 0 0;
 	color: #999;
 	font-size: 12px;
 }
@@ -67,6 +68,10 @@ body{
 	width: 94%;
 	margin: auto;
 	margin-top: 30px;
+	padding: 0 60px;
+}
+.c-article img{
+	width: 100%;
 }
 .c-article p{
 	text-indent: 2em;

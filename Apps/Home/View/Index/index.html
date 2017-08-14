@@ -98,41 +98,9 @@
                         </volist>
                     </ul>
                 </div>
-                <!--<div class="item"><a href="#" data-toggle="modal" data-target="#myModal" >我要反馈</a></div>-->
                 <div class="item"><a href="__APP__/Home/Content/addFeedback">我要反馈</a></div>
             </div>
         </div>
-        <!-- 模态框 -->
-        <!--<div role="dialog" class="modal fade bs-example-sm" id="myModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                        <h4 class="modal-title" style="font-weight: 600">在线反馈</h4>
-                    </div>
-                    <form method="post" action="__APP__/Admin/Content/addFeedback">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="inputTitle" class="label-text">反馈标题</label>
-                                <input type="text" name="title" class="form-control" id="inputTitle" placeholder="请输入标题">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputContent">反馈内容</label>
-                                <textarea name="body" style="resize:none;" class="form-control" id="inputContent" placeholder="请输反馈内容..." rows="5"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail" class="label-text">你的邮箱</label>
-                                <input name="email" type="email" class="form-control" id="inputEmail" placeholder="请输入邮箱">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-success btn-sm"  data-dismiss="modal">提交</button>
-                            <button class="btn btn-primary btn-sm" data-dismiss="modal">取消</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>-->
     </div>
 <!-- 实验室一览 -->
     <div class="show_content">
@@ -143,7 +111,7 @@
                     <a href="{:U($laboratoryClass['index_template']['url'], ['id'=>$laboratoryClass['class_id']])}" class="more">更多</a>
                 </div>
                 <div class="show_box_pic" id="move_pic">
-                    <ul style="left: 0px;">
+                    <ul id="scroll">
                         <volist name="laboratory" id="vo" empty="没有数据">
                             <li>
                                 <a href="{:U($laboratoryClass['content_template']['url'], ['id'=>$vo['content_id']])}">
@@ -204,27 +172,42 @@ $(document).ready(function(){
 <!-- 实验室一览图片滚动 -->
     <script type="text/javascript">
     window.onload=function(){
-        var oDiv1=document.getElementById('move_pic');
-        var oUl=oDiv1.getElementsByTagName('ul')[0];
-        var oLi=oUl.getElementsByTagName('li');
-        var speed=1;
-        oUl.innerHTML=oUl.innerHTML+oUl.innerHTML;
-        oUl.style.width=oLi[0].offsetWidth*oLi.length+'px';//ul的宽度=li的总宽度
-        function move(){
-            // 向左滚动
-            if(oUl.offsetLeft < -oUl.offsetWidth/2){
-                oUl.style.left='0';
-            }
-            oUl.style.left=oUl.offsetLeft-speed+'px';
-        }
-        // 定时无缝滚动
-        var timer=setInterval(move,30);
-        // 鼠标移入移出事件
-        oUl.onmouseover=function(){
-            clearInterval(timer);
-        }
-        oUl.onmouseout=function(){
-            timer=setInterval(move,30);
+        var oul=document.getElementById('scroll');
+        var oli=oul.getElementsByTagName('li');
+        var olis=oli.length;
+        if(olis <=4){
+            return;
+        }else{
+            moveleft();
         }
     }
-    </script>
+    moveleft=function(){
+         var id = function(el) {
+            return document.getElementById(el);
+        },
+        c = id('photo-list');
+    if(c) {
+        var ul = id('scroll'),
+            lis = ul.getElementsByTagName('li'),
+            itemCount = lis.length,
+            width = lis[0].offsetWidth, //获得每个img容器的宽度
+            
+            marquee = function() {
+                c.scrollLeft += 1;
+                if(c.scrollLeft % width <= 0){  //当 c.scrollLeft 和 width 相等时，把第一个img追加到最后面
+                    ul.appendChild(ul.getElementsByTagName('li')[0]);
+                    c.scrollLeft = 0;
+                };
+            },
+            speed = 30; //数值越大越慢
+        ul.style.width = width*itemCount + 'px'; //加载完后设置容器长度
+        var timer = setInterval(marquee, speed);
+        c.onmouseover = function() {
+            clearInterval(timer);
+        };
+        c.onmouseout = function() {
+            timer = setInterval(marquee, speed);
+        };
+    };
+    }
+</script>
