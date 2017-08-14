@@ -75,7 +75,7 @@
                     <a href="{:U($centerClass['index_template']['url'], ['id'=>$centerClass['class_id']])}">
                         <img src="__PUBLIC__/com_home/images/1.jpg">
                         <h2>计算机公共基础实验中心</h2>
-                        <p class="desc">{$centerClass['content']}</p>
+                       	{$centerClass['content']}
                     </a>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                     <h3>{$laboratoryClass['name']}</h3>
                     <a href="{:U($laboratoryClass['index_template']['url'], ['id'=>$laboratoryClass['class_id']])}" class="more">更多</a>
                 </div>
-                <div class="show_box_pic" id="move_pic">
+                <div class="show_box_pic" id="product">
                     <ul id="scroll">
                         <volist name="laboratory" id="vo" empty="没有数据">
                             <li>
@@ -130,84 +130,89 @@
     </div>
 <!-- footer -->
 <include file="./Apps/Home/View/Public/footer.html" />
+</body>
 <!-- 通知公告js -->
-    <script type="text/javascript">
-    (function($){
-    $.fn.extend({
-        Scroll:function(opt,callback){
-                //参数初始化
-                if(!opt) var opt={};
-                var _this=this.eq(0).find("ul:first");
-                var        lineH=_this.find("li:first").height(), //获取行高
-                        line=opt.line?parseInt(opt.line,10):parseInt(this.height()/lineH,10), //每次滚动的行数，默认为一屏，即父容器高度
-                        speed=opt.speed?parseInt(opt.speed,10):500, //卷动速度，数值越大，速度越慢（毫秒）
-                        timer=opt.timer?parseInt(opt.timer,10):3000; //滚动的时间间隔（毫秒）
-                if(line==0) line=1;
-                var upHeight=0-line*lineH;
-                //滚动函数
-                scrollUp=function(){
-                        _this.animate({
-                                marginTop:upHeight
-                        },speed,function(){
-                                for(i=1;i<=line;i++){
-                                        _this.find("li:first").appendTo(_this);
-                                }
-                                _this.css({marginTop:0});
-                        });
-                }
-                //鼠标事件绑定
-                _this.hover(function(){
-                        clearInterval(timerID);
-                },function(){
-                        timerID=setInterval("scrollUp()",timer);
-                }).mouseout();
-        }        
-})
-})(jQuery);
+<script type="text/javascript">
+	(function($){
+	$.fn.extend({
+	    Scroll:function(opt,callback){
+	            //参数初始化
+	            if(!opt) var opt={};
+	            var _this=this.eq(0).find("ul:first");
+	            var        lineH=_this.find("li:first").height(), //获取行高
+	                    line=opt.line?parseInt(opt.line,10):parseInt(this.height()/lineH,10), //每次滚动的行数，默认为一屏，即父容器高度
+	                    speed=opt.speed?parseInt(opt.speed,10):500, //卷动速度，数值越大，速度越慢（毫秒）
+	                    timer=opt.timer?parseInt(opt.timer,10):3000; //滚动的时间间隔（毫秒）
+	            if(line==0) line=1;
+	            var upHeight=0-line*lineH;
+	            //滚动函数
+	            scrollUp=function(){
+	                    _this.animate({
+	                            marginTop:upHeight
+	                    },speed,function(){
+	                            for(i=1;i<=line;i++){
+	                                    _this.find("li:first").appendTo(_this);
+	                            }
+	                            _this.css({marginTop:0});
+	                    });
+	            }
+	            //鼠标事件绑定
+	            _this.hover(function(){
+	                    clearInterval(timerID);
+	            },function(){
+	                    timerID=setInterval("scrollUp()",timer);
+	            }).mouseout();
+	    }        
+	})
+	})(jQuery);
 
-$(document).ready(function(){
-        $("#callboard").Scroll({line:1,speed:500,timer:3000});
-});
-</script>
-<!-- 实验室一览图片滚动 -->
-    <script type="text/javascript">
-    window.onload=function(){
-        var oul=document.getElementById('scroll');
-        var oli=oul.getElementsByTagName('li');
-        var olis=oli.length;
-        if(olis <=4){
-            return;
-        }else{
-            moveleft();
+	$(document).ready(function(){
+	        $("#callboard").Scroll({line:1,speed:500,timer:3000});
+	});
+	/* 实验室一览图片滚动 */
+    $(function(){
+        var $product = $('#product>ul');
+        var productTimer = null;
+        $product.append($product.find('li').last().clone(true));
+        $product.css('width', $product.find('li').length * 277.5);
+        function move() {
+            var left = $product.css('left');
+            var currentLeft = parseInt(left.substring(0, left.length - 2));
+            $product.css('left', currentLeft - 1);
+            if(currentLeft <= -275.5){
+                $product.css('left', 0);
+                $product.append($product.find('li').first());
+            }
         }
-    }
-    moveleft=function(){
-         var id = function(el) {
-            return document.getElementById(el);
-        },
-        c = id('photo-list');
-    if(c) {
-        var ul = id('scroll'),
-            lis = ul.getElementsByTagName('li'),
-            itemCount = lis.length,
-            width = lis[0].offsetWidth, //获得每个img容器的宽度
-            
-            marquee = function() {
-                c.scrollLeft += 1;
-                if(c.scrollLeft % width <= 0){  //当 c.scrollLeft 和 width 相等时，把第一个img追加到最后面
-                    ul.appendChild(ul.getElementsByTagName('li')[0]);
-                    c.scrollLeft = 0;
-                };
-            },
-            speed = 30; //数值越大越慢
-        ul.style.width = width*itemCount + 'px'; //加载完后设置容器长度
-        var timer = setInterval(marquee, speed);
-        c.onmouseover = function() {
-            clearInterval(timer);
-        };
-        c.onmouseout = function() {
-            timer = setInterval(marquee, speed);
-        };
-    };
-    }
+        productTimer = setInterval(function () {
+            move();
+        }, 20);
+        $product.hover(function () {
+            clearInterval(productTimer);
+        }, function () {
+            productTimer = setInterval(function () {
+                move();
+            }, 20);
+        })
+    });
+
+    $('#nav>li').hover(function () {
+        var $list = $(this).find('.sub_nav_list')
+        $list.css('display', 'block');
+        $list.stop().animate({
+            'opacity': 1,
+            'top': '46px'
+        }, 200)
+    }, function () {
+        var $list = $(this).find('.sub_nav_list')
+        $list.stop().animate({
+            'opacity': 0,
+            'top': '56px'
+        }, 200, function () {
+            if($list.css('top') == '56px'){
+                $list.css('display', 'none');
+            }
+        })
+    })
 </script>
+</html>

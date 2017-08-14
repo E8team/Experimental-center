@@ -144,6 +144,7 @@ ul{
 	color: #fff;
 	margin-bottom: 20px;
 }
+
 .footer_links .links li a, .about li {
 	color: #e1e1e1;
 	text-decoration: none;
@@ -155,6 +156,9 @@ ul{
 	width: 33.33%;
 	display: block;
 	margin-bottom: 20px;
+}
+.footer_links .links li:hover{
+	text-decoration:underline;
 }
 .footer .footer_logo{
 	text-align: center;
