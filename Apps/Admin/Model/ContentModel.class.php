@@ -30,28 +30,6 @@ class ContentModel extends Model {
 			)
 	);
 
-	protected $resources_Validata = array(
-	    array(
-	        'title',
-            'require',
-            '标题请填写完整',
-            '1',
-        ),
-        array(
-            'author',
-            'require',
-            '作者请填写完整',
-            '1',
-        ),
-        array(
-            'description',
-            'require',
-            '描述请填写完整',
-            '1',
-        ),
-
-    );
-	
 	/**
 	 * 清理栏目不存在的内容
 	 *

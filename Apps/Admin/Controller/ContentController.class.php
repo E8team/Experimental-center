@@ -220,64 +220,74 @@ class ContentController extends BaseController
             } else {
                 $Content->is_stick = 0;
             }
-            //获取频道ID
-            $class_id = 45;
-            $channel_id = $Class->where("class_id = $class_id")->getField("channel_id");
-            $Content->channel_id = $channel_id;
-            //栏目ID
-            $Content->class_id = $class_id;
-            //标题
-            $Content->title = $_POST['title'];
-            //作者
-            $Content->author = $_POST['author'];
-            //描述
-            $Content->description = $_POST['description'];
-            //获取admin_id
-            $Content->admin_id = $this->admin['admin_id'];
-            //获取更新时间
-            $Content->uptime = time();
-            //写入添加时间
-            $addtime = strtotime($_POST['addtime']);
-            $addtime = date('Y-m-d', $addtime);
-            $Content->addtime = $addtime;
-
-            //写入置顶到期时间
-            $sticky_time = strtotime($_POST['sticky_time']);
-            $sticky_time = date('Y-m-d', $sticky_time);
-            $Content->sticky_time = $sticky_time;
-            //状态
-            $Content->state = 'publish';
-            //上传图片
-            if ($_FILES ['picurl'] ['name'] != "") {
-                $fileInfo = $this->upload($_FILES['picurl']['type'], true);
-                $Content->picurl = $fileInfo;
-            }
-            //日志记录中需要的数据
-            $logMsg['title'] = $Content->title;
-            $logMsg['id'] = $Content->content_id;
-            if ($Content->add()) {
-                $content_id = mysqli_insert_id();
-                //写入附加表的数据
-                $Con_article->content_id = $content_id;
-                $Con_article->class_id = 45;
-                //上传文件
-                if ($_FILES ['addfile'] ['name'] != "") {
-                    $description = $_POST['description'];
-                    $fileName = $_FILES ['addfile'] ['name'];
-                    $fileInfo = $this->upload($_FILES ['addfile']['type']);
-                    $Con_article->body = "<span>$description</span><br><br><a href='Public/upload/$fileInfo'>$fileName</a>";
+            $_POST['class_id'] = 45;
+            if(!$Content->validate($Content->resources_Validata)->create()) {
+                $this->error($Content->getError());
+            }else {
+                //判断是否置顶
+                if ($_POST['is_stick'] == "on") {
+                    $Content->is_stick = 1;
+                } else {
+                    $Content->is_stick = 0;
                 }
-                $Con_article->add();
-                //写入日志
-                $Log = D('Log', 'Logic');
-                $content = $this->admin['account'] . '(' . $this->admin['name'] . ') 执行了添加文章操作,添加的文章ID为 ' . $logMsg['id'] . ',添加的文章标题为 ' . $logMsg['title'];
-                $Log->write($this->admin['admin_id'], $content, 1);
+                //获取频道ID
+                $class_id = 45;
+                $channel_id = $Class->where("class_id = $class_id")->getField("channel_id");
+                $Content->channel_id = $channel_id;
+                //栏目ID
+                $Content->class_id = $class_id;
+                //标题
+                $Content->title = $_POST['title'];
+                //作者
+                $Content->author = $_POST['author'];
+                //描述
+                $Content->description = $_POST['description'];
+                //获取admin_id
+                $Content->admin_id = $this->admin['admin_id'];
+                //获取更新时间
+                $Content->uptime = time();
+                //写入添加时间
+                $addtime = strtotime($_POST['addtime']);
+                $addtime = date('Y-m-d', $addtime);
+                $Content->addtime = $addtime;
 
-                $this->success('添加成功!', __APP__ . '/Admin/Content/resources');
-            } else {
-                $this->error('添加失败!', __APP__ . '/Admin/Content/addLearn');
+                //写入置顶到期时间
+                $sticky_time = strtotime($_POST['sticky_time']);
+                $sticky_time = date('Y-m-d', $sticky_time);
+                $Content->sticky_time = $sticky_time;
+                //状态
+                $Content->state = 'publish';
+                //上传图片
+                if ($_FILES ['picurl'] ['name'] != "") {
+                    $fileInfo = $this->upload($_FILES['picurl']['type'], true);
+                    $Content->picurl = $fileInfo;
+                }
+                //日志记录中需要的数据
+                $logMsg['title'] = $Content->title;
+                $logMsg['id'] = $Content->content_id;
+                if ($Content->add()) {
+                    $content_id = mysqli_insert_id();
+                    //写入附加表的数据
+                    $Con_article->content_id = $content_id;
+                    $Con_article->class_id = 45;
+                    //上传文件
+                    if ($_FILES ['addfile'] ['name'] != "") {
+                        $description = $_POST['description'];
+                        $fileName = $_FILES ['addfile'] ['name'];
+                        $fileInfo = $this->upload($_FILES ['addfile']['type']);
+                        $Con_article->body = "<span>$description</span><br><br><a href='Public/upload/$fileInfo'>$fileName</a>";
+                    }
+                    $Con_article->add();
+                    //写入日志
+                    $Log = D('Log', 'Logic');
+                    $content = $this->admin['account'] . '(' . $this->admin['name'] . ') 执行了添加文章操作,添加的文章ID为 ' . $logMsg['id'] . ',添加的文章标题为 ' . $logMsg['title'];
+                    $Log->write($this->admin['admin_id'], $content, 1);
+
+                    $this->success('添加成功!', __APP__ . '/Admin/Content/resources');
+                } else {
+                    $this->error('添加失败!', __APP__ . '/Admin/Content/addLearn');
+                }
             }
-
         } else {
             $class_id = isset ($_GET ['class_id']) ? $_GET ['class_id'] : 0;
             $channel_id = isset ($_GET ['channel_id']) ? $_GET ['channel_id'] : '';
@@ -423,7 +433,6 @@ class ContentController extends BaseController
     {
         $Content = D('Content');
         $Con_article = D('Con_article');
-        $Class = D("Class");
         if (IS_POST) {
             $content_id = $_POST['content_id'];
             if(isset($content_id)){
@@ -461,9 +470,9 @@ class ContentController extends BaseController
                         //上传文件
                         if ($_FILES ['addfile'] ['name'] != "") {
                             $description = $_POST['description'];
+                            $fileName = $_FILES['addfile']['name'];
                             $fileInfo = $this->upload($_FILES ['addfile']['type']);
-                            //$Con_article->body = $fileInfo;
-                            $Con_article->body = "&lt;a href=&quot;__PUBLIC__/upload/$fileInfo&quot;&gt;$description&lt;/a&gt;";
+                            $Con_article->body = "<span>$description</span><br><br><a href='Public/upload/$fileInfo'>$fileName</a>";
                         }
                     }
                     $Con_article->save();
@@ -578,14 +587,15 @@ class ContentController extends BaseController
         $where = $where . " and state = 'publish'";
         $where = $keywords == '' ? $where : $where . " and title like '%$keywords%'";
 
+        //$order = 'sort_index,uptime desc';
         $order = 'sort_index,uptime desc';
-        $order = $sort_field == '' ? $order : $sort_field . " desc," . $order;
+        $order = $sort_field == '' ? $order : $sort_field . " asc," . $order;
         $count = $contentModel->where($where)->count();
         $page = new\Think\Page($count, 9);
         $show = $page->show();
         $limit = $page->firstRow . "," . $page->listRows;
+        //dd($order);
         $contentList = $contentModel->getAllContent($where, $order, $limit);
-
         $this->assign('page', $show);
         for ($i = 0; $i < count($contentList); $i++) {
             $contentList[$i]['mw'] = passport_encrypt($contentList[$i]['content_id']);
@@ -594,11 +604,10 @@ class ContentController extends BaseController
         $mbx = array(
             'first_item' => '内容管理',
             'url' => 'index',
-            'second_item' => '文章管理',
+            'second_item' => '文件上传',
         );
         $this->assign('mbx', $mbx);
         $this->assign('contentList', $contentList);
-        //$this->ajaxReturn($contentList,'JSON');
         $this->display();
     }
 
