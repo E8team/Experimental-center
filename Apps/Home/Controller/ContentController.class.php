@@ -44,8 +44,6 @@ class ContentController extends BaseController {
 
     public function addFeedback()
     {
-        //教学反馈  56
-        //todo 等待页面测试
         //创建各个模型
         $Content = D('Content');
         $Con_article = D('Con_article');

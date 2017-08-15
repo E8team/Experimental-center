@@ -262,12 +262,10 @@ class ContentController extends BaseController
                 $Con_article->class_id = 45;
                 //上传文件
                 if ($_FILES ['addfile'] ['name'] != "") {
-                    /*$fileInfo = $this->upload($_FILES ['addfile']['type']);
-                    $Con_article->body = $fileInfo;*/
                     $description = $_POST['description'];
+                    $fileName = $_FILES ['addfile'] ['name'];
                     $fileInfo = $this->upload($_FILES ['addfile']['type']);
-                    $body = "&lt;a class=&quot;ke-insertfile&quot; href=&quot;__PUBLIC__/upload/$fileInfo&quot;&gt;$description&lt;/a&gt;";
-                    $Con_article->body = "<a href='Public/upload/$fileInfo'>$description</a>";
+                    $Con_article->body = "<span>$description</span><br><br><a href='Public/upload/$fileInfo'>$fileName</a>";
                 }
                 $Con_article->add();
                 //写入日志
