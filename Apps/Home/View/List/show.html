@@ -1,6 +1,16 @@
-<include file="./Apps/Home/View/Public/head.html" />
+<include file="./Apps/Home/View/Public/head.html"/>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/com_home/css/list.css">
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/com_home/css/page.css">
+<style>
+    .right-crumbs {
+        list-style: none; /* 将默认的列表符号去掉 */
+        float: right; /* 往左浮动 */
+        width: auto;
+    }
+    .right-crumbs li {
+        float: left;
+    }
+</style>
 <div class="banner"></div>
 <div class="center">
     <!-- 左边导航开始 -->
@@ -10,10 +20,12 @@
         </div>
         <ul>
             <?php if(empty($allClass)) {?>
-            <li><a href="javaScript:;"><?php echo $class['name'] ?><img src="__PUBLIC__/com_home/images/back.png"></a></li>
+            <li><a href="javaScript:;"><?php echo $class['name'] ?><img src="__PUBLIC__/com_home/images/back.png"></a>
+            </li>
             <?php }else{ ?>
             <volist name="allClass" id="vo">
-                <li><a href="{:U($vo['index_template']['url'], ['id'=>$vo['class_id']])}"><?php echo $vo['name'] ?><img src="__PUBLIC__/com_home/images/back.png"></a></li>
+                <li><a href="{:U($vo['index_template']['url'], ['id'=>$vo['class_id']])}"><?php echo $vo['name'] ?><img
+                        src="__PUBLIC__/com_home/images/back.png"></a></li>
             </volist>
             <?php }?>
         </ul>
@@ -23,11 +35,18 @@
     <div class="c-right">
         <div class="c-r-head">
             <h2>{$class['name']}</h2>
-            <span><a href="{:U('Home/Index/index')}">首页></a><?php if(empty($fatherClass)){?>><p><?php echo $class['name'];?></p><?php }else{?><p><?php echo $fatherClass['name']?></p>><?php echo $class['name']; }?></span>
+            <ul class="right-crumbs">
+                <li><a href="{:U('Home/Index/index')}">首页</a>></li>
+                <notempty name="fatherClass.name">
+                    <li><a href="{:U($fatherClass['index_template']['url'], ['id'=>$fatherClass['class_id']])}">{$fatherClass['name']}</a>>
+                    </li>
+                </notempty>
+                <li>{$class['name']}</li>
+            </ul>
         </div>
         <div class="c-r-container">
             <?php if(empty($class['content'])){?>
-                <span>暂无数据</span>
+            <span>暂无数据</span>
             <?php }else{
                   echo $class['content'];
             } ?>
@@ -35,4 +54,4 @@
     </div>
     <!-- 右边列表结束 -->
 </div>
-<include file="./Apps/Home/View/Public/footer.html" />
+<include file="./Apps/Home/View/Public/footer.html"/>

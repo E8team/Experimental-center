@@ -1,17 +1,25 @@
 <include file="./Apps/Home/View/Public/head.html" />
+<style>
+    li {
+        list-style:none; /* 将默认的列表符号去掉 */
+        float:left; /* 往左浮动 */
+    }
+</style>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/com_home/css/article.css">
 <!-- 头部结束 -->
 <div class="banner"></div>
 <div class="center">
     <div class="c-nav">
-        <span><a href="{:U('Home/Index/index')}">首页></a>
-              <?php if(empty($fatherClass)):?>
-                    <a href="{:U($class['index_template']['url'], ['id'=>$class['class_id']])}">{$class['name']}</a>>正文
-              <?php else:?>
-                    <a href="{:U($fatherClass['index_template']['url'], ['id'=>$fatherClass['class_id']])}">{$fatherClass['name']}></a>
-                    <a href="{:U($class['index_template']['url'], ['id'=>$class['class_id']])}">{$class['name']}</a>>正文
-              <?php endif;?>
-        </span>
+        <ul>
+            <li><a href="{:U('Home/Index/index')}">首页</a>></li>
+            <empty name="fatherClass">
+                <li><a href="{:U($class['index_template']['url'], ['id'=>$class['class_id']])}">{$class['name']}</a>></li>
+            <else />
+                <li><a href="{:U($fatherClass['index_template']['url'], ['id'=>$fatherClass['class_id']])}">{$fatherClass['name']}</a>></li>
+                <li><a href="{:U($class['index_template']['url'], ['id'=>$class['class_id']])}">{$class['name']}</a>></li>
+            </empty>
+            正文
+        </ul>
     </div>
     <div class="c-title">
         <h1>{$content['title']}</h1>

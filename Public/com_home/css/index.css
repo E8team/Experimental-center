@@ -133,6 +133,9 @@ p {
     line-height: 1.8;
 }
 /*教学反馈*/
+.feedback ul li{
+	height: 55px;
+}
 .feedback ul li a h4, .feedback ul li a p{
 	font-size: 16px;
 	overflow: hidden;
